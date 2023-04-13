@@ -1,0 +1,33 @@
+repo url: https://github.com/Mostafa1682002/Project_Soft2.git
+
+ github group url:https://github.com/Mostafa1682002/Project_Soft2/tree/master
+how to connect to repo
+
+git init
+git add .
+git commit -m ""
+git remote add origin  "url repo"
+
+git push origin master      //  upload
+git pull origin master    // download
+
+//***********************************//
+
+لو عايز ارفع تعديل 
+git add .
+git commit -m ""
+git push origin master     
+
+//**************************************//
+
+لو عايز انزل تعديل اول مره 
+
+git init
+git clone  "url repo"
+git pull origin master 
+
+/**********************************/
+لو نزلت قبل كدا وهايز انزل اخر تعديل تم 
+git pull origin master 
+
+    
