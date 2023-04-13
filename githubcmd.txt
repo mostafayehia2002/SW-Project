@@ -24,7 +24,6 @@ git push origin master
 
 git init
 git clone  "url repo"
-git pull origin master 
 
 /**********************************/
 لو نزلت قبل كدا وهايز انزل اخر تعديل تم 
