@@ -7,7 +7,6 @@
     <title> Login Form</title>
     <link rel="stylesheet" href="./Login/CSS Style/all.min.css">
     <link rel="stylesheet" href="./Login/CSS Style/login.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
   </head>
   <body>
     <div class="container">
@@ -25,6 +24,10 @@
             <div class="input-filed">
               <i class="fa-solid fa-lock"></i>
               <input type="password" placeholder="Password" >
+            </div>
+
+            <div class="forget-pass">
+              <a href="#">Forget Password?</a>
             </div>
 
             <div class="input-radio">
