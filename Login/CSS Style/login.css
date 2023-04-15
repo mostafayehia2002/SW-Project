@@ -108,7 +108,7 @@
   display: flex;
 }
 
-.form-box form .btn-filed button{
+.form-box form .btn-filed input[type="submit"]{
   flex-basis: 98%;
   background: #3c00a0;
   color: #fff;
