@@ -20,5 +20,6 @@ if(!isset($_SESSION["doctor_id"])){
 </head>
 <body>
     <h1>Doctors page</h1>
+    <a href="../logout.php">logout</a>
 </body>
 </html>

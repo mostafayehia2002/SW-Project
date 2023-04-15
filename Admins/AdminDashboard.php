@@ -20,5 +20,6 @@ if(!isset($_SESSION["admin_id"])){
 </head>
 <body>
     <h1>Admin page</h1>
+    <a href="../logout.php">logout</a>
 </body>
 </html>
