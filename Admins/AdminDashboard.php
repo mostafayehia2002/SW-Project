@@ -16,9 +16,9 @@ if(!isset($_SESSION["admin_id"])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
     <!-- font Awesome -->
-    <link rel="stylesheet" href="CSS Style/all.min.css">
+    <link rel="stylesheet" href="./CSS Style/all.min.css">
     <!-- custom css style -->
-    <link rel="stylesheet" href="CSS Style/Dashboard.css">
+    <link rel="stylesheet" href="./CSS Style/Dashboard.css">
 </head>
 <body>
   
@@ -42,6 +42,6 @@ if(!isset($_SESSION["admin_id"])){
             <a href="#"><i class="fa fa-pie-chart icons"></i> <span>انشاء قسم </span></a>
         </nav>
     </div>
-    <script src="js/Admin.js"></script>
+    <script src="./JS/Admin.js"></script>
 </body>
 </html>
