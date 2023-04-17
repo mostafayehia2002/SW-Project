@@ -23,14 +23,54 @@ body{
     background-color: var(--ligth-background);
 }
 
+/* Start nav top */
+.navtop{
+    position: fixed;
+    width: calc(100% - 280px);
+    height: 60px;
+    top: 0;
+    left: 0;
+    background-color: #fcfcfc;
+    display: flex;
+    justify-content: space-between;
+    z-index: 100;
+}
+.navtop .most{
+    width: 20%;
+    z-index: 100;
+}
+.navtop .profile{
+    width: 20%;
+    display: flex;
+    /* justify-content: flex-end; */
+    padding: 8px 20px;
+}
+.navtop .profile .image{
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+}
+.navtop .profile .image img{
+    width: 100%;
+}
+.navtop .profile h3,
+.navtop .profile span{
+    color: #2c3e50;
+}
+
+/* End nav top */
+
+
+
 /* Start section sidebar */
 .side-bar{
+    /* display: none; */
     position: fixed;
     top: 0;
     right: 0;
     height: 100vh;
     width: 280px;
-    background-color: var(--white-color);
+    background-color: #0F1630;
     border-right: var(--main-border);
     transition: var(--main-trantision);
     z-index: 1200;
@@ -50,7 +90,7 @@ body{
     cursor: pointer;
     color: var(--white-color);
     font-size: 15px;
-    background-color: var(--red-color);
+    background-color: #333;
     text-align: center;
     border-radius: 2px;
 }
@@ -63,42 +103,28 @@ body{
     cursor: pointer;
     display: none;
 }
-.side-bar .profile{
-    padding: 20px 9px;
-    text-align: center;
+
+.side-bar .logo{
+    padding: 20px 10px;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    justify-content: center;
 }
-.side-bar .profile img{
-    width: 105px;
-    height: 105px;
+.side-bar .logo h3{
+    color: #fff;
+}
+.side-bar .logo .image{
+    width: 50px;
+    height: 50px;
+    margin-left: 13px;
     border-radius: 50%;
+    overflow: hidden;
+}
+.side-bar .logo .image img{
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    margin-bottom: 2px;
-}
-.side-bar .profile h3{
-    font-size: 22px;
-    color: #3c00a0;
-    margin: 10px 0;
-}
-.side-bar .profile .login,
-.side-bar .profile .logout{
-    border-radius: 3px;
-    color:var(--white-color);
-    font-size: 18px;
-    cursor: pointer;
-    text-transform: capitalize;
-    padding:4px 12px;
-    text-align: center;
-    margin-top: 4px;
-}
-.side-bar .profile .login{
-    background-color: var(--orangen-color);
-}
-.side-bar .profile .logout{
-    background-color: var(--red-color);
-}
-.side-bar .profile .login:hover,
-.side-bar .profile .logout:hover{
-    background-color: var(--black-color);
 }
 .side-bar .navbar a{
     display: block;
@@ -107,14 +133,13 @@ body{
     font-size:18px;
 }
 .side-bar .navbar a i{
-    color:#3c00a0;
+    color:#666;
     margin-left: 16px;
-    
+    margin-right: 5px;
 }
 .side-bar .navbar a span{
-    color: var(--ligth-color);
+    color:#fff;
     transition: var(--main-trantision);
-    
 }
 .side-bar .navbar a:hover{
     border-color: var(--ligth-background);
@@ -123,6 +148,20 @@ body{
     margin-right: 7px;
 }
 
+
+.side-bar .navbar .drow-menu{
+    margin: 0;
+    padding: 0;
+    display: none;
+}
+.side-bar .navbar .drow-menu li a{
+    margin: 0px;
+    padding: 3px;
+    text-align: center;
+}
+.side-bar .navbar .drow-menu.active{
+    display: block;
+}
 /* End section sidebar */
 @media (max-width:991px){
     /* .side-bar{

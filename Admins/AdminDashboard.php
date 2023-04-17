@@ -22,24 +22,46 @@ if(!isset($_SESSION["admin_id"])){
 </head>
 <body>
   
-    <!-- Start section sidebar -->
-    <div id="menu-btn" class="fas fa-bars menu"></div>
+     <!-- Start section sidebar -->
+     <div class="navtop">
+            <div class="most">
+                <i id="menu-btn" class="fas fa-bars menu">egddffd</i>
+            </div>
+            <div class="profile">
+                <div>
+                    <h3>مصطفي </h3>
+                    <span>مستخدم</span>
+                </div>
+                <div class="image">
+                    <img src="./images/pic-1.jpg" alt="">
+                </div>
+            </div>
+    </div>
+
     <div class="side-bar">
-        <div class="dashes">
-            <div class="close-btn"><i class="fas fa-times"></i></div>
-        </div>
-        <div class="profile">
-            <img src="images/pic-1.jpg" class="image" alt="">
-            <h3 class="name">مستخدم</h3>
-            <a href="../logout.php" class="logout"> تسجيل خروج</a>
-            <a href="#" class="login">تسجيل دخول</a>
+        <div class="logo">
+            <h3>  سوفت وير</h3>
         </div>
         <nav class="navbar">
-            <a href="#"><i class="fa fa-list icons"></i><span>البيانات الشخصية</span></a>
-            <a href="#"><i class="fa fa-user icons"></i> <span>اضافة مسخدمين </span></a>
-            <a href="#"><i class="fa fa-tasks icons"></i><span>اضافة بياتات شخصية</span></a>
-            <a href="#"><i class="fa fa-list-alt icons"></i> <span>الاقسام المتاحة</span></a>
-            <a href="#"><i class="fa fa-pie-chart icons"></i> <span>انشاء قسم </span></a>
+            <ul>
+                <li><a href="#"><i class="fa fa-list icons"></i><span>البيانات الشخصية</span></a></li>
+                <li><a href="#"><i class="fa fa-user icons"></i> <span>اضافة مسخدمين </span><i class="fa-solid fa-chevron-down add"></i></a>
+                    <ul class="drow-menu">
+                        <li><a href="#">طلاب</a></li>
+                        <li><a href="#">دكتره</a></li>
+                        <li><a href="#">مستخدمين</a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><i class="fa fa-tasks icons"></i><span>اضافة بياتات شخصية</span><i class="fa-solid fa-chevron-down add"></i></a>
+                    <ul class="drow-menu ">
+                        <li><a href="#">طلاب</a></li>
+                        <li><a href="#">دكتره</a></li>
+                        <li><a href="#">مستخدمين</a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><i class="fa fa-list-alt icons"></i> <span>الاقسام المتاحة</span></a></li>
+                <li><a href="#"><i class="fa fa-pie-chart icons"></i> <span>انشاء قسم </span></a></li>
+            </ul>
         </nav>
     </div>
     <script src="./JS/Admin.js"></script>
