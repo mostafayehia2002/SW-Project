@@ -1,7 +1,7 @@
-<?php 
+<?php
 session_start();
 
-if(!isset($_SESSION["admin_id"])){
+if (!isset($_SESSION["admin_id"])) {
 
     header("location:../index.php");
     exit();
@@ -10,6 +10,7 @@ if(!isset($_SESSION["admin_id"])){
 ?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,50 +21,65 @@ if(!isset($_SESSION["admin_id"])){
     <!-- custom css style -->
     <link rel="stylesheet" href="./CSS Style/Dashboard.css">
 </head>
-<body>
-  
-     <!-- Start section sidebar -->
-     <div class="navtop">
-            <div class="most">
-                <i id="menu-btn" class="fas fa-bars menu">egddffd</i>
-            </div>
-            <div class="profile">
-                <div>
-                    <h3>مصطفي </h3>
-                    <span>مستخدم</span>
-                </div>
-                <div class="image">
-                    <img src="./images/pic-1.jpg" alt="">
-                </div>
-            </div>
-    </div>
 
-    <div class="side-bar">
-        <div class="logo">
-            <h3>  سوفت وير</h3>
+<body>
+
+    <!-- Start section sidebar -->
+
+    
+    <!-- nav-bar -->
+    <div class="nav-bar">
+            <div class="icon">
+            <i class="fa-solid fa-bars-staggered"></i>
+            </div>
+             <div class="profile">
+                <div class="user">
+                <span class="username">mostafa</span>
+                 <span class="job">admin</span>
+                </div>
+        
+                <div class="img">
+                <img src="./images//pic-1.jpg" alt=""  height="30px" width="30px">
+                </div>        
+              
+           </div> 
+
+
+
+
         </div>
-        <nav class="navbar">
-            <ul>
-                <li><a href="#"><i class="fa fa-list icons"></i><span>البيانات الشخصية</span></a></li>
-                <li><a href="#"><i class="fa fa-user icons"></i> <span>اضافة مسخدمين </span><i class="fa-solid fa-chevron-down add"></i></a>
-                    <ul class="drow-menu">
-                        <li><a href="#">طلاب</a></li>
-                        <li><a href="#">دكتره</a></li>
-                        <li><a href="#">مستخدمين</a></li>
-                    </ul>
-                </li>
-                <li><a href="#"><i class="fa fa-tasks icons"></i><span>اضافة بياتات شخصية</span><i class="fa-solid fa-chevron-down add"></i></a>
-                    <ul class="drow-menu ">
-                        <li><a href="#">طلاب</a></li>
-                        <li><a href="#">دكتره</a></li>
-                        <li><a href="#">مستخدمين</a></li>
-                    </ul>
-                </li>
-                <li><a href="#"><i class="fa fa-list-alt icons"></i> <span>الاقسام المتاحة</span></a></li>
-                <li><a href="#"><i class="fa fa-pie-chart icons"></i> <span>انشاء قسم </span></a></li>
-            </ul>
-        </nav>
-    </div>
-    <script src="./JS/Admin.js"></script>
+        <!-- side-bar -->
+        <div class="side-bar">
+         <h2> SW-Project</h2> 
+
+
+        </div>
+
+    
+
+
+
+
+<script>
+let list=document.querySelector(".icon i");
+let navBar=document.querySelector(".nav-bar");
+let sideBar=document.querySelector(".side-bar");
+list.onclick=()=>{
+      
+    if(sideBar.classList.contains("hidden")){
+        sideBar.classList.remove("hidden") ;
+        navBar.style.cssText="width:82%";
+    }else{
+     sideBar.classList.add("hidden");
+    navBar.style.cssText="width:100%";
+    }
+    
+}
+
+</script>
+
+
+<script src="./Admins/JS/Admin.js"></script> 
 </body>
+
 </html>
