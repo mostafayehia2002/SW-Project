@@ -1,7 +1,6 @@
 let list=document.querySelector(".icon i");
 let navBar=document.querySelector(".nav-bar");
 let sideBar=document.querySelector(".Dashboard");
-
 list.onclick=()=>{
       
     if(sideBar.classList.contains("hidden")){

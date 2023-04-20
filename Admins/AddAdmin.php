@@ -23,14 +23,14 @@ if (!isset($_SESSION["admin_id"])) {
 
 
  <!-- Start nav-bar -->    
- <?php    include_once("NavBar.php"); ?>
+ <?php    include_once("../Components/NavBar.php"); ?>
  <!-- end nav bar -->
 
 
 <section  class="section">
   
  <!-- Dashboard -->
- <?php   include_once("Dashboard.php") ?>
+ <?php   include_once("../Components/Dashboard.php") ?>
  <!-- end Dashboard -->
 
   

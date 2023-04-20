@@ -24,7 +24,7 @@ if (!isset($_SESSION["admin_id"])) {
 <body>
 
 <!-- Start nav-bar -->    
-    <?php include_once("NavBar.php"); ?>
+    <?php include_once("../Components/NavBar.php"); ?>
  <!-- end nav bar -->
 
 
@@ -32,7 +32,7 @@ if (!isset($_SESSION["admin_id"])) {
 
 
  <!-- Dashboard -->
-<?php   include_once("Dashboard.php") ?>
+<?php   include_once("../Components/Dashboard.php") ?>
  <!-- end Dashboard -->
 
 <div class="container">
