@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once("DataBase Connection/database.php");
+include_once("DataBase/database.php");
 
 if ($con == true) {
 
@@ -16,7 +16,7 @@ if ($con == true) {
          $data=$sql->fetch(PDO::FETCH_ASSOC);
          if($count==1 ){
           $_SESSION["admin_id"]=$ID;
-          header("Location: ./Admins/AdminDashboard.php");
+          header("Location: ./Admins/Admin_Info.php");
           exit();
          }
         echo "<pre>";
@@ -31,7 +31,7 @@ if ($con == true) {
 
         if($count==1 ){
           $_SESSION["doctor_id"]=$ID;
-          header("Location:./Doctors/DoctorDashboard.php");
+          header("Location:./Doctors/");
           exit();
          }
         echo "<pre>";
@@ -45,7 +45,7 @@ if ($con == true) {
         $data = $sql->fetch(PDO::FETCH_ASSOC);
         if($count==1 ){
           $_SESSION["student_id"]=$ID;
-          header("Location:./Students/StudentDashboard.php");
+          header("Location:./Students/");
           exit();
          }
         echo "<pre>";
@@ -85,14 +85,13 @@ if ($con == true) {
 
           <div class="input-filed" id="nameFiled">
             <i class="fa-solid fa-user"></i>
-            <input type="text" placeholder="Username" name="username">
+            <input type="text" placeholder="Username" name="username" autocomplete="off">
           </div>
 
           <div class="input-filed">
             <i class="fa-solid fa-lock"></i>
-            <input type="password" placeholder="Password" name="password">
+            <input type="password" placeholder="Password" name="password" autocomplete="off">
           </div>
-
           <div class="forget-pass">
             <a href="#">Forget Password?</a>
           </div>
