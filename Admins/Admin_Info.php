@@ -1,10 +1,19 @@
 <?php
 session_start();
-
 if (!isset($_SESSION["admin_id"])) {
 
     header("location:../index.php");
     exit();
+}
+
+include_once("../DataBase/database.php");
+if($con){
+    
+$ID=$_SESSION['admin_id'];
+$sql=$con->query("SELECT * FROM `admin` WHERE Ad_ID='$ID'");
+$data=$sql->fetch(PDO::FETCH_ASSOC);
+
+
 }
 
 ?>
@@ -18,7 +27,7 @@ if (!isset($_SESSION["admin_id"])) {
     <link rel="stylesheet" href="CssStyle/Info.css">
     <link rel="stylesheet" href="CssStyle/Dashboard.css">
 
-    <title>Information</title>
+    <title>Admin Information</title>
 </head>
 
 <body>
@@ -41,32 +50,32 @@ if (!isset($_SESSION["admin_id"])) {
             <ul>
                 <li>
                     <b>الرقم القومى</b>
-                    <p id="Ad_ID"></p>
+                    <p id="Ad_ID"> <?php echo   $data['Ad_ID']  ?> </p>
                 </li>
                 <li>
                     <b>الاسم عربى</b>
-                    <p id="Full_Name"></p>
+                    <p id="Full_Name"> <?php  echo $data['Full_Name']  ?> </p>
                 </li>
                 <li>
                     <b>النوع</b>
-                    <p id="Gender"></p>
+                    <p id="Gender">  <?php  echo $data['Gender']  ?> </p>
                 </li>
                 <li>
                     <b>الوظيفة</b>
-                    <p id="Jop"></p>
+                    <p id="Jop"> <?php echo  $data['Job'] ?> </p>
                 </li>
                 <li>
                     <b>العنوان</b>
-                    <p id="Address"></p>
+                    <p id="Address"><?php  echo $data['Address']  ?></p>
                 </li>
                 <li>
                     <b>البريد الاكتروني</b>
-                    <p id="Email_Address"></p>
+                    <p id="Email_Address"> <?php echo  $data['Job']  ?> </p>
                     
                 </li>
                 <li>
                     <b>رقم الهاتف</b>
-                    <p id="Phone_Number"></p>
+                    <p id="Phone_Number"><?php echo  $data['Phone_Number']  ?></p>
                 </li>
             </ul>
         </div>
@@ -76,11 +85,11 @@ if (!isset($_SESSION["admin_id"])) {
             <ul>
                 <li>
                     <b>الكلية</b>
-                    <p id="Faculty"></p>
+                    <p id="Faculty"><?php echo  $data['Faculty']  ?></p>
                 </li>
                 <li>
                     <b>الجامعة</b>
-                    <p id="University"></p>
+                    <p id="University"><?php echo  $data['University']  ?></p>
                 </li>
               
             </ul>
