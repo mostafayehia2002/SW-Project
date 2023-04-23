@@ -26,7 +26,7 @@ if($con){
   
       //sql
              try{
-          $sql=$con->query("INSERT INTO `admin` (`Ad_ID`, `Password`, `Image`, `Full_Name`, `Gender`, `Address`, `Job`, `Email_Address`, `Phone_Number`, `Faculty`, `University`) VALUES ('$id','$id', '$image','$name','$gender','$address','$job','$email','$phone','$faculty',' $university')");
+          $sql=$con->query("INSERT INTO `admin` (`Ad_ID`, `Password`, `Image`, `Full_Name`, `Gender`, `Address`, `Job`, `Email_Address`, `Phone_Number`, `Faculty`, `University`) VALUES ('$id','$id','$image','$name','$gender','$address','$job','$email','$phone','$faculty',' $university')");
   
           echo "<div class='success'>  تم اضافه البيانات بنجاح</div>";
 

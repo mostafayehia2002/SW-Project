@@ -1,11 +1,52 @@
 <?php
 session_start();
-
+include_once("../DataBase/database.php");
 if (!isset($_SESSION["admin_id"])) {
-
     header("location:../index.php");
     exit();
 }
+if($con){
+    if(isset($_POST['submit'])){
+      $id=$_POST['id'];
+      $name=$_POST['full-name']; 
+      $gender=$_POST['type'];
+      $address=$_POST['address'];
+      $nationality=$_POST['nationality'];
+      $religion=$_POST['religion'];
+      $date_birth=$_POST['date_birth'];
+      $email=$_POST['email'];
+      $phone=$_POST['phone'];
+      $degree=$_POST['degree'];
+      $faculty=$_POST['faculty'];
+      $university=$_POST['university'];
+      $department=$_POST['department'];
+      //images
+      $from=$_FILES['image']['tmp_name'];
+      $to ="images/".$_FILES['image']['name'];
+      move_uploaded_file($from,$to);
+      $image=$_FILES['image']['name'];
+  
+      //sql
+
+             try{
+          $sql=$con->query("INSERT INTO `doctor` (`Dr_ID`, `Password`, `Image`, `Full_Name`, `Gender`, `Nationality`, `Religion`, `Date_Birth`, `Address`, `Phone_Number`, `Degree`, `University`, `Faculty`, `Department`, `Email_Address`) VALUES('$id', '$id', '$image','$name','$gender','$nationality','$religion','$date_birth','$address','$phone','$degree','$university','$faculty','$department','$email')");
+  
+          echo "<div class='success'>  تم اضافه البيانات بنجاح</div>";
+
+             }catch(PDOException $e){
+
+              echo "<div class='faild'>";
+              echo " يرجي عدم تكرار الرقم القومي والتاكد من تسجيل البيانات بشكل صحيح"."<br>";
+              echo $e->getMessage();
+              echo "</div>";
+  
+             }
+         
+
+        
+      }
+     
+  }
 
 ?>
 
@@ -24,7 +65,7 @@ if (!isset($_SESSION["admin_id"])) {
 <body>
 
 <!-- Start nav-bar -->    
-<?php    include_once("../Components/NavBar.php"); ?>
+<?php   include_once("../Components/NavBar.php"); ?>
  <!-- end nav bar -->
 
 
@@ -36,11 +77,11 @@ if (!isset($_SESSION["admin_id"])) {
 
 
     <div class="container">
-        <form action="">
+        <form action="" method="POST" enctype="multipart/form-data">
             <div class="athers">
-                <h3 class="title">اضافة اكثر من طالب :</h3>
+                <h3 class="title">اضافة اكثر من عضو هيئه التدريس:</h3>
                 <div class="input-filed">
-                    <label for="alluser">اضافة بيانات الطلاب</label>
+                    <label for="alluser">اضافة بيانات عضو هيئه التدريس</label>
                     <input type="file" id="alluser"  >
                 </div>
             </div>
@@ -48,90 +89,85 @@ if (!isset($_SESSION["admin_id"])) {
             <div class="break"></div>
 
             <div class="oneuser">
-                <h3 class="title">اضافة طالب :</h3>
+                <h3 class="title">اضافة دكتور:</h3>
                 
 
                 <div class="allinput">
                     <div class="input-filed">
-                        <label for="imge">الاسم كاملا</label>
-                        <input type="text" placeholder="">
+                        <label for="Name">الاسم كاملا</label>
+                        <input type="text" placeholder="يرجي اضافه الاسم كامل باللغه العربيه" id="name" name="full-name" required >
                     </div>
                     <div class="input-filed">
                         <label for="gender">النوع</label>
                         <div class="gender">
                             <div class="male">
-                                <input type="radio" name="gender" id="male">
+                                <input type="radio" name="type" id="male" checked>
                                 <label for="male">ذكر</label>
                             </div>
                             <div class="female">
-                                <input type="radio" name="gender" id="female">
+                                <input type="radio" name="type" id="female">
                                 <label for="female">انثي</label>
                             </div>
                         </div>
                     </div>
                     <div class="input-filed spcail">
-                        <label for="imge"> اضافة صورة</label>
-                        <input type="file">
+                        <label for="image"> اضافة صورة</label>
+                        <input type="file"  accept="image/*" id="image" name="image">
                     </div>
                     <div class="input-filed">
-                        <label for="imge">الجنسية</label>
-                        <input type="text">
+                        <label for="nationality">الجنسية</label>
+                        <input type="text" id="nationality"  name="nationality" value="مصري">
                     </div>
                     <div class="input-filed">
-                        <label for="imge">الديانة </label>
-                        <input type="text">
+                        <label for="religion">الديانة </label>
+                        <input type="text" id="religion" name="religion">
                     </div>
                     <div class="input-filed">
-                        <label for="imge">العنوان</label>
-                        <input type="text">
+                        <label for="address">العنوان</label>
+                        <input type="text" id="address" name="address">
                     </div>
                     <div class="input-filed">
-                        <label for="imge"> تاريخ الميلاد</label>
-                        <input type="date">
+                        <label for="date_birth"> تاريخ الميلاد</label>
+                        <input type="date" id="date_birth" name="date_birth">
                     </div>
                     <div class="input-filed">
-                        <label for="imge">الرقم القومي</label>
-                        <input type="number">
+                        <label for="id">الرقم القومي</label>
+                        <input type="number" id="id" name="id" required>
                     </div>
                     <div class="input-filed">
-                        <label for="imge">رقم المحمول</label>
-                        <input type="number">
+                        <label for="phone">رقم المحمول</label>
+                        <input type="number" id="phone" name="phone" placeholder="+20************">
                     </div>
-                   
+                    <div class="input-filed">
+                        <label for="email">الايميل الاكاديمي</label>
+                        <input type="email" id="email" name="email">
+                    </div>
                     
                     <div class="input-filed">
-                        <label for="imge">الدرجه العلميه</label>
-                        <input type="text">
+                        <label for="degree">الدرجه العلميه</label>
+                        <input type="text" id="degree" name="degree" >
                     </div>
                    
-                    <div class="input-filed">
-                        <label for="imge">النسبة المئوية</label>
-                        <input ytpe="number">
-                    </div>
-                   
+             
                     
                     <div class="input-filed">
-                        <label for="imge"> الكلية</label>
-                        <input type="text">
+                        <label for="faculty"> الكلية</label>
+                        <input type="text" id="faculty" name="faculty" value="الحاسبات والمعلومات">
                     </div>
                     <div class="input-filed">
-                        <label for="imge"> الجامعة</label>
-                        <input type="text">
+                        <label for="university"> الجامعة</label>
+                        <input type="text" id="university" value="المنوفيه" name="university">
                     </div>
                     <div class="input-filed">
-                        <label for="imge"> القسم</label>
-                        <select>
-                            <option>علوم الحاسب</option>
-                            <option>تكنو لوجيا المعلومات </option>
-                            <option>نظم المعلومات</option>
-                        </select>
+                        <label for="department"> القسم</label>
+                       <input type="text" id="department" name="department"  value="العام">
                     </div>
                    
                 </div>
                 
             </div>
             <div class="save">
-                <input type="submit" value="حفظ">
+                <input type="submit" value="حفظ" name="submit">
             </div>
         </form>
     </div>
