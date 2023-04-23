@@ -15,9 +15,9 @@ if (!isset($_SESSION["admin_id"])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>student</title>
-    <link rel="stylesheet" href="CssStyle/all.min.css">
-    <link rel="stylesheet" href="CssStyle/AddData.css">
-    <link rel="stylesheet" href="CssStyle/Dashboard.css">
+    <link rel="stylesheet" href="../CssComponent/all.min.css">
+    <link rel="stylesheet" href="../CssComponent/AddData.css">
+    <link rel="stylesheet" href="../CssComponent/Dashboard.css">
 
 </head>
 <body>
@@ -153,6 +153,6 @@ if (!isset($_SESSION["admin_id"])) {
         </form>
     </div>
  </section>
- <script src="JS/Admin.js"></script>
+ <script src="../JsComponent/Action.js"></script>
 </body>
 </html>

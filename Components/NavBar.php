@@ -1,14 +1,30 @@
 <?php
 include_once("../DataBase/database.php");
-session_start();
 
 if($con){
    if(isset($_SESSION['admin_id'])){
+
       $admin_id=$_SESSION['admin_id'];
       $q=$con->query("SELECT * FROM `admin` WHERE Ad_ID='$admin_id'");
       $d=$q->fetch(PDO::FETCH_ASSOC);
+
+   }elseif(isset($_SESSION['doctor_id'])){
+
+      $doctor_id=$_SESSION['doctor_id'];
+      $q=$con->query("SELECT * FROM `doctor` WHERE Dr_ID='$doctor_id'");
+      $d=$q->fetch(PDO::FETCH_ASSOC);
+
+   }elseif(isset($_SESSION['student_id'])){
+
+      $student_id=$_SESSION['student_id'];
+      $q=$con->query("SELECT * FROM `student` WHERE St_ID='$student_id'");
+      $d=$q->fetch(PDO::FETCH_ASSOC);
+
+
    }
 
+
+   
    $full_name= $d['Full_Name'];
    $job=$d['Job'] ;
    $img=$d['Image'];

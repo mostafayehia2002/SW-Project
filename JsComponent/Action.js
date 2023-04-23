@@ -16,17 +16,29 @@ list.onclick=()=>{
 }
 
 
-
 //
 let faild=document.querySelector(".faild");   
 let success=document.querySelector(".success");
-
     if(faild){
         setTimeout(()=>{
             faild.style.display="none";
             },3000); 
-    }else{
+    }else if(success){
         setTimeout(()=>{
             success.style.display="none";  
            },3000);
+    }
+
+
+    //menu
+    let menu=document.querySelector(".menu");
+    let dropdown=document.querySelector(".dropdown-menu");
+
+
+    menu.onclick=()=>{
+        if(dropdown.style.display=="none"){
+            dropdown.style.display="block";
+        }else{
+            dropdown.style.display="none";
+        }
     }

@@ -1,55 +1,52 @@
+<?php
+session_start();
+if (!isset($_SESSION["doctor_id"])) {
+
+    header("location:../index.php");
+    exit();
+}
+
+include_once("../DataBase/database.php");
+if($con){    
+$ID=$_SESSION['doctor_id'];
+$sql=$con->query("SELECT * FROM `doctor` WHERE Dr_ID='$ID'");
+$data=$sql->fetch(PDO::FETCH_ASSOC);
+}
+
+?>
+
+
+
+
+
+
+
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="Dashboard.css">
+    <link rel="stylesheet" href="../CssCOmponent/all.min.css">
+    <link rel="stylesheet" href="../CssComponent/Info.css">
+    <link rel="stylesheet" href="../CssCOmponent/Dashboard.css">
     <title>Information</title>
 </head>
 
 <body>
 
-    <!-- Start nav-bar -->    
-    <div class="nav-bar">
-        <div class="icon">
-        <i class="fa-solid fa-bars-staggered">icon</i>
-        </div>
 
-         <div class="profile">
-            <div class="user">
-            <span class="username">mostafa</span>
-             <span class="job">admin</span>
-            </div>
-    
-            <div class="img">
-            <img src="./images//pic-1.jpg" alt=""  height="30px" width="30px">
-            </div>        
-          
-       </div> 
-
-    </div>
-    <!-- end nav-bar -->
+<!-- Start nav-bar -->    
+<?php include_once("../Components/NavBar.php"); ?>
+ <!-- end nav bar -->
 
 
  <section  class="section">
   
-<div class="Dashboard">  
-  
-         <!-- side-bar -->
-     <div class="side-bar">
 
-         <h2> SW-Project</h2> 
-
-         <div class="link1">
-            <a href="Admin_Info.php">البيناتا الشخصيه</a>
-         </div>
-
-        </div>
-
-</div>
-<!-- end Dasgboard -->
+ <!-- Dashboard -->
+ <?php   include_once("../Components/Dashboard.php") ?>
+ <!-- end Dashboard -->
 
 
     <div class="container ">
@@ -58,37 +55,37 @@
             <ul>
                 <li>
                     <b>الرقم القومى</b>
-                    <p id="St_ID"></p>
+                    <p id="Dr_ID"> <?php     echo $data['Dr_ID'] ?>  </p>
                 </li>
                 <li>
                     <b>الاسم عربى</b>
-                    <p id="Full_Name"></p>
+                    <p id="Full_Name"><?php     echo $data['Full_Name'] ?>  </p>
                 </li>
                 
                 <li>
                     <b>بلد الجنسية</b>
-                    <p id="Nationality"></p>
+                    <p id="Nationality"><?php   echo $data['Nationality'] ?></p>
                 </li>
                 <li>
                     <b>النوع</b>
-                    <p id="Gender"></p>
+                    <p id="Gender"><?php   echo $data['Gender'] ?> </p>
                 </li>
                 <li>
                     <b>الديانة</b>
-                    <p id="Religion"></p>
+                    <p id="Religion"> <?php   echo $data['Religion'] ?></p>
                 </li>
                 <li>
                     <b>العنوان</b>
-                    <p id="Address"></p>
+                    <p id="Address"><?php   echo $data['Address'] ?></p>
                 </li>
                 <li>
                     <b>تاريخ الميلاد</b>
-                    <p id="Date_of_Birth"></p>
+                    <p id="Date_of_Birth"><?php   echo $data['Address'] ?></p>
                     
                 </li>
                 <li>
                     <b>رقم الهاتف</b>
-                    <p id="Phone_Number"></p>
+                    <p id="Phone_Number"><?php   echo $data['Phone_Number'] ?> </p>
                 </li>
             </ul>
         </div>
@@ -98,19 +95,19 @@
             <ul>
                 <li>
                     <b>الدرجة العلمية</b>
-                    <p id="Degree"></p>
+                    <p id="Degree"> <?php   echo $data['Degree'] ?></p>
                 </li>
                 <li>
                     <b>الكلية</b>
-                    <p id="Faculty"></p>
+                    <p id="Faculty"> <?php   echo $data['Faculty'] ?></p>
                 </li>
                 <li>
                     <b>الجامعة</b>
-                    <p id="University"></p>
+                    <p id="University"><?php   echo $data['University'] ?></p>
                 </li>
                 <li>
                     <b>القسم</b>
-                    <p id="Department"></p>
+                    <p id="Department"><?php   echo $data['Department'] ?></p>
                 </li>
                
             </ul>
@@ -118,7 +115,7 @@
     </div>
 
  </section>
- <script src="Admin.js"></script>
+ <script src="../JsComponent/Action.js"></script>
 </body>
 
 </html>

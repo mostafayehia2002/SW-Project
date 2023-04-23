@@ -1,55 +1,48 @@
+
+<?php
+session_start();
+if (!isset($_SESSION["student_id"])) {
+
+    header("location:../index.php");
+    exit();
+}
+
+include_once("../DataBase/database.php");
+if($con){    
+$ID=$_SESSION['student_id'];
+$sql=$con->query("SELECT * FROM `student` WHERE St_ID='$ID'");
+$data=$sql->fetch(PDO::FETCH_ASSOC);
+}
+
+?>
+
+
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="Dashboard.css">
+    <link rel="stylesheet" href="../CssComponent/all.min.css">
+    <link rel="stylesheet" href="../CssComponent/Info.css">
+    <link rel="stylesheet" href="../CssComponent/Dashboard.css">
     <title>Information</title>
 </head>
 
 <body>
 
-    <!-- Start nav-bar -->    
-    <div class="nav-bar">
-        <div class="icon">
-        <i class="fa-solid fa-bars-staggered">icon</i>
-        </div>
-
-         <div class="profile">
-            <div class="user">
-            <span class="username">mostafa</span>
-             <span class="job">admin</span>
-            </div>
-    
-            <div class="img">
-            <img src="./images//pic-1.jpg" alt=""  height="30px" width="30px">
-            </div>        
-          
-       </div> 
-
-    </div>
-    <!-- end nav-bar -->
+<!-- Start nav-bar -->    
+<?php include_once("../Components/NavBar.php"); ?>
+ <!-- end nav bar -->
 
 
  <section  class="section">
-  
-<div class="Dashboard">  
-  
-         <!-- side-bar -->
-     <div class="side-bar">
 
-         <h2> SW-Project</h2> 
+ <!-- Dashboard -->
+ <?php   include_once("../Components/Dashboard.php") ?>
+ <!-- end Dashboard -->
 
-         <div class="link1">
-            <a href="Admin_Info.php">البيانات الشخصيه</a>
-         </div>
 
-        </div>
-
-</div>
-<!-- end Dasgboard -->
 
     <div class="container ">
         <div class="personal_info">
@@ -57,7 +50,7 @@
             <ul>
                 <li>
                     <b>الرقم الاكاديمي </b>
-                    <p id="St_ID"></p>
+                    <p id="St_ID"><?php echo $data['St_ID'] ?></p>
                 </li>
                 <li>
                     <b>الاسم عربى</b>
@@ -147,7 +140,7 @@
         </div>
     </div>
     </section>
-    <script src="Admin.js"></script>
+    <script src="../JsComponent/Action.js"></script>
 </body>
 
 </html>

@@ -50,9 +50,9 @@ if($con){
 <head>
     <meta charset="UTF-8">
     <title>اضافه ادمن</title>
-    <link rel="stylesheet" href="CssStyle/all.min.css">
-    <link rel="stylesheet" href="CssStyle/AddData.css">
-    <link rel="stylesheet" href="CssStyle/Dashboard.css">
+    <link rel="stylesheet" href="../CssComponent/all.min.css">
+    <link rel="stylesheet" href="../CssComponent/AddData.css">
+    <link rel="stylesheet" href="../CssComponent/Dashboard.css">
   
 </head>
 
@@ -88,8 +88,8 @@ if($con){
                 <div class="allinput">
 
                     <div class="input-filed">
-                        <label for="imge">الاسم كاملا</label>
-                        <input type="text" placeholder="يرجي كتابه الاسم باللغه العربيه كاملا" name="full-name">
+                        <label for="name">الاسم كاملا</label>
+                        <input type="text" placeholder="يرجي كتابه الاسم باللغه العربيه كاملا" name="full-name" id="name" required>
                     </div>
 
                     <div class="input-filed">
@@ -118,7 +118,7 @@ if($con){
 
                     <div class="input-filed">
                         <label for="id">الرقم القومي</label>
-                        <input type="number" placeholder="يرجي كتابه الرقم القومي بشكل صحيح "id="id" name="id" >
+                        <input type="number" placeholder="يرجي كتابه الرقم القومي بشكل صحيح "id="id" name="id"  required>
                     </div>
 
                     <div class="input-filed">
@@ -140,7 +140,7 @@ if($con){
                     </div>
                     <div class="input-filed">
                         <label for="email"> البريد الالكتروني</label>
-                        <input type="email" id="email" name="email">
+                        <input type="email" id="email" name="email" required>
                     </div>
 
            </div>
@@ -152,6 +152,6 @@ if($con){
         </form>
     </div>
 </section>
- <script src="JS/Admin.js"></script>
+ <script src="../JsComponent/Action.js"></script>
 </body>
 </html>

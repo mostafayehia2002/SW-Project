@@ -19,9 +19,7 @@ if ($con == true) {
           header("Location: ./Admins/Admin_Info.php");
           exit();
          }
-        echo "<pre>";
-        print_r($data);
-        echo "</pre>";
+     
         break;
 
       case"doctor":
@@ -31,12 +29,10 @@ if ($con == true) {
 
         if($count==1 ){
           $_SESSION["doctor_id"]=$ID;
-          header("Location:./Doctors/");
+          header("Location:./Doctors/Doctor_info.php");
           exit();
          }
-        echo "<pre>";
-        print_r($data);
-        echo "</pre>";
+       
         break;
 
       case "student":
@@ -45,12 +41,10 @@ if ($con == true) {
         $data = $sql->fetch(PDO::FETCH_ASSOC);
         if($count==1 ){
           $_SESSION["student_id"]=$ID;
-          header("Location:./Students/");
+          header("Location:./Students/Student_info.php");
           exit();
          }
-        echo "<pre>";
-        print_r($data);
-        echo "</pre>";
+        
         break;
     }
   }
@@ -71,7 +65,7 @@ if ($con == true) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> Login Form</title>
-  <link rel="stylesheet" href="./Login/CSS Style/all.min.css">
+  <link rel="stylesheet" href="./CssComponent/all.min.css">
   <link rel="stylesheet" href="./Login/CSS Style/login.css">
 </head>
 
