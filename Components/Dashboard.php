@@ -8,7 +8,12 @@
          <div class="link1">
             <a href="Admin_Info.php">البيناتا الشخصيه</a>
          </div>
-
+         <div class="link2">
+        
+      <a href="AddAdmin.php">اضافه مسئول جديد</a>
+            
+           
+         </div>
         </div>
 
 </div>

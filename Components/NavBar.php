@@ -12,7 +12,7 @@
         </div>
 
         <div class="img">
-        <img src="./images//pic-1.jpg" alt=""  height="30px" width="30px">
+        <img src="./images//profile.jpg" alt=""  height="30px" width="30px">
         </div>        
       
    </div> 

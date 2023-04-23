@@ -1,3 +1,5 @@
+console.log("ok");
+
 let list=document.querySelector(".icon i");
 let navBar=document.querySelector(".nav-bar");
 let sideBar=document.querySelector(".Dashboard");
@@ -12,3 +14,19 @@ list.onclick=()=>{
     }
     
 }
+
+
+
+//
+let faild=document.querySelector(".faild");   
+let success=document.querySelector(".success");
+
+    if(faild){
+        setTimeout(()=>{
+            faild.style.display="none";
+            },3000); 
+    }else{
+        setTimeout(()=>{
+            success.style.display="none";  
+           },3000);
+    }
