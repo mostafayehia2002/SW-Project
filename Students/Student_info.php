@@ -54,36 +54,36 @@ $data=$sql->fetch(PDO::FETCH_ASSOC);
                 </li>
                 <li>
                     <b>الاسم عربى</b>
-                    <p id="Full_Name"></p>
+                    <p id="Full_Name"><?php echo $data['Full_Name'] ?></p>
                 </li>
                 
                 <li>
                     <b>بلد الجنسية</b>
-                    <p id="Nationality"></p>
+                    <p id="Nationality"><?php echo $data['Nationality'] ?></p>
                 </li>
                 <li>
                     <b>النوع</b>
-                    <p id="Gender"></p>
+                    <p id="Gender"><?php echo $data['Religion'] ?></p>
                 </li>
                 <li>
                     <b>الديانة</b>
-                    <p id="Religion"></p>
+                    <p id="Religion"><?php echo $data['Religion'] ?></p>
                 </li>
                 <li>
                     <b>العنوان</b>
-                    <p id="Address"></p>
+                    <p id="Address"><?php echo $data['Address'] ?></p>
                 </li>
                 <li>
                     <b>تاريخ الميلاد</b>
-                    <p id="Date_of_Birth"></p>
+                    <p id="Date_of_Birth"><?php echo $data['Date_of_Birth'] ?></p>
                     <b>رقم الهاتف</b>
-                    <p id="Phone_Number"></p>
+                    <p id="Phone_Number"><?php echo $data['Phone_Number'] ?></p>
                 </li>
                 <li>
                     <b>الرقم القومى / جواز السفر </b>
-                    <p id="National_ID"></p>
+                    <p id="National_ID"><?php echo $data['National_ID'] ?></p>
                     <b>البريد الاكاديمي</b>
-                    <p id="Academic_Email"></p>
+                    <p id="Academic_Email"><?php echo $data['Academic_Email'] ?></p>
                 </li>
             </ul>
         </div>
@@ -93,27 +93,27 @@ $data=$sql->fetch(PDO::FETCH_ASSOC);
             <ul>
                 <li>
                     <b>المدرسة</b>
-                    <p id="School"></p>
+                    <p id="School"><?php echo $data['School'] ?></p>
                 </li>
                 <li>
                     <b>المؤهل</b>
-                    <p id="Qualification"></p>
+                    <p id="Qualification"><?php echo $data['Qualification'] ?></p>
                 </li>
                 <li>
                     <b>مجموع الدرجات</b>
-                    <p id="Total_Degree"></p>
+                    <p id="Total_Degree"><?php echo $data['Total_Degree'] ?></p>
                 </li>
                 <li>
                     <b>النسبة</b>
-                    <p id="Average"></p>
+                    <p id="Average"><?php echo $data['Average'] ?></p>
                 </li>
                 <li>
                     <b>تاريخ التنسيق</b>
-                    <p id="Date_of_Coordination"></p>
+                    <p id="Date_of_Coordination"><?php echo $data['Date_of_Coordination'] ?></p>
                 </li>
                 <li>
                     <b>رقم التنسيق</b>
-                    <p id="Namber_of_Coordination"></p>
+                    <p id="Number_of_Coordination"><?php echo $data['Number_of_Coordination'] ?></p>
             </ul>
         </div>
         <span class="line"></span>
@@ -122,19 +122,19 @@ $data=$sql->fetch(PDO::FETCH_ASSOC);
             <ul>
                 <li>
                     <b>الكلية</b>
-                    <p id="Faculty"></p>
+                    <p id="Faculty"><?php echo $data['Faculty'] ?></p>
                 </li>
                 <li>
                     <b>الجامعة</b>
-                    <p id="University"></p>
+                    <p id="University"><?php echo $data['University'] ?></p>
                 </li>
                 <li>
                     <b>القسم</b>
-                    <p id="Department"></p>
+                    <p id="Department"><?php echo $data['Department'] ?></p>
                 </li>
                 <li>
                     <b>تاريخ الانضمام</b>
-                    <p id="joining_Date"></p>
+                    <p id="Joining_Date"><?php echo $data['Joining_Date'] ?></p>
                 </li>
             </ul>
         </div>
