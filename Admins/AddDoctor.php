@@ -9,7 +9,7 @@ if($con){
     if(isset($_POST['submit'])){
       $id=$_POST['id'];
       $name=$_POST['full-name']; 
-      $gender=$_POST['type'];
+      $gender=$_POST['gender'];
       $address=$_POST['address'];
       $nationality=$_POST['nationality'];
       $religion=$_POST['religion'];
@@ -101,11 +101,11 @@ if($con){
                         <label for="gender">النوع</label>
                         <div class="gender">
                             <div class="male">
-                                <input type="radio" name="type" id="male" checked>
+                                <input type="radio" name="gender" id="male" checked value="ذكر">
                                 <label for="male">ذكر</label>
                             </div>
                             <div class="female">
-                                <input type="radio" name="type" id="female">
+                                <input type="radio" name="gender" id="female" value="انثي">
                                 <label for="female">انثي</label>
                             </div>
                         </div>
