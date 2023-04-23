@@ -41,25 +41,27 @@ body{
       
       .nav-bar .profile,
       .nav-bar .icon{
-      width: 10%;
       height: 100%;
       padding:10px;
+      font-size: 12px;
       }
       .nav-bar .icon{
           line-height: 40px;
           font-size: 25px;
           cursor: pointer;
+          width: 10%;
+         
       }
       .nav-bar .icon i{
           cursor: pointer;
       }
       .nav-bar .profile{
           display:inline-flex;
-          padding:15px;
-          margin-left: 15px;
-       
+          padding:10px; 
+          margin-left: 35px;
+         
+
       }
-      
       .hidden{
           display: none;
       }

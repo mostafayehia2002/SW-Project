@@ -6,7 +6,7 @@
          <h2> SW-Project</h2> 
 
          <div class="link1">
-            <a href="Admin_Info.php">البيناتا الشخصيه</a>
+            <a href="Admin_Info.php">البيناتات الشخصيه</a>
          </div>
          <div class="link2">
         
