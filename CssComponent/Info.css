@@ -34,7 +34,7 @@ ul {
 }
 /*end section*/
 .container{
-  width:auto;
+  width:calc(80% - 70px);
   padding: 30px 40px;
   display: flex;
   flex-direction:column;

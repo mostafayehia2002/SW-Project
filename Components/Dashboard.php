@@ -3,21 +3,24 @@
    <!-- side-bar -->
    <div class="side-bar">
 
-      <h2> SW-Project</h2>
+      <h1><i class="fa-solid fa-building-columns"></i></h1>
 
       <!--start admin  -->
       <?php  if (isset($_SESSION['admin_id'])) {?>
       <ul class="link">
-       <li><a href="Admin_Info.php">البيانات الشخصيه</a></li>
+       <li><a href="Admin_Info.php"><i class="fa-sharp fa-solid fa-circle-info"></i>البيانات الشخصية</a> </li>
+ 
+      
      </ul>
 
       <ul class="link">
          <li class="menu">
-            اضافه اعضاء
+         <i class="fa-solid fa-users"></i>اضافه اعضاء<span class="fa-solid fa-caret-down"></span>
             <ul class="dropdown-menu">
-               <li>   <a href="AddAdmin.php">اضافه مسئول جديد</a></li>
-               <li>   <a href="AddDoctor.php">اضافه اعضاء التدريس</a></li>
-               <li>   <a href="AddStudent.php">اضافه طلاب </a></li>
+               <li><a href="AddAdmin.php"><i class="fa-sharp fa-solid fa-people-roof"></i>اضافه مسئول جديد</a></li>
+               <li><a href="AddDoctor.php"><i class="fa-solid fa-user-doctor"></i>اضافه اعضاء هيئه تدريس</a></li>
+               <li>   <a href="AddStudent.php"><i class="fa-solid fa-graduation-cap"></i>اضافه طلاب</a></li>
+               
             </ul>
 
          </li>

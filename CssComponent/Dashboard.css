@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600&display=swap');
 
 :root {
-    --main-color: #3c00a0;
+    --main-color: #090979;
     --red-color: #e74c3c;
     --orangen-color: #f39c12;
     --white-color: #fff;
@@ -10,6 +10,7 @@
     --ligth-background: #eee;
     --main-border: 1pxsolid rgba(0, 0, 0, 0.2);
     --main-trantision: 0.2s linear;
+    --linear: linear-gradient(90deg, rgba(4, 4, 101, 1) 0%, rgba(2, 0, 36, 1) 100%);
 }
 
 * {
@@ -60,7 +61,7 @@ body {
 
 .nav-bar .icon i {
     cursor: pointer;
-    color:#3c00a0;
+    color: var(--main-color);
 }
 
 .nav-bar .profile {
@@ -77,15 +78,16 @@ body {
     margin-left: 5px;
 }
 
-.nav-bar .profile .user .img{
-border-radius: 50%;
-border:  1px solid #3c00a0;
+.nav-bar .profile .user .img {
+    border-radius: 50%;
+    border: 1px solid var(--main-color)
 }
+
 .hidden {
     display: none;
 }
 
-.profile .profile-list{
+.profile .profile-list {
     height: 100px;
     width: 160px;
     background-color: white;
@@ -96,17 +98,19 @@ border:  1px solid #3c00a0;
     text-align: right;
     padding: 10px;
     font-size: 16px;
-    display: none; 
-    
-    
+    display: none;
+
+
 }
-.profile .profile-list a{
-    color:black;
-   
+
+.profile .profile-list a {
+    color: black;
+
 }
-.profile .profile-list i{
-    padding:10px;
-    color:#3c00a0;
+
+.profile .profile-list i {
+    padding: 10px;
+    color: var(--main-color);
 }
 
 /*end nav-bar*/
@@ -115,22 +119,22 @@ border:  1px solid #3c00a0;
 .side-bar {
     height: 100vh;
     width: 20%;
-    background-color: #3c00a0;
     position: fixed;
     right: 0px;
     top: 0px;
     z-index: 1000;
-    text-align: center;
     color: white;
+    background-image: var(--linear);
 
 }
 
-.side-bar h2 {
-    padding: 20px;
+.side-bar h1 {
+    padding: 17px;
+    text-align: center;
+    border-bottom: 2px solid white;
 }
 
 /*end side-bar */
-
 
 
 .menu {
@@ -143,9 +147,22 @@ border:  1px solid #3c00a0;
 
 .link li {
     color: white;
+    padding: 8px 8px;
+    position: relative;
 }
 
 .link li a {
     color: white;
     text-decoration: none;
+    font-size: 16px;
+
+}
+
+.link i {
+    padding-left: 10px;
+}
+
+.link li span {
+    position: absolute;
+    left: 20px;
 }

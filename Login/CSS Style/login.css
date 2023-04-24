@@ -1,54 +1,62 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400&display=swap');
 
-*{
+:root {
+  --main-color: #090979;
+  --linear: linear-gradient(90deg, rgba(4, 4, 101, 1) 0%, rgba(2, 0, 36, 1) 100%);
+}
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
 
-.container{
+.container {
   width: 100%;
   height: 100vh;
-  background-image: linear-gradient(rgba(0,0,50,0.8) , rgba(0,0,50,0.8)) , url(../Images/459-background.png);
+  background-image:var(--linear), url(../Images/459-background.png);
   background-position: center;
   background-size: cover;
   position: relative;
 }
 
-.form-box{
+.form-box {
   width: 90%;
   max-width: 450px;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   background: #fff;
   padding: 50px 60px 70px;
   text-align: center;
   border-radius: 6px;
 }
+
 /* Start Logo */
-.form-box h1{
+.form-box h1 {
   font-size: 30px;
   margin-bottom: 60px;
-  color: #3c00a0;
+  color: var(--main-color);
   position: relative;
 }
-.form-box h1::after{
+
+.form-box h1::after {
   content: '';
   width: 30px;
   height: 4px;
   border-radius: 3px;
-  background-color: #3c00a0;
+  background-color: var(--main-color);
   position: absolute;
   bottom: -12px;
   left: 50%;
   transform: translateX(-50%);
 }
+
 /* End Logo */
 /* Start Input Username And Password */
-.form-box .input-filed{
+.form-box .input-filed {
   background-color: #eaeaea;
   margin: 15px 0;
   border-radius: 3px;
@@ -59,7 +67,7 @@
   overflow: hidden;
 }
 
-.form-box .input-filed input{
+.form-box .input-filed input {
   width: 100%;
   background-color: transparent;
   border: 0;
@@ -67,50 +75,56 @@
   padding: 18px 15px;
 }
 
-.form-box .input-filed i{
+.form-box .input-filed i {
   margin-left: 15px;
   color: #999;
 }
+
 /* End Input Username And Password */
 /* Start forget-pass */
-.form-box .forget-pass a{
+.form-box .forget-pass a {
   font-size: 15px;
   text-decoration: none;
   color: #343434;
 }
-.form-box .forget-pass a:hover{
-  color: #3c00a0;
+
+.form-box .forget-pass a:hover {
+  color: var(--main-color);
 }
+
 /* End forget-pass */
 /* Start Radio Button */
-.form-box .input-radio{
+.form-box .input-radio {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   margin: 30px 10px;
   padding: 20px;
 }
-.form-box .input-radio div label{
+
+.form-box .input-radio div label {
   font-size: 16px;
   color: #343434;
 }
-.form-box .input-radio div input[type=radio]{
-  accent-color:#663399;
+
+.form-box .input-radio div input[type=radio] {
+  accent-color: var(--main-color);
 }
 
-.form-box .input-radio div input[type=radio]:checked ~ label{
-  color: #663399;
+.form-box .input-radio div input[type=radio]:checked~label {
+  color: var(--main-color);
 }
+
 /* End Radio Button */
 
-.form-box form .btn-filed{
+.form-box form .btn-filed {
   width: 100%;
   display: flex;
 }
 
-.form-box form .btn-filed input[type="submit"]{
+.form-box form .btn-filed input[type="submit"] {
   flex-basis: 98%;
-  background: #3c00a0;
+  background: var(--linear);
   color: #fff;
   border: 0;
   outline: 0;
@@ -121,10 +135,12 @@
   box-shadow: 0px 4px 20px rgba(62, 9, 9, 0.145);
   transition: 0.3s;
 }
-.form-box form .btn-filed button:hover{
-  background: #30007b;
+
+.form-box form .btn-filed button:hover {
+  background: var(--linear);
   box-shadow: 0px 4px 20px rgba(62, 9, 9, 0.245);
 }
-.container .input-group{
+
+.container .input-group {
   height: 260px;
 }
