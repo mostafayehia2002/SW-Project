@@ -33,7 +33,7 @@ body{
 
   /*end section*/
 .container{
-    width:auto;
+    width:calc(80% - 70px);
     margin: 0 auto;
     margin-top: 100px;
 }

@@ -94,25 +94,20 @@ if($con){
 
                 <div class="allinput">
                     <div class="input-filed">
-                        <label for="Name">الاسم كاملا</label>
+                        <label for="name">الاسم كاملا</label>
                         <input type="text" placeholder="يرجي اضافه الاسم كامل باللغه العربيه" id="name" name="full-name" required >
                     </div>
                     <div class="input-filed">
-                        <label for="gender">النوع</label>
-                        <div class="gender">
-                            <div class="male">
-                                <input type="radio" name="gender" id="male" checked value="ذكر">
-                                <label for="male">ذكر</label>
-                            </div>
-                            <div class="female">
-                                <input type="radio" name="gender" id="female" value="انثي">
-                                <label for="female">انثي</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="input-filed spcail">
-                        <label for="image"> اضافة صورة</label>
-                        <input type="file"  accept="image/*" id="image" name="image">
+                        <label for="id">الرقم القومي</label>
+                        <input type="number" id="id" name="id" required>
+                    </div>  
+                    <div class="input-filed">
+                        <label for="phone">رقم المحمول</label>
+                        <input type="number" id="phone" name="phone" placeholder="+20************">
+                    </div>   
+                    <div class="input-filed">
+                        <label for="email">الايميل الاكاديمي</label>
+                        <input type="email" id="email" name="email">
                     </div>
                     <div class="input-filed">
                         <label for="nationality">الجنسية</label>
@@ -130,26 +125,27 @@ if($con){
                         <label for="date_birth"> تاريخ الميلاد</label>
                         <input type="date" id="date_birth" name="date_birth">
                     </div>
-                    <div class="input-filed">
-                        <label for="id">الرقم القومي</label>
-                        <input type="number" id="id" name="id" required>
+                  <div class="input-filed spcail">
+                        <label for="image"> اضافة صورة</label>
+                        <input type="file"  accept="image/*" id="image" name="image">
                     </div>
                     <div class="input-filed">
-                        <label for="phone">رقم المحمول</label>
-                        <input type="number" id="phone" name="phone" placeholder="+20************">
+                        <label for="gender">النوع</label>
+                        <div class="gender">
+                            <div class="male">
+                                <input type="radio" name="gender" id="male" checked value="ذكر">
+                                <label for="male">ذكر</label>
+                            </div>
+                            <div class="female">
+                                <input type="radio" name="gender" id="female" value="انثي">
+                                <label for="female">انثي</label>
+                            </div>
+                        </div>
                     </div>
-                    <div class="input-filed">
-                        <label for="email">الايميل الاكاديمي</label>
-                        <input type="email" id="email" name="email">
-                    </div>
-                    
                     <div class="input-filed">
                         <label for="degree">الدرجه العلميه</label>
                         <input type="text" id="degree" name="degree" >
-                    </div>
-                   
-             
-                    
+                    </div>                    
                     <div class="input-filed">
                         <label for="faculty"> الكلية</label>
                         <input type="text" id="faculty" name="faculty" value="الحاسبات والمعلومات">
@@ -162,9 +158,7 @@ if($con){
                         <label for="department"> القسم</label>
                        <input type="text" id="department" name="department"  value="العام">
                     </div>
-                   
                 </div>
-                
             </div>
             <div class="save">
                 <input type="submit" value="حفظ" name="submit">
