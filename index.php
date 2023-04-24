@@ -11,40 +11,40 @@ if ($con == true) {
 
     switch ($Type_User) {
       case "admin":
-         $sql=$con->query("SELECT * FROM `admin` WHERE Ad_ID ='$ID' AND Password='$Password'");
-         $count=$sql->rowCount();
-         $data=$sql->fetch(PDO::FETCH_ASSOC);
-         if($count==1 ){
-          $_SESSION["admin_id"]=$ID;
+        $sql = $con->query("SELECT * FROM `admin` WHERE Ad_ID ='$ID' AND Password='$Password'");
+        $count = $sql->rowCount();
+        $data = $sql->fetch(PDO::FETCH_ASSOC);
+        if ($count == 1) {
+          $_SESSION["admin_id"] = $ID;
           header("Location: ./Admins/Admin_Info.php");
           exit();
-         }
-     
+        }
+
         break;
 
-      case"doctor":
-        $sql=$con->query("SELECT * FROM `doctor` WHERE Dr_ID ='$ID' AND Password='$Password'");
-        $count=$sql->rowCount();
+      case "doctor":
+        $sql = $con->query("SELECT * FROM `doctor` WHERE Dr_ID ='$ID' AND Password='$Password'");
+        $count = $sql->rowCount();
         $data = $sql->fetch(PDO::FETCH_ASSOC);
 
-        if($count==1 ){
-          $_SESSION["doctor_id"]=$ID;
+        if ($count == 1) {
+          $_SESSION["doctor_id"] = $ID;
           header("Location:./Doctors/Doctor_info.php");
           exit();
-         }
-       
+        }
+
         break;
 
       case "student":
-        $sql=$con->query("SELECT * FROM `student` WHERE St_ID ='$ID' AND Password='$Password'");
-        $count=$sql->rowCount();
+        $sql = $con->query("SELECT * FROM `student` WHERE St_ID ='$ID' AND Password='$Password'");
+        $count = $sql->rowCount();
         $data = $sql->fetch(PDO::FETCH_ASSOC);
-        if($count==1 ){
-          $_SESSION["student_id"]=$ID;
+        if ($count == 1) {
+          $_SESSION["student_id"] = $ID;
           header("Location:./Students/Student_info.php");
           exit();
-         }
-        
+        }
+
         break;
     }
   }

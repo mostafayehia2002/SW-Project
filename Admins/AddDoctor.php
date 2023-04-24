@@ -22,7 +22,7 @@ if($con){
       $department=$_POST['department'];
       //images
       $from=$_FILES['image']['tmp_name'];
-      $to ="images/".$_FILES['image']['name'];
+      $to ="../Doctors/images/".$_FILES['image']['name'];
       move_uploaded_file($from,$to);
       $image=$_FILES['image']['name'];
   
@@ -167,5 +167,6 @@ if($con){
     </div>
   </section>
     <script src="../JsComponent/Action.js"></script>
+    <script src="JS/main.js"></script>
 </body>
 </html>

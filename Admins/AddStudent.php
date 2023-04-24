@@ -6,57 +6,55 @@ if (!isset($_SESSION["admin_id"])) {
     header("location:../index.php");
     exit();
 }
-//error in line 42
-// if($con){
-//     if(isset($_POST['submit'])){
-//       $st_id=$_POST['st_id'];
-//       $password=$_POST['password'];
-//       $name=$_POST['full-name'];
-//       $gender=$_POST['gender'];
-//       $nationality=$_POST['nationality'];
-//       $religion=$_POST['religion'];
-//       $address=$_POST['address'];
-//       $date_birth=$_POST['date_birth'];
-//       $national_id=$_POST['national_id'];
-//       $phone=$_POST['phone'];
-//       $email=$_POST['email'];
-//       $school=$_POST['school'];
-//       $qualification=$_POST['qualification'];
-//       $total_degree=$_POST['total_degree'];
-//       $average=$_POST['average'];
-//       $date_of_coordination=$_POST['date_of_Coordination'];
-//       $number_of_Coordination=$_POST['number_of_Coordination'];
-//       $faculty=$_POST['faculty'];
-//       $university=$_POST['university'];
-//       $department=$_POST['department'];
-//       $joining_date=$_POST['joining_date'];
+ if($con){
+     if(isset($_POST['submit'])){
+           $id=$_POST['id'];
+         $name=$_POST['full-name'];
+         $gender=$_POST['gender'];
+       $nationality=$_POST['nationality'];
+       $religion=$_POST['religion'];
+       $address=$_POST['address'];
+       $date_birth=$_POST['date_birth'];
+       $national_id=$_POST['national_id'];
+       $phone=$_POST['phone'];
+      $email=$_POST['email'];
+      $school=$_POST['school'];
+       $qualification=$_POST['qualification'];
+       $total_degree=$_POST['total_degree'];
+       $average=$_POST['average'];
+       $date_coordination=$_POST['date_Coordination'];
+       $number_Coordination=$_POST['number_Coordination'];
+       $faculty=$_POST['faculty'];
+       $university=$_POST['university'];
+      $department=$_POST['department'];
+      $joining_date=$_POST['joining_date'];
 //    //images
-//       $from=$_FILES['image']['tmp_name'];
-//       $to ="images/".$_FILES['image']['name'];
-//       move_uploaded_file($from,$to);
-//       $image=$_FILES['image']['name'];
+       $from=$_FILES['image']['tmp_name'];
+       $to ="../Students/images/".$_FILES['image']['name'];
+      move_uploaded_file($from,$to);
+      $image=$_FILES['image']['name'];
 
 //       //sql
 
-//        try{ 
-//         $sql=$con->query("INSERT INTO `student` (`St_ID`, `Password`, `Image`, `Full_Name`, `Gender`, `Nationality`, `Religion`, `Address`, `Date_of_Birth`,  `Phone_Number`,`Academic_Email`,`School`,`Qualification`, `Total_Degree`, `Average`,`Date_of_Coordination`,`Number_of_Coordination`,`Faculty`,`University`, `Department`,`Joining_Date`) VALUES('$st_id', '$password', '$image','$name','$gender','$nationality','$religion','$address','$date_birth','$phone','$email','$school','$qualification','$total_degree','$average', '$date_of_coordination',$number_of_Coordination','$faculty','$university','$department','$joining_date')");
-//         //22
-//         echo "<div class='success'>  تم اضافه البيانات بنجاح</div>";
+        try{ 
+        $sql=$con->query("INSERT INTO `student`(`St_ID`, `Password`,`Image`,`Full_Name`,`Gender`, `Nationality`,`Religion`,`Address`,`Date_of_Birth`,`National_ID`,`Phone_Number`, `Academic_Email`,`School`,`Qualification`,`Total_Degree`,`Average`,`Date_of_Coordination`, `Number_of_Coordination`,`Faculty`,`University`,`Department`,`Joining_Date`) VALUES ('$id', '$national_id', '$image','$name','$gender','$nationality','$religion','$address','$date_birth','$national_id','$phone','$email','$school', '$qualification','$total_degree','$average','$date_coordination','$number_Coordination','$faculty','$university','$department','$joining_date')");
+        
+        echo "<div class='success'>  تم اضافه البيانات بنجاح</div>";
 
-//            }catch(PDOException $e){
+          }catch(PDOException $e){
 
-//             echo "<div class='faild'>";
-//             echo " يرجي عدم تكرار الرقم القومي والتاكد من تسجيل البيانات بشكل صحيح"."<br>";
-//             echo $e->getMessage();
-//             echo "</div>";
+            echo "<div class='faild'>";
+            echo " يرجي عدم تكرار الرقم القومي والتاكد من تسجيل البيانات بشكل صحيح"."<br>";
+            echo $e->getMessage();
+            echo "</div>";
 
-//            }
+            }
        
 
       
-//     }
+    }
 
-// }
+ }
 
 
 
@@ -109,23 +107,19 @@ if (!isset($_SESSION["admin_id"])) {
                         <input type="text" placeholder="يرجي اضافه الاسم كامل باللغه العربيه" id="name" name="full-name" required >
                     </div>
                     <div class="input-filed">
-                        <label for="st_id">رقم الاكاديمي</label>
-                        <input type="number" id="st_id" name="st_id">
+                        <label for="id">رقم الاكاديمي</label>
+                        <input type="number" id="id" name="id">
                     </div>
-                    <div class="input-filed">
-                        <label for="password"> كلمة المرور</label>
-                        <input type="number" id="password" name="password">
-                    </div>
-
+                   
                     <div class="input-filed">
                         <label for="gender">النوع</label>
                         <div class="gender">
                             <div class="male">
-                                <input type="radio" name="gender" id="male">
+                                <input type="radio" name="gender" id="male" value="ذكر">
                                 <label for="male">ذكر</label>
                             </div>
                             <div class="female">
-                                <input type="radio" name="gender" id="female">
+                                <input type="radio" name="gender" id="female" value="انثي">
                                 <label for="female">انثي</label>
                             </div>
                         </div>
@@ -152,7 +146,7 @@ if (!isset($_SESSION["admin_id"])) {
                     </div>
                     <div class="input-filed">
                         <label for="national_id">الرقم القومي</label>
-                        <input type="number" id="national_id" name="national_id" required>
+                        <input type="number" id="national_id" name="national_id" required  placeholder="يرجي كتابه الرقم القومي ">
                     </div>  
                     <div class="input-filed">
                         <label for="phone">رقم المحمول</label>
@@ -180,12 +174,12 @@ if (!isset($_SESSION["admin_id"])) {
                         <input type="number" id="average" name="average">
                     </div>
                     <div class="input-filed">
-                        <label for="date_of_Coordination">تاريخ التنسيق</label>
-                        <input type="date" id="date_of_Coordination" name="date_of_Coordination">
+                        <label for="date_Coordination">تاريخ التنسيق</label>
+                        <input type="date" id="date_Coordination" name="date_Coordination">
                     </div>
                     <div class="input-filed">
-                        <label for="number_of_Coordination">رقم التنسيق</label>
-                        <input type="number" id="number_of_Coordination" name="number_of_Coordination">
+                        <label for="number_Coordination">رقم التنسيق</label>
+                        <input type="number" id="number_Coordination" name="number_Coordination">
                     </div>
                     <div class="input-filed">
                         <label for="faculty"> الكلية</label>
@@ -213,5 +207,6 @@ if (!isset($_SESSION["admin_id"])) {
     </div>
  </section>
  <script src="../JsComponent/Action.js"></script>
+ <script src="JS/main.js"></script>
 </body>
 </html> 

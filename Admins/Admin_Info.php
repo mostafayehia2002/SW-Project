@@ -103,6 +103,7 @@ $data=$sql->fetch(PDO::FETCH_ASSOC);
 
 
     <script src="../JsComponent/Action.js"></script>
+    <script src="JS/main.js"></script>
 </body>
 
 </html>

@@ -60,21 +60,53 @@ body {
 
 .nav-bar .icon i {
     cursor: pointer;
+    color:#3c00a0;
 }
 
 .nav-bar .profile {
     display: inline-flex;
     padding: 10px;
     margin-left: 35px;
+    position: relative;
+    cursor: pointer;
 
 
 }
 
-.nav-bar .profile .user{
-    margin-left:5px;
+.nav-bar .profile .user {
+    margin-left: 5px;
+}
+
+.nav-bar .profile .user .img{
+border-radius: 50%;
+border:  1px solid #3c00a0;
 }
 .hidden {
     display: none;
+}
+
+.profile .profile-list{
+    height: 100px;
+    width: 160px;
+    background-color: white;
+    position: absolute;
+    top: 60px;
+    left: 8px;
+    list-style: none;
+    text-align: right;
+    padding: 10px;
+    font-size: 16px;
+    display: none; 
+    
+    
+}
+.profile .profile-list a{
+    color:black;
+   
+}
+.profile .profile-list i{
+    padding:10px;
+    color:#3c00a0;
 }
 
 /*end nav-bar*/
@@ -83,7 +115,7 @@ body {
 .side-bar {
     height: 100vh;
     width: 20%;
-    background-color: #0F1630;
+    background-color: #3c00a0;
     position: fixed;
     right: 0px;
     top: 0px;
@@ -109,10 +141,11 @@ body {
     display: none;
 }
 
-.link  li{
-    color:white;
+.link li {
+    color: white;
 }
-.link  li a{
-    color:white;
+
+.link li a {
+    color: white;
     text-decoration: none;
 }

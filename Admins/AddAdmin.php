@@ -153,5 +153,6 @@ if($con){
     </div>
 </section>
  <script src="../JsComponent/Action.js"></script>
+ <script src="JS/main.js"></script>
 </body>
 </html>
