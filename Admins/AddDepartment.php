@@ -6,6 +6,33 @@ if (!isset($_SESSION["admin_id"])) {
     header("location:../index.php");
     exit();   
 }
+if(isset($_POST['add'])){
+    $id=$_POST['Departmanet_ID'];
+    $name=$_POST['Departmanet_Name'];
+    $date=$_POST['Departmanet_Date'];
+    $manger=$_POST['Departmanet_manger'];
+    $student=$_POST['Departmanet_Student'];
+    $doctors=$_POST['Departmanet_Doctors']; 
+    //images
+    $from=$_FILES['Departmanet_Image']['tmp_name'];
+    $to ="images/".$_FILES['Departmanet_Image']['name'];
+    move_uploaded_file($from,$to);
+    $image=$_FILES['Departmanet_Image']['name'];
+     
+    try{
+        $sql=$con->query("INSERT INTO `departments` (`Departmanet_ID`, `Departmanet_Name`, `Departmanet_Date`, `Departmanet_manger`, `Departmanet_Student`, `Departmanet_Doctors`, `Departmanet_Image`) VALUES ('$id','$name','$date','$manger','$student','$doctors','$image')");
+
+        echo "<div class='success'>  تم انشاء القسم بنجاح</div>";
+
+           }catch(PDOException $e){
+
+            echo "<div class='faild'>";
+            echo " يرجى ادخال البيانات بشكل صحيح <br>";
+            echo $e->getMessage();
+            echo "</div>";
+
+           }  
+    }
 ?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
