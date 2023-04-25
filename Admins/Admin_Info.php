@@ -7,13 +7,11 @@ if (!isset($_SESSION["admin_id"])) {
 }
 
 include_once("../DataBase/database.php");
-if($con){
-    
-$ID=$_SESSION['admin_id'];
-$sql=$con->query("SELECT * FROM `admin` WHERE Ad_ID='$ID'");
-$data=$sql->fetch(PDO::FETCH_ASSOC);
+if ($con) {
 
-
+    $ID = $_SESSION['admin_id'];
+    $sql = $con->query("SELECT * FROM `admin` WHERE Ad_ID='$ID'");
+    $data = $sql->fetch(PDO::FETCH_ASSOC);
 }
 
 ?>
@@ -33,74 +31,74 @@ $data=$sql->fetch(PDO::FETCH_ASSOC);
 
 <body>
 
-<!-- Start nav-bar -->    
+    <!-- Start nav-bar -->
     <?php include_once("../Components/NavBar.php"); ?>
- <!-- end nav bar -->
+    <!-- end nav bar -->
 
 
- <section  class="section">
+    <section class="section">
 
 
- <!-- Dashboard -->
-<?php   include_once("../Components/Dashboard.php") ?>
- <!-- end Dashboard -->
+        <!-- Dashboard -->
+        <?php include_once("../Components/Dashboard.php") ?>
+        <!-- end Dashboard -->
 
-<div class="container">
-        <div class="personal_info">
-            <h3>بيانات شخصية</h3>
-            <ul>
-                <li>
-                    <b>الرقم القومى</b>
-                    <p id="Ad_ID"> <?php echo   $data['Ad_ID']  ?> </p>
-                </li>
-                <li>
-                    <b>الاسم عربى</b>
-                    <p id="Full_Name"> <?php  echo $data['Full_Name']  ?> </p>
-                </li>
-                <li>
-                    <b>النوع</b>
-                    <p id="Gender">  <?php  echo $data['Gender']  ?> </p>
-                </li>
-                <li>
-                    <b>الوظيفة</b>
-                    <p id="Jop"> <?php echo  $data['Job'] ?> </p>
-                </li>
-                <li>
-                    <b>العنوان</b>
-                    <p id="Address"><?php  echo $data['Address']  ?></p>
-                </li>
-                <li>
-                    <b>البريد الاكتروني</b>
-                    <p id="Email_Address"> <?php echo  $data['Job']  ?> </p>
-                    
-                </li>
-                <li>
-                    <b>رقم الهاتف</b>
-                    <p id="Phone_Number"><?php echo  $data['Phone_Number']  ?></p>
-                </li>
-            </ul>
+        <div class="container">
+            <div class="personal_info">
+                <h3>بيانات شخصية</h3>
+                <ul>
+                    <li>
+                        <b>الرقم القومى</b>
+                        <p id="Ad_ID"> <?php echo   $data['Ad_ID']  ?> </p>
+                    </li>
+                    <li>
+                        <b>الاسم عربى</b>
+                        <p id="Full_Name"> <?php echo $data['Full_Name']  ?> </p>
+                    </li>
+                    <li>
+                        <b>النوع</b>
+                        <p id="Gender"> <?php echo $data['Gender']  ?> </p>
+                    </li>
+                    <li>
+                        <b>الوظيفة</b>
+                        <p id="Jop"> <?php echo  $data['Job'] ?> </p>
+                    </li>
+                    <li>
+                        <b>العنوان</b>
+                        <p id="Address"><?php echo $data['Address']  ?></p>
+                    </li>
+                    <li>
+                        <b>البريد الاكتروني</b>
+                        <p id="Email_Address"> <?php echo  $data['Job']  ?> </p>
+
+                    </li>
+                    <li>
+                        <b>رقم الهاتف</b>
+                        <p id="Phone_Number"><?php echo  $data['Phone_Number']  ?></p>
+                    </li>
+                </ul>
+            </div>
+            <span class="line"></span>
+            <div class="Faculty_info">
+                <h3>بيانات الكلية</h3>
+                <ul>
+                    <li>
+                        <b>الكلية</b>
+                        <p id="Faculty"><?php echo  $data['Faculty']  ?></p>
+                    </li>
+                    <li>
+                        <b>الجامعة</b>
+                        <p id="University"><?php echo  $data['University']  ?></p>
+                    </li>
+
+                </ul>
+            </div>
         </div>
-        <span class="line"></span>
-        <div class="Faculty_info">
-            <h3>بيانات الكلية</h3>
-            <ul>
-                <li>
-                    <b>الكلية</b>
-                    <p id="Faculty"><?php echo  $data['Faculty']  ?></p>
-                </li>
-                <li>
-                    <b>الجامعة</b>
-                    <p id="University"><?php echo  $data['University']  ?></p>
-                </li>
-              
-            </ul>
-        </div>
-    </div>
 
-</section>
+    </section>
 
 
-
+    <a href="../logout.php">Logout</a>
 
     <script src="../JsComponent/Action.js"></script>
     <script src="JS/main.js"></script>

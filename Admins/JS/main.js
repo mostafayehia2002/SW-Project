@@ -7,8 +7,12 @@ let success=document.querySelector(".success");
         setTimeout(()=>{
             faild.style.display="none";
             }); 
+
+            console.log("message");
     }else if(success){
         setTimeout(()=>{
             success.style.display="none";  
            },3000);
+           
+           console.log("message");
     }
