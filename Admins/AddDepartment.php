@@ -84,7 +84,7 @@ if(isset($_POST['add'])){
                     </div>  
                     <div class="input-filed">
                         <label for="departmanet_image">اضافة صورة </label>
-                        <input type="file" id="departmanet_image" name="Departmanet_Image" accept="image/*">
+                     <input type="file" id="departmanet_image"name="Departmanet_Image"accept="image/*">
                     </div>   
                     <div class="input-filed">
                         <label for="departmanet_date"> تاريخ انشاء القسم</label>
@@ -92,7 +92,7 @@ if(isset($_POST['add'])){
                     </div>
                     <div class="input-filed">
                         <label for="departmanet_manger"> رئيس القسم</label>
-                        <input type="text" id="departmanet_manger"  name="Departmanet_manger" value="مصري">
+                        <input type="text" id="departmanet_manger"  name="Departmanet_manger">
                     </div>
                     <div class="input-filed">
                         <label for="departmanet_student">عدد طلاب القسم </label>
