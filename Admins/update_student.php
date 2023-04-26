@@ -40,7 +40,7 @@ if (isset($_POST['submit'])) {
     $image = isset($_FILES['image']) ? $_FILES['image']['name'] : '';
     try {
         if (empty($image)) {
-            $sql = $con->query("UPDATE `student` SET `St_ID`=$id, `Password`='$password',`Full_Name`='$name',`Gender`='$gender', `Nationality`='$nationality',`Religion`='$religion',`Address`='$address',`Date_of_Birth`='$date_birth',`National_ID`='$national_id',`Phone_Number`='$phone', `Academic_Email`='$email',`School`='$school',`Qualification`='$qualification',`Total_Degree`='$total_degree',`Average`='$average',`Date_of_Coordination`='$date_coordination', `Number_of_Coordination`='$number_Coordination',`Faculty`='$faculty',`University`='$university',`Department`='$department',`Joining_Date`='$joining_date' WHERE `St_ID`=$student_id");
+            $sql = $con->query("UPDATE `student` SET `St_ID`=$id, `Password`='$password',`Full_Name`='$name',`Gender`='$gender', `Nationality`='$nationality',`Religion`='$religion',`Address`='$address',`Date_of_Birth`='$date_birth',`National_ID`='$national_id',`Phone_Number`='$phone', `Academic_Email`='$email',`School`='$school',`Qualification`='$qualification',`Total_Degree`='$total_degree',`Average`='$average',`Date_Coordination`='$date_coordination',`Number_Coordination`='$number_Coordination',`Faculty`='$faculty',`University`='$university',`Department`='$department',`Joining_Date`='$joining_date' WHERE `St_ID`=$student_id");
         } else {
             $sql = $con->query("UPDATE `student` SET `St_ID`=$id, `Password`='$password',`Image`='$image',`Full_Name`='$name',`Gender`='$gender', `Nationality`='$nationality',`Religion`='$religion',`Address`='$address',`Date_of_Birth`='$date_birth',`National_ID`='$national_id',`Phone_Number`='$phone', `Academic_Email`='$email',`School`='$school',`Qualification`='$qualification',`Total_Degree`='$total_degree',`Average`='$average',`Date_of_Coordination`='$date_coordination', `Number_of_Coordination`='$number_Coordination',`Faculty`='$faculty',`University`='$university',`Department`='$department',`Joining_Date`='$joining_date' WHERE `St_ID`=$student_id");
             $from = $_FILES['image']['tmp_name'];
@@ -152,11 +152,11 @@ if (isset($_POST['submit'])) {
                         </div>
                         <div class="input-filed">
                             <label for="date_Coordination">تاريخ التنسيق</label>
-                            <input type="date" id="date_Coordination" name="date_Coordination" value="<?= $old_data_student['Date_of_Coordination'] ?>">
+                            <input type="date" id="date_Coordination" name="date_Coordination" value="<?= $old_data_student['Date_Coordination'] ?>">
                         </div>
                         <div class="input-filed">
                             <label for="number_Coordination">رقم التنسيق</label>
-                            <input type="number" id="number_Coordination" name="number_Coordination" value="<?= $old_data_student['Number_of_Coordination'] ?>">
+                            <input type="number" id="number_Coordination" name="number_Coordination" value="<?= $old_data_student['Number_Coordination'] ?>">
                         </div>
                         <div class="input-filed">
                             <label for="faculty"> الكلية</label>

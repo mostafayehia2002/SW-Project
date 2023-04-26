@@ -37,7 +37,7 @@ if ($con) {
         //       //sql
 
         try {
-            $sql = $con->query("INSERT INTO `student`(`St_ID`, `Password`,`Image`,`Full_Name`,`Gender`, `Nationality`,`Religion`,`Address`,`Date_of_Birth`,`National_ID`,`Phone_Number`, `Academic_Email`,`School`,`Qualification`,`Total_Degree`,`Average`,`Date_of_Coordination`, `Number_of_Coordination`,`Faculty`,`University`,`Department`,`Joining_Date`) VALUES ('$id', '$national_id', '$image','$name','$gender','$nationality','$religion','$address','$date_birth','$national_id','$phone','$email','$school', '$qualification','$total_degree','$average','$date_coordination','$number_Coordination','$faculty','$university','$department','$joining_date')");
+            $sql = $con->query("INSERT INTO `student`(`St_ID`, `Password`,`Image`,`Full_Name`,`Gender`, `Nationality`,`Religion`,`Address`,`Date_of_Birth`,`National_ID`,`Phone_Number`, `Academic_Email`,`School`,`Qualification`,`Total_Degree`,`Average`,`Date_Coordination`, `Number_Coordination`,`Faculty`,`University`,`Department`,`Joining_Date`) VALUES ('$id', '$national_id', '$image','$name','$gender','$nationality','$religion','$address','$date_birth','$national_id','$phone','$email','$school', '$qualification','$total_degree','$average','$date_coordination','$number_Coordination','$faculty','$university','$department','$joining_date')");
 
             echo "<div class='success'>  تم اضافه البيانات بنجاح</div>";
         } catch (PDOException $e) {
