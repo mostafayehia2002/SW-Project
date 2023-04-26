@@ -9,7 +9,7 @@ if (!isset($_SESSION["admin_id"])) {
 include_once("../DataBase/database.php");
 if ($con) {
   $sql = $con->query("SELECT * FROM `departments`");
-  $data = $sql->fetchAll(PDO::FETCH_ASSOC); 
+  $data = $sql->fetchAll(PDO::FETCH_ASSOC);
 }
 
 ?>
@@ -41,33 +41,34 @@ if ($con) {
     <!-- Dashboard -->
     <?php include_once("../Components/Dashboard.php") ?>
     <!-- end Dashboard -->
-    
+
     <div class="container">
       <div class="departments">
-      <?php if ($sql->rowCount() != 0) { 
-        foreach ($data as $value) {
-          
-        
-        ?>
-          <div class="box">
-            <img src=<?php echo "images/".$value['Departmanet_Image'] ?> alt="">
-            <div class="content">
-              <h3><?php echo   $value['Departmanet_Name']  ?></h3>
-              <p>كودالقسم: <span><?php echo   $value['Departmanet_ID'] ?></span></p>
-              <p>تاريخ الانشاء: <span><?php echo   $value['Departmanet_Date']  ?></span></p>
-              <p>رئيس القسم :د/ <span> <?php echo  $value['Departmanet_manger']  ?></span></p>
-              <p> عدد الاعضاء: <span> <?php echo   $value['Departmanet_Doctors']  ?> </span> عضو</p>
-              <p> عدد الطلاب: <span><?php echo   $value['Departmanet_Student']  ?></span>طالب</p>
-            </div>
-            <div class="info">
-              <a href="#">قراءة المزيد </a>
-              <i class="fas fa-long-arrow-alt-left"></i>
-            </div>
-          </div>
+        <?php if ($sql->rowCount() != 0) {
+          foreach ($data as $value) {
 
-          <?php }} ?>
-        </div>
-        </div>
+
+        ?>
+            <div class="box">
+              <img src="<?php echo "images/" . $value['Departmanet_Image'] ?>" alt="">
+              <div class="content">
+                <h3><?php echo   $value['Departmanet_Name']  ?></h3>
+                <p>كودالقسم: <span><?php echo   $value['Departmanet_ID'] ?></span></p>
+                <p>تاريخ الانشاء: <span><?php echo   $value['Departmanet_Date']  ?></span></p>
+                <p>رئيس القسم :د/ <span> <?php echo  $value['Departmanet_manger']  ?></span></p>
+                <p> عدد الاعضاء: <span> <?php echo   $value['Departmanet_Doctors']  ?> </span> عضو</p>
+                <p> عدد الطلاب: <span><?php echo   $value['Departmanet_Student']  ?></span>طالب</p>
+              </div>
+              <div class="info">
+                <a href="#">قراءة المزيد </a>
+                <i class="fas fa-long-arrow-alt-left"></i>
+              </div>
+            </div>
+
+        <?php }
+        } ?>
+      </div>
+    </div>
 
   </section>
   <script src="../JsComponent/Action.js"></script>
