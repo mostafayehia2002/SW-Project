@@ -14,7 +14,6 @@ if (isset($_GET['update'])) {
     exit();
 }
 
-
 if (isset($_POST['submit'])) {
     $id = $_POST['id'];
     $password = $_POST['password'];
@@ -39,7 +38,6 @@ if (isset($_POST['submit'])) {
     $joining_date = $_POST['joining_date'];
     //images
     $image = isset($_FILES['image']) ? $_FILES['image']['name'] : '';
-
     try {
         if (empty($image)) {
             $sql = $con->query("UPDATE `student` SET `St_ID`=$id, `Password`='$password',`Full_Name`='$name',`Gender`='$gender', `Nationality`='$nationality',`Religion`='$religion',`Address`='$address',`Date_of_Birth`='$date_birth',`National_ID`='$national_id',`Phone_Number`='$phone', `Academic_Email`='$email',`School`='$school',`Qualification`='$qualification',`Total_Degree`='$total_degree',`Average`='$average',`Date_of_Coordination`='$date_coordination', `Number_of_Coordination`='$number_Coordination',`Faculty`='$faculty',`University`='$university',`Department`='$department',`Joining_Date`='$joining_date' WHERE `St_ID`=$student_id");
@@ -77,18 +75,13 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="../CssComponent/all.min.css">
     <link rel="stylesheet" href="../CssComponent/AddData.css">
     <link rel="stylesheet" href="../CssComponent/Dashboard.css">
-
 </head>
 
 <body>
-
     <!-- Start nav-bar -->
     <?php include_once("../Components/NavBar.php"); ?>
     <!-- end nav bar -->
-
-
     <section class="section">
-
         <!-- Dashboard -->
         <?php include_once("../Components/Dashboard.php") ?>
         <!-- end Dashboard -->
@@ -109,7 +102,6 @@ if (isset($_POST['submit'])) {
                             <label for="id">رقم الاكاديمي</label>
                             <input type="number" id="id" name="id" value="<?= $old_data_student['St_ID'] ?>">
                         </div>
-
                         <div class=" input-filed spcail">
                             <label for="image"> اضافة صورة</label>
                             <input type="file" accept="image/*" id="image" name="image">
