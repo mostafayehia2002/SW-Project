@@ -16,23 +16,44 @@ if (isset($_GET['update'])) {
 
 
 if (isset($_POST['update_data'])) {
-    // $new_full_name = $_POST['full-name'];
-    // $new_address = $_POST['address'];
-    // $new_id = $_POST['id'];
-    // $new_phone = $_POST['phone'];
-    // $new_email = $_POST['email'];
-    // $new_type = $_POST['type'];
-    // try {
-    //     $update_admin = $con->query("UPDATE `Admin` SET `Ad_ID`=$new_id ,`Full_Name`='$new_full_name',`Address`='$new_address',`Email_Address`='$new_email',`Phone_Number`=$new_phone,`Gender`='$new_type' WHERE `Ad_ID`=$admin_id ");
-    //     echo "<div class='success'>  تم اضافه البيانات بنجاح</div>";
-    //     header("location: AddAdmin.php");
-    //     exit();
-    // } catch (PDOException $e) {
-    //     echo "<div class='faild'>";
-    //     echo $e->getMessage();
-    //     echo "</div>";
-    // }
+    $new_id = $_POST['id'];
+    $new_full_name = $_POST['full-name'];
+    $new_nationality = $_POST['nationality'];
+    $new_phone = $_POST['phone'];
+    $new_email = $_POST['email'];
+    $new_password = $_POST['password'];
+    $new_religion = $_POST['religion'];
+    $new_address = $_POST['address'];
+    $new_date_birth = $_POST['date_birth'];
+    $new_degree = $_POST['degree'];
+    $new_faculty = $_POST['faculty'];
+    $new_university = $_POST['university'];
+    $new_department = $_POST['department'];
+    $new_gender = $_POST['gender'];
+    $new_imge = isset($_FILES['image']) ? $_FILES['image']['name'] : '';
+
+    try {
+        if (empty($new_imge)) {
+            $update_doctor = $con->query("UPDATE `doctor` SET `Dr_ID`='$new_id',`Password`='$new_password',`Full_Name`='$new_full_name',`Address`='$new_address',`Email_Address`='$new_email',`Nationality`='$new_nationality',`Religion`='$new_religion',`Phone_Number`='$new_phone',`Gender`='$new_gender',`Degree`='$new_degree', `Faculty`='$new_faculty',`University`='$new_university',`Department`='$new_department', `Date_Birth`='$new_date_birth' WHERE `Dr_ID`=$doctor_id");
+        } else {
+            $update_doctor = $con->query("UPDATE `doctor` SET `Dr_ID`='$new_id',`Password`='$new_password',`Full_Name`='$new_full_name',`Address`='$new_address',`Email_Address`='$new_email',`Nationality`='$new_nationality',`Religion`='$new_religion',`Phone_Number`='$new_phone',`Gender`='$new_gender',`Degree`='$new_degree', `Faculty`='$new_faculty',`University`='$new_university',`Department`='$new_department', `Date_Birth`='$new_date_birth',`Image`='$new_imge' WHERE `Dr_ID`=$doctor_id");
+            $from = $_FILES['image']['tmp_name'];
+            $to = "images/" . $_FILES['image']['name'];
+            move_uploaded_file($from, $to);
+        }
+        $doctor_id = $new_id;
+        $old_data_doctor = $con->query("SELECT * FROM `doctor` WHERE `Dr_ID`=$doctor_id");
+        $old_data_doctor = $old_data_doctor->fetch(PDO::FETCH_ASSOC);
+        echo "<div class='success'>  تم تعديل البيانات بنجاح</div>";
+    } catch (Exception $e) {
+        echo "<div class='faild'> حدث خطا لم تتم تعديل البيانات يرجي المحاوله مره اخري";
+        echo $e->getMessage();
+        echo "</div>";
+    }
 }
+
+
+
 
 
 
@@ -89,11 +110,11 @@ if (isset($_POST['update_data'])) {
                         </div>
                         <div class="input-filed">
                             <label for="nationality">الجنسية</label>
-                            <input type="text" id="nationality" name="nationality" value="مصري">
+                            <input type="text" id="nationality" value="<?Php echo $old_data_doctor['Nationality'] ?>" name="nationality">
                         </div>
                         <div class="input-filed">
                             <label for="religion">الديانة </label>
-                            <input type="text" value="<?Php echo $old_data_doctor['Nationality'] ?>" id="religion" name="religion">
+                            <input type="text" value="<?Php echo $old_data_doctor['Religion'] ?>" id="religion" name="religion">
                         </div>
                         <div class="input-filed">
                             <label for="address">العنوان</label>
@@ -113,15 +134,15 @@ if (isset($_POST['update_data'])) {
                         </div>
                         <div class="input-filed">
                             <label for="faculty"> الكلية</label>
-                            <input type="text" id="faculty" name="faculty" value="الحاسبات والمعلومات">
+                            <input type="text" id="faculty" value="<?Php echo $old_data_doctor['Faculty'] ?>" name="faculty">
                         </div>
                         <div class="input-filed">
                             <label for="university"> الجامعة</label>
-                            <input type="text" id="university" value="المنوفيه" name="university">
+                            <input type="text" id="university" value="<?Php echo $old_data_doctor['University'] ?>" name="university">
                         </div>
                         <div class="input-filed">
                             <label for="department"> القسم</label>
-                            <input type="text" value="<?Php echo $old_data_doctor['Department'] ?>" id="department" name="department" value="العام">
+                            <input type="text" value="<?Php echo $old_data_doctor['Department'] ?>" id="department" name="department">
                         </div>
                         <div class="input-filed">
                             <label for="gender">النوع</label>

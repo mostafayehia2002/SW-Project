@@ -24,27 +24,31 @@ if (isset($_POST['update_data'])) {
     $new_phone = $_POST['phone'];
     $new_email = $_POST['email'];
     $new_type = $_POST['type'];
-    $new_faculty=$_POST['faculty'];
-    $new_university=$_POST['university'];
-    $new_job=$_POST['job'];
-      //images
-      $from = $_FILES['image']['tmp_name'];
-      $to = "images/" . $_FILES['image']['name'];
-      move_uploaded_file($from, $to);
-      $new_image = $_FILES['image']['name'];
+    $new_faculty = $_POST['faculty'];
+    $new_university = $_POST['university'];
+    $new_job = $_POST['job'];
+    //images
+    $new_imge = isset($_FILES['image']) ? $_FILES['image']['name'] : '';
+
     try {
-        $update_admin = $con->query("UPDATE `Admin` SET `Ad_ID`='$new_id',`Password`='$new_password',`Full_Name`='$new_full_name',`Address`='$new_address',`Email_Address`='$new_email',`Phone_Number`='$new_phone',`Gender`='$new_type', `Faculty`='$new_faculty',`University`='$new_university',`Job`='$new_job',`Image`='$new_image' WHERE `Ad_ID`=$admin_id");
+        if (empty($new_imge)) {
+            $update_admin = $con->query("UPDATE `Admin` SET `Ad_ID`='$new_id',`Password`='$new_password',`Full_Name`='$new_full_name',`Address`='$new_address',`Email_Address`='$new_email',`Phone_Number`='$new_phone',`Gender`='$new_type', `Faculty`='$new_faculty',`University`='$new_university',`Job`='$new_job' WHERE `Ad_ID`=$admin_id");
+        } else {
+            $update_admin = $con->query("UPDATE `Admin` SET `Ad_ID`='$new_id',`Password`='$new_password',`Full_Name`='$new_full_name',`Address`='$new_address',`Email_Address`='$new_email',`Phone_Number`='$new_phone',`Gender`='$new_type', `Faculty`='$new_faculty',`University`='$new_university',`Job`='$new_job',`Image`='$new_imge' WHERE `Ad_ID`=$admin_id");
+            $from = $_FILES['image']['tmp_name'];
+            $to = "images/" . $_FILES['image']['name'];
+            move_uploaded_file($from, $to);
+        }
+        if ($_SESSION['admin_id'] == $admin_id) {
+            $_SESSION['admin_id'] = $new_id;
+        }
+        $admin_id = $new_id;
         $old_data_admin = $con->query("SELECT * FROM `Admin` WHERE `Ad_ID`=$admin_id");
         $old_data_admin = $old_data_admin->fetch(PDO::FETCH_ASSOC);
-
         echo "<div class='success'>  تم تعديل البيانات بنجاح</div>";
-           
-         header("Refresh:3, url= ../index.php");
-        exit();
-
-    } catch (PDOException $e) {
+    } catch (Exception $e) {
         echo "<div class='faild'> حدث خطا لم تتم تعديل البيانات يرجي المحاوله مره اخري";
-        // echo $e->getMessage();
+        echo $e->getMessage();
         echo "</div>";
     }
 }
@@ -85,7 +89,7 @@ if (isset($_POST['update_data'])) {
                         </div>
                         <div class="input-filed spcail">
                             <label for="image"> اضافة صورة</label>
-                            <input type="file" id="image" name="image" accept="images/*">
+                            <input type="file" id="image" name="image" accept="image/*">
                         </div>
                         <div class="input-filed">
                             <label for="address">العنوان</label>
@@ -136,8 +140,7 @@ if (isset($_POST['update_data'])) {
                 </div>
                 <div class="save">
                     <input type="submit" value="تحديث" name="update_data">
-
-                    <a href="AddAdmin.php"  class="previus">الرجوع الي الصفحة السابقه</a>
+                    <a href="AddAdmin.php" class="previus">الرجوع الي الصفحة السابقه</a>
                 </div>
             </form>
         </div>
