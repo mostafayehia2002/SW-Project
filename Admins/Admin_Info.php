@@ -24,6 +24,7 @@ if ($con) {
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../CssComponent/all.min.css">
     <link rel="stylesheet" href="../CssComponent/Info.css">
+    <link rel="stylesheet" href="../CssComponent/Table.css">
     <link rel="stylesheet" href="../CssComponent/Dashboard.css">
 
     <title>Admin Information</title>

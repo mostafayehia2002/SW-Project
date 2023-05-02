@@ -75,7 +75,7 @@ $data=$sql->fetch(PDO::FETCH_ASSOC);
                 </li>
                 <li>
                     <b>تاريخ الميلاد</b>
-                    <p id="Date_of_Birth"><?php echo $data['Date_of_Birth'] ?></p>
+                    <p id="Date_of_Birth"><?php echo $data['Date_Birth'] ?></p>
                     <b>رقم الهاتف</b>
                     <p id="Phone_Number"><?php echo $data['Phone_Number'] ?></p>
                 </li>
@@ -109,11 +109,11 @@ $data=$sql->fetch(PDO::FETCH_ASSOC);
                 </li>
                 <li>
                     <b>تاريخ التنسيق</b>
-                    <p id="Date_of_Coordination"><?php echo $data['Date_of_Coordination'] ?></p>
+                    <p id="Date_of_Coordination"><?php echo $data['Date_Coordination'] ?></p>
                 </li>
                 <li>
                     <b>رقم التنسيق</b>
-                    <p id="Number_of_Coordination"><?php echo $data['Number_of_Coordination'] ?></p>
+                    <p id="Number_of_Coordination"><?php echo $data['Number_Coordination'] ?></p>
             </ul>
         </div>
         <span class="line"></span>

@@ -36,14 +36,11 @@ body {
   margin: 0 auto;
   margin-top: 100px;
 }
-.container .athers,
-.container .oneuser {
-  /* margin: 40px 20px; */
-}
+
 .container .title {
-  font-size: 21px;
-  color: #2c3e50;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: bold;
+  color:var(--main-color);
   padding: 10px 0px;
   position: relative;
   width: fit-content;
@@ -53,7 +50,7 @@ body {
   position: absolute;
   width: 100%;
   height: 2px;
-  background-color: #3c00a0;
+  background-color:var( --main-color);
   bottom: -2px;
   left: 50%;
   transform: translateX(-50%);
@@ -67,10 +64,11 @@ body {
   gap: 15px;
 }
 .container .input-filed label {
-  font-size: 17px;
-  font-weight: 500;
-  color: #2c3e50;
+  font-size: 16px;
+  font-weight:bold;
+  color: var( --main-color);
 }
+
 .container .input-filed input,
 .container .input-filed select {
   outline: none;
@@ -78,7 +76,7 @@ body {
   font-weight: 400;
   color: #333;
   border-radius: 7px;
-  border: 1px solid #2c3e50;
+  border: 1px solid var( --main-color);
   padding: 0 15px;
   height: 42px;
   margin: 8px 0;
@@ -94,7 +92,7 @@ body {
 .container .break {
   width: 100%;
   height: 2px;
-  background-color: #3c00a0;
+  background-color: var(--main-color);
   margin: 20px 0;
 }
 .container .oneuser .allinput {
@@ -122,16 +120,17 @@ body {
 }
 .container .oneuser .input-filed .gender .male input,
 .container .oneuser .input-filed .gender .female input {
-  accent-color: #3c00a0;
+  accent-color:var( --main-color);
   width: fit-content;
 }
 .container .oneuser .input-filed .gender .male input:checked label,
 .container .oneuser .input-filed .gender .female input:checked label {
-  color: #3c00a0;
+  color:var( --main-color);
 }
 
 .container .save {
   margin: 40px 20px;
+
 }
 .container .save input {
   display: flex;
@@ -141,10 +140,10 @@ body {
   max-width: 200px;
   width: 100%;
   color: #fff;
-  border-radius: 7px;
+  border-radius: 5px;
   font-size: 20px;
   margin: 0;
-  background-color: #3c00a0;
+  background-color: var( --main-color);
   transition: all 0.3s linear;
   cursor: pointer;
 }
@@ -164,8 +163,8 @@ body {
 }
 
 .success {
-  background-color:#198754 ;
+  background-color:var(--main-color);
 }
 .faild {
-  background-color: #e74c3c;
+  background-color:var(--ligth-color);
 }

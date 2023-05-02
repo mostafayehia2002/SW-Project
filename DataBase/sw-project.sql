@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 27, 2023 at 12:29 AM
+-- Generation Time: May 03, 2023 at 12:27 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -47,9 +47,10 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`Ad_ID`, `Password`, `status`, `Image`, `Full_Name`, `Gender`, `Address`, `Job`, `Email_Address`, `Phone_Number`, `Faculty`, `University`) VALUES
+(22, '22', 1, 'IMG_20220324_135045.jpg', 'اسلام', 'ذكر', 'qusina', 'مسئول عن اداره شئون الطلاب', 'moustafa.yehia160800@ci.menofia.edu.eg', 1226717838, 'الحاسبات والمعلومات', ' المنوفيه'),
 (2002, '2002', 0, '', 'mostafa hossam', 'انثي', 'qusina', 'مسئول عن اداره شئون الطلاب', 'moustafa.yehia160800@ci.menofia.edu.eg', 1226717838, 'الحاسبات والمعلومات', ' المنوفيه'),
 (1112001, '1112001', 0, 'IMG_20220324_135045.jpg', 'zahra', 'ذكر', 'menofia', 'مسئول عن اداره شئون الطلاب', 'zahra852@gmail.com', 288595, 'الحاسبات والمعلومات', ' المنوفيه'),
-(2252002, '2002', 1, 'DSC_2459.jpg', 'teefa', 'ذكر', 'ميت بره مركز قويسنا المنوفيه', 'Admin', 'gad993813@gmail.com', 1226717838, 'الحاسبات والمعلومات', 'المنوفيه');
+(2252002, '2002', 1, 'SAVE_20210512_150255.jpg', 'مصطفي يحيي', 'ذكر', 'ميت بره مركز قويسنا المنوفيه', 'مسئول السيستم', 'gad993813@gmail.com', 1226717838, 'الحاسبات والمعلومات', 'المنوفيه');
 
 -- --------------------------------------------------------
 
@@ -58,7 +59,7 @@ INSERT INTO `admin` (`Ad_ID`, `Password`, `status`, `Image`, `Full_Name`, `Gende
 --
 
 CREATE TABLE `departments` (
-  `Departmanet_ID` int(30) NOT NULL,
+  `Departmanet_ID` varchar(30) NOT NULL,
   `Departmanet_Name` varchar(100) DEFAULT NULL,
   `Departmanet_Image` varchar(100) NOT NULL,
   `Departmanet_Date` varchar(100) NOT NULL,
@@ -72,7 +73,8 @@ CREATE TABLE `departments` (
 --
 
 INSERT INTO `departments` (`Departmanet_ID`, `Departmanet_Name`, `Departmanet_Image`, `Departmanet_Date`, `Departmanet_manger`, `Departmanet_Student`, `Departmanet_Doctors`) VALUES
-(1, 'علوم حاسب', 'Screenshot 2023-04-04 010857.png', '2023-04-26', 'د/ حمدي', 100, 80);
+('1', 'علوم حاسب', 'Screenshot 2023-04-04 010857.png', '2023-04-26', 'د/ حمدي', 100, 80),
+('5619', 'rhcfvrftuc', 'Screenshot 2023-04-04 010857.png', '2002-02-20', '0huiuyoukjn', 100, 88200);
 
 -- --------------------------------------------------------
 
@@ -124,7 +126,7 @@ CREATE TABLE `student` (
   `Nationality` varchar(100) DEFAULT 'مصري',
   `Religion` varchar(100) DEFAULT NULL,
   `Address` varchar(100) DEFAULT NULL,
-  `Date_of_Birth` date DEFAULT NULL,
+  `Date_Birth` date DEFAULT NULL,
   `National_ID` varchar(30) DEFAULT NULL,
   `Phone_Number` varchar(30) DEFAULT NULL,
   `Academic_Email` varchar(100) DEFAULT NULL,
@@ -145,7 +147,7 @@ CREATE TABLE `student` (
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`St_ID`, `Password`, `Image`, `Full_Name`, `Gender`, `Nationality`, `Religion`, `Address`, `Date_of_Birth`, `National_ID`, `Phone_Number`, `Academic_Email`, `School`, `Qualification`, `Total_Degree`, `Average`, `Date_Coordination`, `Number_Coordination`, `Faculty`, `University`, `Department`, `Joining_Date`, `Job`) VALUES
+INSERT INTO `student` (`St_ID`, `Password`, `Image`, `Full_Name`, `Gender`, `Nationality`, `Religion`, `Address`, `Date_Birth`, `National_ID`, `Phone_Number`, `Academic_Email`, `School`, `Qualification`, `Total_Degree`, `Average`, `Date_Coordination`, `Number_Coordination`, `Faculty`, `University`, `Department`, `Joining_Date`, `Job`) VALUES
 (55, '124', '', 'خالد', 'ذكر', 'مصري', '', 'Quisna Menufia Egypt', '0000-00-00', '124', '01226717838', 'gad993813@gmail.com', '', '', 0, 0, '0000-00-00', '', 'الحاسبات والمعلومات', 'المنوفية', 'العام', '0000-00-00', 'طالب'),
 (1234567, '1234567', 'profile.jpg', 'علي', 'ذكر', 'مصري', 'مسلم', 'الجيزه', '2002-05-22', '12346882', '01226717838', 'gad993813@gmail.com', 'ثانوي', 'ثانوي عام', 365, 92, '2019-05-07', '5', 'الحاسبات والمعلومات', 'المنوفيه', 'عام', '2019-07-20', 'طالب');
 

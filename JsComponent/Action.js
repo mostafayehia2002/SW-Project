@@ -8,6 +8,7 @@ list.onclick = () => {
     if (sideBar.classList.contains("hidden")) {
         sideBar.classList.remove("hidden");
         navBar.style.cssText = "width:82%";
+        
     } else {
         sideBar.classList.add("hidden");
         navBar.style.cssText = "width:100%";
@@ -44,3 +45,4 @@ profile.onclick = () => {
         profile_list.style.display = "none";
     }
 }
+

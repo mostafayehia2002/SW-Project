@@ -61,8 +61,6 @@ if (isset($_POST['submit'])) {
 
 
 
-
-
 ?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
@@ -120,7 +118,7 @@ if (isset($_POST['submit'])) {
                         </div>
                         <div class="input-filed">
                             <label for="date_birth"> تاريخ الميلاد</label>
-                            <input type="date" id="date_birth" name="date_birth" value="<?= $old_data_student['Date_of_Birth'] ?>">
+                            <input type="date" id="date_birth" name="date_birth" value="<?= $old_data_student['Date_Birth'] ?>">
                         </div>
                         <div class="input-filed">
                             <label for="national_id">الرقم القومي</label>

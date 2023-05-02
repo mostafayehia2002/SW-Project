@@ -74,74 +74,10 @@ if (isset($_GET['delete'])) {
         <title>student</title>
         <link rel="stylesheet" href="../CssComponent/all.min.css">
         <link rel="stylesheet" href="../CssComponent/AddData.css">
+        <link rel="stylesheet" href="../CssComponent/Table.css">
         <link rel="stylesheet" href="../CssComponent/Dashboard.css">
 
     </head>
-    <style>
-    body {
-        background-color: #fff !important;
-    }
-
-    .display-product-table {
-        padding-top: 50px;
-    }
-
-    .display-product-table table {
-        width: 100%;
-        text-align: center;
-    }
-
-    .display-product-table table thead th {
-        padding: 1.5rem;
-        font-size: 1.2rem;
-        background-color: var(--main-color);
-        color: #fff;
-        white-space: nowrap;
-    }
-
-    .display-product-table table td {
-        padding: 1rem;
-        font-size: 1.2rem;
-        color: #333;
-    }
-
-    .display-product-table table td a {
-        white-space: nowrap;
-    }
-
-    .display-product-table table td:first-child {
-        padding: 0;
-    }
-
-    .display-product-table table tbody .row-table:nth-child(even) {
-        background-color: #eee;
-    }
-
-    .display-product-table .empty {
-        margin-bottom: 2rem;
-        text-align: center;
-        background-color: #eee;
-        color: var(--black);
-        font-size: 1.2rem;
-        padding: 1.5rem;
-    }
-
-    @media (max-width: 768px) {
-        .display-product-table {
-            overflow-x: scroll;
-        }
-
-        .display-product-table table {
-            width: 90rem;
-        }
-    }
-
-    .flex-btn {
-        display: flex;
-        flex-direction: column;
-    }
-    </style>
-
     <body>
 
         <!-- Start nav-bar -->

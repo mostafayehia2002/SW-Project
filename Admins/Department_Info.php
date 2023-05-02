@@ -60,7 +60,7 @@ if ($con) {
                 <p> عدد الطلاب: <span><?php echo   $value['Departmanet_Student']  ?></span>طالب</p>
               </div>
               <div class="info">
-                <a href="#">قراءة المزيد </a>
+                <a href="Department_Setting.php?department_id=<?php echo $value['Departmanet_ID'] ?>">اعدادات القسم</a>
                 <i class="fas fa-long-arrow-alt-left"></i>
               </div>
             </div>

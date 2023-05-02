@@ -28,7 +28,7 @@ if (isset($_POST['update_data'])) {
     $new_university = $_POST['university'];
     $new_job = $_POST['job'];
     //images
-    $new_imge = isset($_FILES['image']) ? $_FILES['image']['name'] : '';
+    $new_imge = isset($_FILES['image']) ?$_FILES['image']['name'] :'profile.jpg';
 
     try {
         if (empty($new_imge)) {
@@ -36,7 +36,7 @@ if (isset($_POST['update_data'])) {
         } else {
             $update_admin = $con->query("UPDATE `Admin` SET `Ad_ID`='$new_id',`Password`='$new_password',`Full_Name`='$new_full_name',`Address`='$new_address',`Email_Address`='$new_email',`Phone_Number`='$new_phone',`Gender`='$new_type', `Faculty`='$new_faculty',`University`='$new_university',`Job`='$new_job',`Image`='$new_imge' WHERE `Ad_ID`=$admin_id");
             $from = $_FILES['image']['tmp_name'];
-            $to = "images/" . $_FILES['image']['name'];
+            $to = "images/".$_FILES['image']['name'];
             move_uploaded_file($from, $to);
         }
         if ($_SESSION['admin_id'] == $admin_id) {
@@ -63,8 +63,8 @@ if (isset($_POST['update_data'])) {
     <meta charset="UTF-8">
     <title>تحديث بيانات ادمن</title>
     <link rel="stylesheet" href="../CssComponent/all.min.css">
-    <link rel="stylesheet" href="../CssComponent/Dashboard.css">
     <link rel="stylesheet" href="../CssComponent/AddData.css">
+    <link rel="stylesheet" href="../CssComponent/Dashboard.css">
 </head>
 
 <body>
