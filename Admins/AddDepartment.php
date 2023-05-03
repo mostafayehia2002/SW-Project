@@ -7,21 +7,29 @@ if (!isset($_SESSION["admin_id"])) {
     exit();
 }
 if (isset($_POST['add'])) {
-    $id = $_POST['Departmanet_ID'];
-    $name = $_POST['Departmanet_Name'];
-    $date = $_POST['Departmanet_Date'];
-    $manger = $_POST['Departmanet_manger'];
-    $student = $_POST['Departmanet_Student'];
-    $doctors = $_POST['Departmanet_Doctors'];
+    $id = $_POST['Department_ID'];
+    $name1 = $_POST['Department_Arabic_Name'];
+    $name2= str_replace(" ","_",$_POST['Department_English_Name']);
+    $manger = $_POST['Department_manger'];
+   
     //images
-    $from = $_FILES['Departmanet_Image']['tmp_name'];
-    $to = "images/" . $_FILES['Departmanet_Image']['name'];
+    $from = $_FILES['Department_Image']['tmp_name'];
+    $to = "images/" . $_FILES['Department_Image']['name'];
     move_uploaded_file($from, $to);
-    $image = $_FILES['Departmanet_Image']['name'];
+    $image = $_FILES['Department_Image']['name'];
 
     try {
-        $sql = $con->query("INSERT INTO `departments` (`Departmanet_ID`, `Departmanet_Name`, `Departmanet_Date`, `Departmanet_manger`, `Departmanet_Student`, `Departmanet_Doctors`, `Departmanet_Image`) VALUES ('$id','$name','$date','$manger','$student','$doctors','$image')");
-        echo "<div class='success'>  تم انشاء القسم بنجاح</div>";
+        $sql = $con->query("INSERT INTO `departments` (`Department_ID`,`Department_Arabic_Name`,`Department_English_Name`,`Department_manger`,`Department_Image`) VALUES ('$id','$name1','$name2','$manger','$image')");
+       
+if($sql){
+$con->query("
+
+
+
+");
+}
+
+ echo "<div class='success'>  تم انشاء القسم بنجاح</div>";
     } catch (PDOException $e) {
         echo "<div class='faild'>";
         echo " يرجى ادخال البيانات بشكل صحيح <br>";
@@ -58,33 +66,29 @@ if (isset($_POST['add'])) {
                     <h3 class="title">اضافة قسم:</h3>
                     <div class="allinput">
                         <div class="input-filed">
-                            <label for="departmanet_id"> كود القسم</label>
-                            <input type="text" placeholder="" id="departmanet_id" name="Departmanet_ID" required>
+                            <label for="department_id"> كود القسم</label>
+                            <input type="text" placeholder="" id="department_id" name="Department_ID" required>
                         </div>
                         <div class="input-filed">
-                            <label for="departmanet_name"> اسم القسم</label>
-                            <input type="text" id="departmanet_name" name="Departmanet_Name" required>
+                            <label for="Department_Arabic_Name"> اسم القسم باللغه العربيه</label>
+                            <input type="text" id="Department_Arabic_Name" name="Department_Arabic_Name" required>
                         </div>
                         <div class="input-filed">
-                            <label for="departmanet_image">اضافة صورة </label>
-                            <input type="file" id="departmanet_image" name="Departmanet_Image" accept="image/*">
+                            <label for="Department_English_Name">اسم القسم باللغه الانجليزيه</label>
+                            <input type="text" id="Department_English_Name" name="Department_English_Name" required>
                         </div>
                         <div class="input-filed">
-                            <label for="departmanet_date"> تاريخ انشاء القسم</label>
-                            <input type="date" id="departmanet_date" name="Departmanet_Date">
+                            <label for="department_image">اضافة صورة </label>
+                            <input type="file" id="department_image" name="Department_Image" accept="image/*">
                         </div>
+
                         <div class="input-filed">
-                            <label for="departmanet_manger"> رئيس القسم</label>
-                            <input type="text" id="departmanet_manger" name="Departmanet_manger">
+                            <label for="department_manger"> رئيس القسم</label>
+                            <input type="text" id="departmanet_manger" name="Department_manger">
                         </div>
-                        <div class="input-filed">
-                            <label for="departmanet_student">عدد طلاب القسم </label>
-                            <input type="number" id="departmanet_student" name="Departmanet_Student">
-                        </div>
-                        <div class="input-filed">
-                            <label for="departmanet_doctors"> عدد اعضاء القسم</label>
-                            <input type="number" id="departmanet_doctors" name="Departmanet_Doctors">
-                        </div>
+
+                       
+
                     </div>
                 </div>
                 <div class="save">

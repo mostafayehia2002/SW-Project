@@ -50,17 +50,17 @@ if ($con) {
 
         ?>
             <div class="box">
-              <img src="<?php echo "images/" . $value['Departmanet_Image'] ?>" alt="">
+              <img src="<?php echo "images/" . $value['Department_Image'] ?>" alt="">
               <div class="content">
-                <h3><?php echo   $value['Departmanet_Name']  ?></h3>
-                <p>كودالقسم: <span><?php echo   $value['Departmanet_ID'] ?></span></p>
-                <p>تاريخ الانشاء: <span><?php echo   $value['Departmanet_Date']  ?></span></p>
-                <p>رئيس القسم :د/ <span> <?php echo  $value['Departmanet_manger']  ?></span></p>
-                <p> عدد الاعضاء: <span> <?php echo   $value['Departmanet_Doctors']  ?> </span> عضو</p>
-                <p> عدد الطلاب: <span><?php echo   $value['Departmanet_Student']  ?></span>طالب</p>
+                <h3><?php echo   $value['Department_Arabic_Name']  ?></h3>
+                <p>كودالقسم: <span><?php echo   $value['Department_ID'] ?></span></p>
+                <p>تاريخ الانشاء: <span><?php echo   $value['Department_Date']  ?></span></p>
+                <p>رئيس القسم :د/ <span> <?php echo  $value['Department_manger']  ?></span></p>
+                <p> عدد الاعضاء: <span> <?php echo   $value['Department_Number_Doctors']  ?> </span> عضو</p>
+                <p> عدد الطلاب: <span><?php echo   $value['Department_Number_Students']  ?></span>طالب</p>
               </div>
               <div class="info">
-                <a href="Department_Setting.php?department_id=<?php echo $value['Departmanet_ID'] ?>">اعدادات القسم</a>
+                <a href="Department_Setting.php?department_id=<?php echo $value['Department_ID'] ?>">اعدادات القسم</a>
                 <i class="fas fa-long-arrow-alt-left"></i>
               </div>
             </div>

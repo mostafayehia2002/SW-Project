@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2023 at 12:27 AM
+-- Generation Time: May 03, 2023 at 05:32 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -55,26 +55,62 @@ INSERT INTO `admin` (`Ad_ID`, `Password`, `status`, `Image`, `Full_Name`, `Gende
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `computer_science_dependence_subject`
+--
+
+CREATE TABLE `computer_science_dependence_subject` (
+  `Dependence_Subject_ID` int(11) NOT NULL,
+  `Dependence_Subject_Name` varchar(100) NOT NULL,
+  `Dependence_Subject_Code` varchar(100) NOT NULL,
+  `Dependence_Subject_Hours` int(11) NOT NULL,
+  `Dependence_Subject_Level` int(11) NOT NULL,
+  `Dependence_Subject_Semister` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `computer_science_subject`
+--
+
+CREATE TABLE `computer_science_subject` (
+  `Subject_ID` int(11) NOT NULL,
+  `Subject_Name` varchar(100) NOT NULL,
+  `Subject_Code` varchar(100) NOT NULL,
+  `Subject_Hours` int(100) NOT NULL,
+  `Subject_semister` int(100) NOT NULL,
+  `Subject_Levels` int(100) NOT NULL,
+  `Dependence_Subject_ID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `departments`
 --
 
 CREATE TABLE `departments` (
-  `Departmanet_ID` varchar(30) NOT NULL,
-  `Departmanet_Name` varchar(100) DEFAULT NULL,
-  `Departmanet_Image` varchar(100) NOT NULL,
-  `Departmanet_Date` varchar(100) NOT NULL,
-  `Departmanet_manger` varchar(100) NOT NULL,
-  `Departmanet_Student` int(100) NOT NULL,
-  `Departmanet_Doctors` int(100) NOT NULL
+  `Department_ID` varchar(30) NOT NULL,
+  `Department_Arabic_Name` varchar(100) DEFAULT NULL,
+  `Department_English_Name` varchar(100) NOT NULL,
+  `Department_Image` varchar(100) NOT NULL,
+  `Department_Date` varchar(100) NOT NULL,
+  `Department_manger` varchar(100) NOT NULL,
+  `Department_Number_Students` int(100) NOT NULL,
+  `Department_Number_Doctors` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `departments`
 --
 
-INSERT INTO `departments` (`Departmanet_ID`, `Departmanet_Name`, `Departmanet_Image`, `Departmanet_Date`, `Departmanet_manger`, `Departmanet_Student`, `Departmanet_Doctors`) VALUES
-('1', 'علوم حاسب', 'Screenshot 2023-04-04 010857.png', '2023-04-26', 'د/ حمدي', 100, 80),
-('5619', 'rhcfvrftuc', 'Screenshot 2023-04-04 010857.png', '2002-02-20', '0huiuyoukjn', 100, 88200);
+INSERT INTO `departments` (`Department_ID`, `Department_Arabic_Name`, `Department_English_Name`, `Department_Image`, `Department_Date`, `Department_manger`, `Department_Number_Students`, `Department_Number_Doctors`) VALUES
+('1', 'علوم حاسب', '', 'Screenshot 2023-04-04 010857.png', '2023-04-26', 'د/ حمدي', 100, 80),
+('5619', 'rhcfvrftuc', '', 'Screenshot 2023-04-04 010857.png', '2002-02-20', '0huiuyoukjn', 100, 88200),
+('cs21', 'علوم حاسب', 'computer science', 'DSC_2459.jpg', '', 'ahmed', 0, 0),
+('dd', 'lddlcvldv', 'computer_science', 'DSC_2459.jpg', '', 'hosam', 0, 0),
+('it50', 'تكنولوجيا المعلومات', 'information technology', 'DSC_2459.jpg', '', 'ali', 0, 0),
+('ss', 'ssd', 'information_technology', '', '', 'ali', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -162,10 +198,23 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`Ad_ID`);
 
 --
+-- Indexes for table `computer_science_dependence_subject`
+--
+ALTER TABLE `computer_science_dependence_subject`
+  ADD PRIMARY KEY (`Dependence_Subject_ID`);
+
+--
+-- Indexes for table `computer_science_subject`
+--
+ALTER TABLE `computer_science_subject`
+  ADD PRIMARY KEY (`Subject_ID`),
+  ADD KEY `Dependence_Subject_ID` (`Dependence_Subject_ID`);
+
+--
 -- Indexes for table `departments`
 --
 ALTER TABLE `departments`
-  ADD PRIMARY KEY (`Departmanet_ID`);
+  ADD PRIMARY KEY (`Department_ID`);
 
 --
 -- Indexes for table `doctor`
@@ -179,6 +228,32 @@ ALTER TABLE `doctor`
 ALTER TABLE `student`
   ADD PRIMARY KEY (`St_ID`),
   ADD UNIQUE KEY `National ID` (`National_ID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `computer_science_dependence_subject`
+--
+ALTER TABLE `computer_science_dependence_subject`
+  MODIFY `Dependence_Subject_ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `computer_science_subject`
+--
+ALTER TABLE `computer_science_subject`
+  MODIFY `Subject_ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `computer_science_subject`
+--
+ALTER TABLE `computer_science_subject`
+  ADD CONSTRAINT `computer_science_subject_ibfk_1` FOREIGN KEY (`Dependence_Subject_ID`) REFERENCES `computer_science_dependence_subject` (`Dependence_Subject_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
