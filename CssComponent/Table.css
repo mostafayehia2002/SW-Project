@@ -1,95 +1,110 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600&display=swap");
-:root {
-  --main-color: #3c00a0;
-  --red-color: #e74c3c;
-  --orangen-color: #f39c12;
-  --white-color: #fff;
-  --black-color: #2c3e50;
-  --ligth-color: #888;
-  --ligth-background: #eee;
-  --main-border: 2px solid #0f1630;
-  --main-trantision: 0.2s linear;
+h3.titleTabel {
+  color: #32c19a;
+  text-align: center;
 }
-*{
-  font-family: "Nunito", sans-serif;
+
+.main-content {
+  width: 100% !important;
+  padding-top: 100px;
+}
+
+.thead_dark {
+  background: #42c2a1;
+  color: white;
+}
+
+.btn-download {
+  background: #42c2a1 !important;
+  border-radius: 50% !important;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  vertical-align: top !important;
+  padding: 5px;
+  border: none;
+  color: white;
+}
+
+div.dataTables_wrapper div.dataTables_info {
+  padding-top: 0px !important;
+  white-space: nowrap;
+  color: #64b99c !important;
+}
+
+table.dataTable > tbody > tr.child ul.dtr-details {
+  display: inline-block;
+  list-style-type: none;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  outline: none;
-  border: none;
-  text-decoration: none;
+  text-align: right;
 }
-body{
-  background-color: var(--ligth-background);
-}
-.display-product-table {
-    padding-top: 50px;
-}
-.display-product-table table {
-    width: 100%;
+
+/* .table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before,
+table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before {
+    top: 9px;
+    left: 4px;
+    height: 14px;
+    width: 14px;
+    display: block;
+    position: absolute;
+    color: white;
+    border: 2px solid white;
+    border-radius: 14px;
+    box-shadow: 0 0 3px #444;
+    box-sizing: content-box;
     text-align: center;
-}
-.display-product-table table thead th {
-    padding: 8px;
-    font-size: 15px;
-    background-color: var(--main-color);
-    color:var(--white-color);
-    white-space: nowrap;
-}
-.display-product-table table td {
-    padding: 2px;
-    font-size: 14px;
-    color: #333;
+    text-indent: 0 !important;
+    font-family: "Courier New", Courier, monospace;
+    line-height: 14px;
+    content: "+";
+    background-color: #60b6ab;
 }
 
-.display-product-table table td a {
-    white-space: nowrap;
+.table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td:first-child:before,
+table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child:before {
+    content: "-";
+    background-color: #d33333;
+} */
+
+.page-item.active .page-link {
+  z-index: 1;
+  color: #fff !important;
+  background-color: #42c2a1 !important;
+  border-color: #42c2a1 !important;
+  border-radius: 8px !important;
 }
 
-.display-product-table table td:first-child {
-    padding: 0;
+.page-link {
+  position: relative;
+  display: block;
+  padding: 0.5rem 0.75rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: #42c2a1 !important;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
 }
 
-.display-product-table table tbody .row-table:nth-child(even) {
-    background-color:var(--white-color);
+.dataTables_info,
+.dataTables_length {
+  float: right;
 }
 
-.display-product-table .empty {
-    margin-bottom: 2rem;
-    text-align: center;
-    background-color:var(--ligth-background);
-    color: var(--black);
-    font-size: 14px;
-    padding: 8px;
+#files_list_paginate,
+.dataTables_filter {
+  float: left;
 }
 
-input[type="search"]{
-    padding: 10px;
-    border-radius: 5px;
-    background-color:var(--white-color);
-border: 1px solid  var( --main-color);
-width: 250px;
-
-
+table.dataTable thead > tr > th.sorting_asc,
+table.dataTable thead > tr > th.sorting_desc,
+table.dataTable thead > tr > th.sorting,
+table.dataTable thead > tr > td.sorting_asc,
+table.dataTable thead > tr > td.sorting_desc,
+table.dataTable thead > tr > td.sorting {
+  padding-right: 0px !important;
+  text-align: center !important;
 }
-.fa-search{
-color:var(--main-color);
-font-size: 20px;
-font-weight: bolder;
-padding:5px;
-cursor: pointer;
-}
-@media (max-width: 767px) {
-    .display-product-table {
-        overflow-x: scroll;
-    }
-
-    .display-product-table table {
-        width: 90rem;
-    }
-}
-
-.flex-btn {
-    display: flex;
-    flex-direction: column;
+table.dataTable td,
+table.dataTable th {
+  text-align: center;
+  white-space: nowrap;
 }

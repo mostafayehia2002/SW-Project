@@ -68,6 +68,12 @@ if (isset($_GET['delete'])) {
     <link rel="stylesheet" href="../CssComponent/AddData.css">
     <link rel="stylesheet" href="../CssComponent/Table.css">
     <link rel="stylesheet" href="../CssComponent/Dashboard.css">
+    <!--   Tabel CSS  -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+    </link>
 </head>
 
 
@@ -164,29 +170,24 @@ if (isset($_GET['delete'])) {
                     <input type="submit" value="حفظ" name="submit">
                 </div>
             </form>
-            <form method="GET" style="text-align: center;">
-                <input type="search" name="search" id="" placeholder="البحث بالاسم او الرقم القومي">
-                <button type="submit" name="search_btn"><i class="fas fa-search"></i></button>
-            </form>
-            <section class="display-product-table">
-                <table>
-                    <thead>
-                        <th>الرقم القومي</th>
-                        <th>الاسم</th>
-                        <th>الايميل</th>
-                        <th>العنوان</th>
-                        <th>الموبايل</th>
-                        <th>الدرجة العلميه</th>
-                        <th>التحكم</th>
+            <div class="main-content">
+                <h3 class="titleTabel">جدول لعرض بيانات المسؤلين عن هيئة التدريس</h3>
+                <table id="files_list" class="table table-striped dt-responsive  " style="width:100%">
+                    <thead class="thead_dark">
+                        <th class="th_text">الرقم القومي</th>
+                        <th class="th_text">الاسم</th>
+                        <th class="th_text">الايميل</th>
+                        <th class="th_text">العنوان</th>
+                        <th class="th_text">الموبايل</th>
+                        <th class="th_text">الدرجة العلميه</th>
+                        <th class="th_text">التحكم</th>
+                        <th class="th_text">التحكم</th>
+                        <th class="th_text">التحكم</th>
+                        <th class="th_text">التحكم</th>
                     </thead>
                     <tbody>
                         <?php
-                        if (isset($_GET['search_btn'])) {
-                            $value_search = $_GET['search'];
-                            $all_admins = $con->query("SELECT * FROM `doctor` WHERE `Dr_ID`='$value_search' OR `Full_Name` LIKE '%{$value_search}%'");
-                        } else {
-                            $all_admins = $con->query("SELECT * FROM `doctor`");
-                        }
+                        $all_admins = $con->query("SELECT * FROM `doctor`");
                         $all_admins = $all_admins->fetchAll(PDO::FETCH_ASSOC);
                         if (!empty($all_admins)) {
                             foreach ($all_admins as  $user) {
@@ -202,6 +203,18 @@ if (isset($_GET['delete'])) {
                                         <a href="update_doctor.php?update=<?php echo $user['Dr_ID'] ?>" class="delete-btn"><i class="fa-solid fa-edit"></i> تعديل</a>
                                         <a href="AddAdmin.php?delete=<?php echo $user['Dr_ID'] ?>" class="delete-btn" onclick="return confirm('Are you soure Delete this user ?');"><i class="fa-solid fa-trash"></i> حذف</a>
                                     </td>
+                                    <td class="flex-btn">
+                                        <a href="update_doctor.php?update=<?php echo $user['Dr_ID'] ?>" class="delete-btn"><i class="fa-solid fa-edit"></i> تعديل</a>
+                                        <a href="AddAdmin.php?delete=<?php echo $user['Dr_ID'] ?>" class="delete-btn" onclick="return confirm('Are you soure Delete this user ?');"><i class="fa-solid fa-trash"></i> حذف</a>
+                                    </td>
+                                    <td class="flex-btn">
+                                        <a href="update_doctor.php?update=<?php echo $user['Dr_ID'] ?>" class="delete-btn"><i class="fa-solid fa-edit"></i> تعديل</a>
+                                        <a href="AddAdmin.php?delete=<?php echo $user['Dr_ID'] ?>" class="delete-btn" onclick="return confirm('Are you soure Delete this user ?');"><i class="fa-solid fa-trash"></i> حذف</a>
+                                    </td>
+                                    <td class="flex-btn">
+                                        <a href="update_doctor.php?update=<?php echo $user['Dr_ID'] ?>" class="delete-btn"><i class="fa-solid fa-edit"></i> تعديل</a>
+                                        <a href="AddAdmin.php?delete=<?php echo $user['Dr_ID'] ?>" class="delete-btn" onclick="return confirm('Are you soure Delete this user ?');"><i class="fa-solid fa-trash"></i> حذف</a>
+                                    </td>
                                 </tr>
                         <?php
                             }
@@ -211,11 +224,47 @@ if (isset($_GET['delete'])) {
                         ?>
                     </tbody>
                 </table>
-            </section>
+            </div>
+
         </div>
     </section>
     <script src="../JsComponent/Action.js"></script>
     <script src="JS/main.js"></script>
+    <!-- Tabel  -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#files_list').DataTable({
+                "aLengthMenu": [
+                    [5, 10, 25, -1],
+                    [5, 10, 25, "All"]
+                ],
+                "iDisplayLength": 10,
+
+                "language": {
+                    "sProcessing": "جارٍ التحميل...",
+                    "sLengthMenu": "أظهر _MENU_ مدخلات",
+                    "sZeroRecords": "لم يعثر على أية سجلات",
+                    "sInfo": "إظهار _START_ إلى _END_ من أصل _TOTAL_ مدخل",
+                    "sInfoEmpty": "يعرض 0 إلى 0 من أصل 0 سجل",
+                    "sInfoFiltered": "(منتقاة من مجموع _MAX_ مُدخل)",
+                    "sInfoPostFix": "",
+                    "sSearch": "ابحث:",
+                    "sUrl": "",
+                    "oPaginate": {
+                        "sFirst": "الأول",
+                        "sPrevious": "السابق",
+                        "sNext": "التالي",
+                        "sLast": "الأخير"
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

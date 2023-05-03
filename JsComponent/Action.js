@@ -1,7 +1,7 @@
 console.log("ok");
 
 let list = document.querySelector(".icon i");
-let navBar = document.querySelector(".nav-bar");
+let navBar = document.querySelector(".nav-bar1");
 let sideBar = document.querySelector(".Dashboard");
 list.onclick = () => {
 

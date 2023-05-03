@@ -1,188 +1,193 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600&display=swap");
 
 :root {
-    --main-color: #090979;
-    --red-color: #e74c3c;
-    --orangen-color: #f39c12;
-    --white-color: #fff;
-    --black-color: #2c3e50;
-    --ligth-color: #888;
-    --ligth-background: #eee;
-    --main-border: 1pxsolid rgba(0, 0, 0, 0.2);
-    --main-trantision: 0.2s linear;
-    --linear: linear-gradient(90deg, rgba(4, 4, 101, 1) 0%, rgba(2, 0, 36, 1) 100%);
+  --main-color: #229678;
+  /* --main-color: #32c19a; */
+  --red-color: #e74c3c;
+  --orangen-color: #f39c12;
+  --white-color: #fff;
+  --black-color: #2c3e50;
+  --ligth-color: #888;
+  --ligth-background: #eee;
+  --main-border: 1pxsolid rgba(0, 0, 0, 0.2);
+  --main-trantision: 0.2s linear;
+  /* --linear: linear-gradient(
+    90deg,
+    rgba(4, 4, 101, 1) 0%,
+    rgba(2, 0, 36, 1) 100%
+  ); */
+  --linear: #229678;
 }
 
 * {
-    font-family: 'Nunito', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    outline: none;
-    border: none;
-    text-decoration: none;
+  font-family: "Nunito", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  /* text-align: inherit; */
+  direction: rtl !important;
 }
 
 body {
-    background-color: var(--ligth-background);
+  background-color: var(--ligth-background) !important;
 }
 
 .Dashboard {
-    width: 18%;
+  width: 18%;
 }
 
-.nav-bar {
-    height: 60px;
-    width: 82%;
-    background-color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    left: 0px;
-    top: 0px;
-    z-index: 1000;
-    text-align: center;
+.nav-bar1 {
+  height: 60px;
+  width: 82%;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 1000;
+  text-align: center;
 }
 
-.nav-bar .profile{
-    height: 100%;
-    padding: 10px;
-    cursor: pointer;
-    color: var(--main-color);
+.nav-bar1 .profile {
+  height: 100%;
+  padding: 10px;
+  cursor: pointer;
+  color: var(--main-color);
 }
 
-.nav-bar .icon {
-    height: 100%; 
-    cursor: pointer;
-    width: 10%;
-
+.nav-bar1 .icon {
+  height: 100%;
+  cursor: pointer;
+  width: 10%;
 }
 
-.nav-bar .icon i {
-    line-height:55px; 
-    font-size: 25px;
-    cursor: pointer;
-    color: var(--main-color);
+.nav-bar1 .icon i {
+  line-height: 55px;
+  font-size: 25px;
+  cursor: pointer;
+  color: var(--main-color);
 }
 
-.nav-bar .profile {
-    display: inline-flex;
-    /* padding: 10px; */
-    margin-left: 35px;
-    position: relative;
-    cursor: pointer;
-
-
+.nav-bar1 .profile {
+  display: inline-flex;
+  /* padding: 10px; */
+  margin-left: 35px;
+  position: relative;
+  cursor: pointer;
 }
 
-.nav-bar .profile .user {
-    margin-left: 5px;
+.nav-bar1 .profile .user {
+  margin-left: 5px;
+}
+.nav-bar1 .profile .user p {
+  margin: 0 !important;
 }
 
- .img>img{
-   height: 100%;
-   width: 100%;
- border-radius: 50%;
+.img > img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
 }
 .hidden {
-    display: none;
+  display: none;
 }
 
 .profile .profile-list {
-    height: 100px;
-    width: 160px;
-    background-color: white;
-    position: absolute;
-    top: 60px;
-    left: 8px;
-    list-style: none;
-    text-align: right;
-    padding: 10px;
-    font-size: 14px;
-    display: none;
-
-
+  height: 100px;
+  width: 160px;
+  background-color: white;
+  position: absolute;
+  top: 60px;
+  left: 8px;
+  list-style: none;
+  text-align: right;
+  padding: 10px;
+  font-size: 14px;
+  display: none;
 }
 .profile .profile-list a {
-    color: black;
-
+  color: black;
 }
 
 .profile .profile-list i {
-    padding: 10px;
-    color: var(--main-color);
+  padding: 10px;
+  color: var(--main-color);
 }
 
-/*end nav-bar*/
+/*end nav-bar1*/
 
 /* start side-bar */
-.side-bar{
-    height: 100vh;
-    width: 18%;
-    position: fixed;
-    right: 0px;
-    top: 0px;
-    z-index: 1000;
-    color: white;
-    background-image: var(--linear);
-
+.side-bar1 {
+  height: 100vh;
+  width: 18%;
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  z-index: 1000;
+  color: white;
+  background-color: var(--linear);
 }
 
-.side-bar h1 {
-    padding: 17px;
-    text-align: center;
-    border-bottom: 2px solid white;
+.side-bar1 h1 {
+  padding: 17px;
+  text-align: center;
+  border-bottom: 2px solid white;
 }
 
 /*end side-bar */
 
-
 .menu {
-    cursor: pointer;
+  cursor: pointer;
 }
 
-.dropdown-menu {
-    display: none;
+.dropdown-menu1 {
+  display: none;
 }
 
+.link {
+  margin: 0 !important;
+  text-align: initial;
+}
 .link li {
-    color: white;
-    padding: 8px 8px;
-    position: relative;
+  color: white;
+  padding: 8px 8px;
+  position: relative;
 }
 
 .link li a {
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
 }
 
 .link i {
-    padding-left: 10px;
+  padding-left: 10px;
 }
 
 .link li span {
-    position: absolute;
-    left: 20px;
+  position: absolute;
+  left: 20px;
 }
-
 
 /* @media (max-width:767px) {
     .side-bar{
         width:44%;
     }  
-    .nav-bar{
+    .nav-bar1{
         width: 56%;
         font-size: 12px;
     }
-    .nav-bar .profile{
+    .nav-bar1 .profile{
         margin-left: 2px;
 
     }
     
-.nav-bar .icon{
+.nav-bar1 .icon{
     margin-right: 2px;
 }
 } */
