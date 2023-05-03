@@ -58,6 +58,9 @@ body {
   transform: translateX(-50%);
 }
 
+.container .athers .input-filed {
+  text-align: right;
+}
 .container .athers .input-filed .password {
   padding: 15px 0px;
   display: flex;

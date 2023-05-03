@@ -86,6 +86,7 @@ body {
 }
 .nav-bar1 .profile .user p {
   margin: 0 !important;
+  font-size: 15px;
 }
 
 .img > img {
@@ -134,9 +135,13 @@ body {
 }
 
 .side-bar1 h1 {
-  padding: 17px;
+  padding: 17px 0;
   text-align: center;
   border-bottom: 2px solid white;
+  font-size: 20px;
+}
+.side-bar1 h1 i {
+  font-size: 25px;
 }
 
 /*end side-bar */
@@ -173,5 +178,3 @@ body {
   position: absolute;
   left: 20px;
 }
-
-

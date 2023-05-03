@@ -7,7 +7,7 @@ if (!isset($_SESSION["admin_id"])) {
 }
 if (isset($_GET['update'])) {
     $doctor_id = $_GET['update'];
-    $old_data_doctor = $con->query("SELECT * FROM `doctor` WHERE `Dr_ID`=$doctor_id");
+    $old_data_doctor = $con->query("SELECT * FROM `doctor` WHERE `Doctor_ID`=$doctor_id");
     $old_data_doctor = $old_data_doctor->fetch(PDO::FETCH_ASSOC);
 } else {
     header("location: AddAdmin.php");
@@ -34,15 +34,15 @@ if (isset($_POST['update_data'])) {
 
     try {
         if (empty($new_imge)) {
-            $update_doctor = $con->query("UPDATE `doctor` SET `Dr_ID`='$new_id',`Password`='$new_password',`Full_Name`='$new_full_name',`Address`='$new_address',`Email_Address`='$new_email',`Nationality`='$new_nationality',`Religion`='$new_religion',`Phone_Number`='$new_phone',`Gender`='$new_gender',`Degree`='$new_degree', `Faculty`='$new_faculty',`University`='$new_university',`Department`='$new_department', `Date_Birth`='$new_date_birth' WHERE `Dr_ID`=$doctor_id");
+            $update_doctor = $con->query("UPDATE `doctor` SET `Doctor_ID`='$new_id',`Password`='$new_password',`Full_Name`='$new_full_name',`Address`='$new_address',`Email_Address`='$new_email',`Nationality`='$new_nationality',`Religion`='$new_religion',`Phone_Number`='$new_phone',`Gender`='$new_gender',`Degree`='$new_degree', `Faculty`='$new_faculty',`University`='$new_university',`Department`='$new_department', `Date_Birth`='$new_date_birth' WHERE `Dr_ID`=$doctor_id");
         } else {
-            $update_doctor = $con->query("UPDATE `doctor` SET `Dr_ID`='$new_id',`Password`='$new_password',`Full_Name`='$new_full_name',`Address`='$new_address',`Email_Address`='$new_email',`Nationality`='$new_nationality',`Religion`='$new_religion',`Phone_Number`='$new_phone',`Gender`='$new_gender',`Degree`='$new_degree', `Faculty`='$new_faculty',`University`='$new_university',`Department`='$new_department', `Date_Birth`='$new_date_birth',`Image`='$new_imge' WHERE `Dr_ID`=$doctor_id");
+            $update_doctor = $con->query("UPDATE `doctor` SET `Doctor_ID`='$new_id',`Password`='$new_password',`Full_Name`='$new_full_name',`Address`='$new_address',`Email_Address`='$new_email',`Nationality`='$new_nationality',`Religion`='$new_religion',`Phone_Number`='$new_phone',`Gender`='$new_gender',`Degree`='$new_degree', `Faculty`='$new_faculty',`University`='$new_university',`Department`='$new_department', `Date_Birth`='$new_date_birth',`Image`='$new_imge' WHERE `Dr_ID`=$doctor_id");
             $from = $_FILES['image']['tmp_name'];
             $to = "images/" . $_FILES['image']['name'];
             move_uploaded_file($from, $to);
         }
         $doctor_id = $new_id;
-        $old_data_doctor = $con->query("SELECT * FROM `doctor` WHERE `Dr_ID`=$doctor_id");
+        $old_data_doctor = $con->query("SELECT * FROM `doctor` WHERE `Doctor_ID`=$doctor_id");
         $old_data_doctor = $old_data_doctor->fetch(PDO::FETCH_ASSOC);
         echo "<div class='success'>  تم تعديل البيانات بنجاح</div>";
     } catch (Exception $e) {
@@ -94,7 +94,7 @@ if (isset($_POST['update_data'])) {
                         </div>
                         <div class="input-filed">
                             <label for="id">الرقم القومي</label>
-                            <input type="number" value="<?Php echo $old_data_doctor['Dr_ID'] ?>" id="id" name="id" required>
+                            <input type="number" value="<?Php echo $old_data_doctor['Doctor_ID'] ?>" id="id" name="id" required>
                         </div>
                         <div class="input-filed">
                             <label for="phone">رقم المحمول</label>
@@ -164,6 +164,7 @@ if (isset($_POST['update_data'])) {
                 <div class="save">
                     <input type="submit" value="تحديث" name="update_data">
                 </div>
+                <a href="./AddDoctor.php">العوده للصفحه السابقه</a>
             </form>
         </div>
     </section>

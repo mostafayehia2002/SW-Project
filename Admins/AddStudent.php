@@ -100,20 +100,16 @@ if (isset($_GET['delete'])) {
 
         <div class="container">
             <form action="" method="POST" enctype="multipart/form-data">
-
                 <div class="athers">
                     <h3 class="title">اضافة اكثر من طالب :</h3>
                     <div class="input-filed">
                         <label for="alluser">اضافة بيانات الطلاب</label>
-                        <input type="file" id="alluser">
+                        <input type="file" id="alluser" name="file_students">
                     </div>
                 </div>
-
                 <div class="break"></div>
-
                 <div class="oneuser">
                     <h3 class="title">اضافة طالب :</h3>
-
                     <div class="allinput">
                         <div class="input-filed">
                             <label for="name">الاسم كاملا</label>
@@ -122,20 +118,6 @@ if (isset($_GET['delete'])) {
                         <div class="input-filed">
                             <label for="id">رقم الاكاديمي</label>
                             <input type="number" id="id" name="id">
-                        </div>
-
-                        <div class="input-filed">
-                            <label for="gender">النوع</label>
-                            <div class="gender">
-                                <div class="male">
-                                    <input type="radio" name="gender" id="male" value="ذكر">
-                                    <label for="male">ذكر</label>
-                                </div>
-                                <div class="female">
-                                    <input type="radio" name="gender" id="female" value="انثي">
-                                    <label for="female">انثي</label>
-                                </div>
-                            </div>
                         </div>
                         <div class="input-filed spcail">
                             <label for="image"> اضافة صورة</label>
@@ -209,6 +191,19 @@ if (isset($_GET['delete'])) {
                         <div class="input-filed">
                             <label for="joining_date">تاريخ الالتحاق</label>
                             <input type="date" id="joining_date" name="joining_date">
+                        </div>
+                        <div class="input-filed">
+                            <label for="gender">النوع</label>
+                            <div class="gender">
+                                <div class="male">
+                                    <input type="radio" name="gender" id="male" value="ذكر">
+                                    <label for="male">ذكر</label>
+                                </div>
+                                <div class="female">
+                                    <input type="radio" name="gender" id="female" value="انثي">
+                                    <label for="female">انثي</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
 

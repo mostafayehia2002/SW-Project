@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2023 at 05:32 PM
+-- Generation Time: May 03, 2023 at 10:30 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -48,7 +48,7 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`Ad_ID`, `Password`, `status`, `Image`, `Full_Name`, `Gender`, `Address`, `Job`, `Email_Address`, `Phone_Number`, `Faculty`, `University`) VALUES
 (22, '22', 1, 'IMG_20220324_135045.jpg', 'اسلام', 'ذكر', 'qusina', 'مسئول عن اداره شئون الطلاب', 'moustafa.yehia160800@ci.menofia.edu.eg', 1226717838, 'الحاسبات والمعلومات', ' المنوفيه'),
-(2002, '2002', 0, '', 'mostafa hossam', 'انثي', 'qusina', 'مسئول عن اداره شئون الطلاب', 'moustafa.yehia160800@ci.menofia.edu.eg', 1226717838, 'الحاسبات والمعلومات', ' المنوفيه'),
+(2002, '2002', 1, 'IMG_20220324_135045.jpg', 'mostafa hossam', 'انثي', 'qusina', 'مسئول عن اداره شئون الطلاب', 'moustafa.yehia160800@ci.menofia.edu.eg', 1226717838, 'الحاسبات والمعلومات', ' المنوفيه'),
 (1112001, '1112001', 0, 'IMG_20220324_135045.jpg', 'zahra', 'ذكر', 'menofia', 'مسئول عن اداره شئون الطلاب', 'zahra852@gmail.com', 288595, 'الحاسبات والمعلومات', ' المنوفيه'),
 (2252002, '2002', 1, 'SAVE_20210512_150255.jpg', 'مصطفي يحيي', 'ذكر', 'ميت بره مركز قويسنا المنوفيه', 'مسئول السيستم', 'gad993813@gmail.com', 1226717838, 'الحاسبات والمعلومات', 'المنوفيه');
 
@@ -67,6 +67,13 @@ CREATE TABLE `computer_science_dependence_subject` (
   `Dependence_Subject_Semister` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `computer_science_dependence_subject`
+--
+
+INSERT INTO `computer_science_dependence_subject` (`Dependence_Subject_ID`, `Dependence_Subject_Name`, `Dependence_Subject_Code`, `Dependence_Subject_Hours`, `Dependence_Subject_Level`, `Dependence_Subject_Semister`) VALUES
+(1, 'sw-1', 'cs30', 3, 3, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -82,6 +89,13 @@ CREATE TABLE `computer_science_subject` (
   `Subject_Levels` int(100) NOT NULL,
   `Dependence_Subject_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `computer_science_subject`
+--
+
+INSERT INTO `computer_science_subject` (`Subject_ID`, `Subject_Name`, `Subject_Code`, `Subject_Hours`, `Subject_semister`, `Subject_Levels`, `Dependence_Subject_ID`) VALUES
+(1, 'sw-24', 'cs50', 3, 2, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -105,12 +119,7 @@ CREATE TABLE `departments` (
 --
 
 INSERT INTO `departments` (`Department_ID`, `Department_Arabic_Name`, `Department_English_Name`, `Department_Image`, `Department_Date`, `Department_manger`, `Department_Number_Students`, `Department_Number_Doctors`) VALUES
-('1', 'علوم حاسب', '', 'Screenshot 2023-04-04 010857.png', '2023-04-26', 'د/ حمدي', 100, 80),
-('5619', 'rhcfvrftuc', '', 'Screenshot 2023-04-04 010857.png', '2002-02-20', '0huiuyoukjn', 100, 88200),
-('cs21', 'علوم حاسب', 'computer science', 'DSC_2459.jpg', '', 'ahmed', 0, 0),
-('dd', 'lddlcvldv', 'computer_science', 'DSC_2459.jpg', '', 'hosam', 0, 0),
-('it50', 'تكنولوجيا المعلومات', 'information technology', 'DSC_2459.jpg', '', 'ali', 0, 0),
-('ss', 'ssd', 'information_technology', '', '', 'ali', 0, 0);
+('1', 'علوم حاسب', '', 'Screenshot 2023-04-04 010857.png', '2023-04-26', 'د/ حمدي', 100, 80);
 
 -- --------------------------------------------------------
 
@@ -119,7 +128,8 @@ INSERT INTO `departments` (`Department_ID`, `Department_Arabic_Name`, `Departmen
 --
 
 CREATE TABLE `doctor` (
-  `Dr_ID` int(30) NOT NULL,
+  `ID` int(11) NOT NULL,
+  `Doctor_ID` char(14) NOT NULL,
   `Password` varchar(100) NOT NULL,
   `Image` varchar(100) NOT NULL DEFAULT 'profile.jpg',
   `Full_Name` varchar(100) DEFAULT NULL,
@@ -141,11 +151,23 @@ CREATE TABLE `doctor` (
 -- Dumping data for table `doctor`
 --
 
-INSERT INTO `doctor` (`Dr_ID`, `Password`, `Image`, `Full_Name`, `Job`, `Gender`, `Nationality`, `Religion`, `Date_Birth`, `Address`, `Phone_Number`, `Degree`, `University`, `Faculty`, `Department`, `Email_Address`) VALUES
-(47, '47', 'profile.jpg', 'اسلام', 'دكتور', 'ذكر', 'مصري', 'مسلم', '2023-04-19', 'Quisna Menufia Egypt', '01226717838', 'يي', 'المنوفيه', 'الحاسبات والمعلومات', 'علوم', 'gad993813@gmail.com'),
-(600, '600', '', 'mostafa yehia gad', 'دكتور', 'on', 'مصري', 'مسلم', '2023-04-21', 'Quisna Menufia Egypt', '', '88', 'المنوفيه', 'الحاسبات والمعلومات', 'العام', 'gad993813@gmail.com'),
-(900, '900', '1607262221104.jpg', 'mostafa yehia gad', 'دكتور', 'on', 'مصري', 'مسلم', '2023-04-07', 'Quisna Menufia Egypt', '126', 'ماستر', 'المنوفيه', 'الحاسبات والمعلومات', 'العام', 'moustafa.yehia160800@ci.menofia.edu.eg'),
-(123456, '123456', 'profile.jpg', 'احمد', 'دكتور', 'ذكر', 'مصري', 'مسلم', '0000-00-00', 'القاهره', '01226717838', 'مدرس مساعد', 'المنوفيه', 'الحاسبات والمعلومات', 'علوم حاسب', 'gad993813@gmail.com');
+INSERT INTO `doctor` (`ID`, `Doctor_ID`, `Password`, `Image`, `Full_Name`, `Job`, `Gender`, `Nationality`, `Religion`, `Date_Birth`, `Address`, `Phone_Number`, `Degree`, `University`, `Faculty`, `Department`, `Email_Address`) VALUES
+(600, '14567894520236', '600', '', 'mostafa yehia gad', 'دكتور', 'انثي', 'مصري', 'مسلم', '2023-04-21', 'Quisna Menufia Egypt', '', '88', 'المنوفيه', 'الحاسبات والمعلومات', 'العام', 'gad993813@gmail.com'),
+(900, '12345678901478', '900', '1607262221104.jpg', 'mostafa yehia gad', 'دكتور', 'انثي', 'مصري', 'مسلم', '2023-04-07', 'Quisna Menufia Egypt', '126', 'ماستر', 'المنوفيه', 'الحاسبات والمعلومات', 'العام', 'moustafa.yehia160800@ci.menofia.edu.eg'),
+(123456, '9876543210000', '123456', 'profile.jpg', 'احمد', 'دكتور', 'ذكر', 'مصري', 'مسلم', '0000-00-00', 'القاهره', '01226717838', 'مدرس مساعد', 'المنوفيه', 'الحاسبات والمعلومات', 'علوم حاسب', 'gad993813@gmail.com'),
+(2147483647, '78945612314789', '47', 'profile.jpg', 'اسلام', 'دكتور', 'ذكر', 'مصري', 'مسلم', '2023-04-19', 'Quisna Menufia Egypt', '01226717838', 'يي', 'المنوفيه', 'الحاسبات والمعلومات', 'علوم', 'gad993813@gmail.com');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `doctor_subjects`
+--
+
+CREATE TABLE `doctor_subjects` (
+  `id` int(11) NOT NULL,
+  `Doctor_Id` int(11) NOT NULL,
+  `Subject_Name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -220,7 +242,14 @@ ALTER TABLE `departments`
 -- Indexes for table `doctor`
 --
 ALTER TABLE `doctor`
-  ADD PRIMARY KEY (`Dr_ID`);
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `doctor_subjects`
+--
+ALTER TABLE `doctor_subjects`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `Doctor_Id` (`Doctor_Id`);
 
 --
 -- Indexes for table `student`
@@ -237,13 +266,25 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `computer_science_dependence_subject`
 --
 ALTER TABLE `computer_science_dependence_subject`
-  MODIFY `Dependence_Subject_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Dependence_Subject_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `computer_science_subject`
 --
 ALTER TABLE `computer_science_subject`
-  MODIFY `Subject_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Subject_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `doctor`
+--
+ALTER TABLE `doctor`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2147483648;
+
+--
+-- AUTO_INCREMENT for table `doctor_subjects`
+--
+ALTER TABLE `doctor_subjects`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
@@ -254,6 +295,12 @@ ALTER TABLE `computer_science_subject`
 --
 ALTER TABLE `computer_science_subject`
   ADD CONSTRAINT `computer_science_subject_ibfk_1` FOREIGN KEY (`Dependence_Subject_ID`) REFERENCES `computer_science_dependence_subject` (`Dependence_Subject_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `doctor_subjects`
+--
+ALTER TABLE `doctor_subjects`
+  ADD CONSTRAINT `doctor_subjects_ibfk_1` FOREIGN KEY (`Doctor_Id`) REFERENCES `doctor` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

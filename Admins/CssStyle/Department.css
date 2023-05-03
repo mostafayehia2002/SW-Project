@@ -87,11 +87,11 @@ ul {
   align-items: center;
 }
 .departments .box .info a {
-  color: #2196f3;
+  color: #229678;
   font-weight: bold;
 }
 .departments .box .info i {
-  color: #2196f3;
+  color: #229678;
 }
 .departments .box:hover .info i {
   animation: moving 0.6s linear infinite;
