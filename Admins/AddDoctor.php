@@ -29,7 +29,7 @@ if (isset($_POST['submit'])) {
     //sql
 
     try {
-        $sql = $con->query("INSERT INTO `doctor` (`Dr_ID`, `Password`, `Image`, `Full_Name`, `Gender`, `Nationality`, `Religion`, `Date_Birth`, `Address`, `Phone_Number`, `Degree`, `University`, `Faculty`, `Department`, `Email_Address`) VALUES('$id', '$id', '$image','$name','$gender','$nationality','$religion','$date_birth','$address','$phone','$degree','$university','$faculty','$department','$email')");
+        $sql = $con->query("INSERT INTO `doctor` (`ID`,`Doctor_ID`, `Password`, `Image`, `Full_Name`, `Gender`, `Nationality`, `Religion`, `Date_Birth`, `Address`, `Phone_Number`, `Degree`, `University`, `Faculty`, `Department`, `Email_Address`) VALUES(NULL,'$id', '$id', '$image','$name','$gender','$nationality','$religion','$date_birth','$address','$phone','$degree','$university','$faculty','$department','$email')");
 
         echo "<div class='success'>  تم اضافه البيانات بنجاح</div>";
     } catch (PDOException $e) {
@@ -44,7 +44,7 @@ if (isset($_POST['submit'])) {
 
 if (isset($_GET['delete'])) {
     $delete_id = $_GET['delete'];
-    $delete = $con->query("DELETE FROM `doctor` WHERE `Dr_ID`=$delete_id");
+    $delete = $con->query("DELETE FROM `doctor` WHERE `Doctor_ID`='$delete_id'");
     if ($delete) {
         echo "تم الحذف بنجاح";
         header("Location: AddAdmin.php");
@@ -221,15 +221,15 @@ if (isset($_GET['delete'])) {
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
-    <script>
-        $(document).ready(function() {
+    <script>   
+        //////Tables
+        var table = $(document).ready(function() {
             $('#files_list').DataTable({
                 "aLengthMenu": [
                     [5, 10, 25, -1],
                     [5, 10, 25, "All"]
                 ],
                 "iDisplayLength": 10,
-
                 "language": {
                     "sProcessing": "جارٍ التحميل...",
                     "sLengthMenu": "أظهر _MENU_ مدخلات",

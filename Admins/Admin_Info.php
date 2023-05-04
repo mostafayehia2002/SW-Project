@@ -1,18 +1,15 @@
 <?php
 session_start();
+include_once("../DataBase/database.php");
 if (!isset($_SESSION["admin_id"])) {
-
     header("location:../index.php");
     exit();
-}
-
-include_once("../DataBase/database.php");
-if ($con) {
-
+} else {
     $ID = $_SESSION['admin_id'];
     $sql = $con->query("SELECT * FROM `admin` WHERE Ad_ID='$ID'");
     $data = $sql->fetch(PDO::FETCH_ASSOC);
 }
+
 
 ?>
 <html lang="en">
@@ -26,24 +23,17 @@ if ($con) {
     <link rel="stylesheet" href="../CssComponent/Info.css">
     <link rel="stylesheet" href="../CssComponent/Table.css">
     <link rel="stylesheet" href="../CssComponent/Dashboard.css">
-
     <title>Admin Information</title>
 </head>
 
 <body>
-
     <!-- Start nav-bar -->
     <?php include_once("../Components/NavBar.php"); ?>
     <!-- end nav bar -->
-
-
     <section class="section">
-
-
         <!-- Dashboard -->
         <?php include_once("../Components/Dashboard.php") ?>
         <!-- end Dashboard -->
-
         <div class="container">
             <div class="personal_info">
                 <h3>بيانات شخصية</h3>
@@ -71,7 +61,6 @@ if ($con) {
                     <li>
                         <b>البريد الاكتروني</b>
                         <p id="Email_Address"> <?php echo  $data['Job']  ?> </p>
-
                     </li>
                     <li>
                         <b>رقم الهاتف</b>
@@ -91,16 +80,10 @@ if ($con) {
                         <b>الجامعة</b>
                         <p id="University"><?php echo  $data['University']  ?></p>
                     </li>
-
                 </ul>
             </div>
         </div>
-
     </section>
-
-
-    <a href="../logout.php">Logout</a>
-
     <script src="../JsComponent/Action.js"></script>
     <script src="JS/main.js"></script>
 </body>

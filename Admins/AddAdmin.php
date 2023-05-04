@@ -55,12 +55,15 @@ if (isset($_GET['delete'])) {
 }
 
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
-    <title>اضافه ادمن</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CssComponent/all.min.css">
     <link rel="stylesheet" href="../CssComponent/AddData.css">
     <link rel="stylesheet" href="../CssComponent/Table.css">
@@ -71,6 +74,7 @@ if (isset($_GET['delete'])) {
     <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
     </link>
+    <title>اضافه ادمن</title>
 </head>
 
 <body>
@@ -205,15 +209,15 @@ if (isset($_GET['delete'])) {
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
-    <script>
-        $(document).ready(function() {
+    <script>   
+        //////Tables
+        var table = $(document).ready(function() {
             $('#files_list').DataTable({
                 "aLengthMenu": [
                     [5, 10, 25, -1],
                     [5, 10, 25, "All"]
                 ],
                 "iDisplayLength": 10,
-
                 "language": {
                     "sProcessing": "جارٍ التحميل...",
                     "sLengthMenu": "أظهر _MENU_ مدخلات",

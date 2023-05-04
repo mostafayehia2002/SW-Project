@@ -23,7 +23,6 @@ let menu = document.querySelectorAll(".link");
 menu.forEach((m) => {
     m.onclick = () => {
         if (m.lastElementChild.style.display == "none") {
-
             m.lastElementChild.style.display = "block";
         } else {
             m.lastElementChild.style.display = "none";
@@ -45,4 +44,3 @@ profile.onclick = () => {
         profile_list.style.display = "none";
     }
 }
-

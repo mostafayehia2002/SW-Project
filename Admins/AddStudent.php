@@ -2,53 +2,53 @@
 session_start();
 include_once("../DataBase/database.php");
 if (!isset($_SESSION["admin_id"])) {
-
     header("location:../index.php");
     exit();
 }
-if ($con) {
-    if (isset($_POST['submit'])) {
-        $id = $_POST['id'];
-        $name = $_POST['full-name'];
-        $gender = $_POST['gender'];
-        $nationality = $_POST['nationality'];
-        $religion = $_POST['religion'];
-        $address = $_POST['address'];
-        $date_birth = $_POST['date_birth'];
-        $national_id = $_POST['national_id'];
-        $phone = $_POST['phone'];
-        $email = $_POST['email'];
-        $school = $_POST['school'];
-        $qualification = $_POST['qualification'];
-        $total_degree = $_POST['total_degree'];
-        $average = $_POST['average'];
-        $date_coordination = $_POST['date_Coordination'];
-        $number_Coordination = $_POST['number_Coordination'];
-        $faculty = $_POST['faculty'];
-        $university = $_POST['university'];
-        $department = $_POST['department'];
-        $joining_date = $_POST['joining_date'];
-        //    //images
-        $from = $_FILES['image']['tmp_name'];
-        $to = "../Students/images/" . $_FILES['image']['name'];
-        move_uploaded_file($from, $to);
-        $image = $_FILES['image']['name'];
 
-        //       //sql
 
-        try {
-            $sql = $con->query("INSERT INTO `student`(`St_ID`, `Password`,`Image`,`Full_Name`,`Gender`, `Nationality`,`Religion`,`Address`,`Date_of_Birth`,`National_ID`,`Phone_Number`, `Academic_Email`,`School`,`Qualification`,`Total_Degree`,`Average`,`Date_Coordination`, `Number_Coordination`,`Faculty`,`University`,`Department`,`Joining_Date`) VALUES ('$id', '$national_id', '$image','$name','$gender','$nationality','$religion','$address','$date_birth','$national_id','$phone','$email','$school', '$qualification','$total_degree','$average','$date_coordination','$number_Coordination','$faculty','$university','$department','$joining_date')");
+if (isset($_POST['submit'])) {
+    $id = $_POST['id'];
+    $name = $_POST['full-name'];
+    $gender = $_POST['gender'];
+    $nationality = $_POST['nationality'];
+    $religion = $_POST['religion'];
+    $address = $_POST['address'];
+    $date_birth = $_POST['date_birth'];
+    $national_id = $_POST['national_id'];
+    $phone = $_POST['phone'];
+    $email = $_POST['email'];
+    $school = $_POST['school'];
+    $qualification = $_POST['qualification'];
+    $total_degree = $_POST['total_degree'];
+    $average = $_POST['average'];
+    $date_coordination = $_POST['date_Coordination'];
+    $number_Coordination = $_POST['number_Coordination'];
+    $faculty = $_POST['faculty'];
+    $university = $_POST['university'];
+    $department = $_POST['department'];
+    $joining_date = $_POST['joining_date'];
+    //    //images
+    $from = $_FILES['image']['tmp_name'];
+    $to = "../Students/images/" . $_FILES['image']['name'];
+    move_uploaded_file($from, $to);
+    $image = $_FILES['image']['name'];
 
-            echo "<div class='success'>  تم اضافه البيانات بنجاح</div>";
-        } catch (PDOException $e) {
+    //       //sql
 
-            echo "<div class='faild'>";
-            echo " يرجي عدم تكرار الرقم القومي والتاكد من تسجيل البيانات بشكل صحيح" . "<br>";
-            echo $e->getMessage();
-            echo "</div>";
-        }
+    try {
+        $sql = $con->query("INSERT INTO `student`(`St_ID`, `Password`,`Image`,`Full_Name`,`Gender`, `Nationality`,`Religion`,`Address`,`Date_of_Birth`,`National_ID`,`Phone_Number`, `Academic_Email`,`School`,`Qualification`,`Total_Degree`,`Average`,`Date_Coordination`, `Number_Coordination`,`Faculty`,`University`,`Department`,`Joining_Date`) VALUES ('$id', '$national_id', '$image','$name','$gender','$nationality','$religion','$address','$date_birth','$national_id','$phone','$email','$school', '$qualification','$total_degree','$average','$date_coordination','$number_Coordination','$faculty','$university','$department','$joining_date')");
+
+        echo "<div class='success'>  تم اضافه البيانات بنجاح</div>";
+    } catch (PDOException $e) {
+
+        echo "<div class='faild'>";
+        echo " يرجي عدم تكرار الرقم القومي والتاكد من تسجيل البيانات بشكل صحيح" . "<br>";
+        echo $e->getMessage();
+        echo "</div>";
     }
 }
+
 
 
 
@@ -263,14 +263,14 @@ if (isset($_GET['delete'])) {
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
     <script>
-        $(document).ready(function() {
+        //////Tables
+        var table = $(document).ready(function() {
             $('#files_list').DataTable({
                 "aLengthMenu": [
                     [5, 10, 25, -1],
                     [5, 10, 25, "All"]
                 ],
                 "iDisplayLength": 10,
-
                 "language": {
                     "sProcessing": "جارٍ التحميل...",
                     "sLengthMenu": "أظهر _MENU_ مدخلات",

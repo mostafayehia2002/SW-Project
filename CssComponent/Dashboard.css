@@ -2,7 +2,6 @@
 
 :root {
   --main-color: #229678;
-  /* --main-color: #32c19a; */
   --red-color: #e74c3c;
   --orangen-color: #f39c12;
   --white-color: #fff;
@@ -11,11 +10,6 @@
   --ligth-background: #eee;
   --main-border: 1pxsolid rgba(0, 0, 0, 0.2);
   --main-trantision: 0.2s linear;
-  /* --linear: linear-gradient(
-    90deg,
-    rgba(4, 4, 101, 1) 0%,
-    rgba(2, 0, 36, 1) 100%
-  ); */
   --linear: #229678;
 }
 
@@ -27,7 +21,6 @@
   outline: none;
   border: none;
   text-decoration: none;
-  /* text-align: inherit; */
   direction: rtl !important;
 }
 
