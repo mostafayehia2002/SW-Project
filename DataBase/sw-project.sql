@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2023 at 10:30 PM
+-- Generation Time: May 04, 2023 at 10:27 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -48,9 +48,9 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`Ad_ID`, `Password`, `status`, `Image`, `Full_Name`, `Gender`, `Address`, `Job`, `Email_Address`, `Phone_Number`, `Faculty`, `University`) VALUES
 (22, '22', 1, 'IMG_20220324_135045.jpg', 'اسلام', 'ذكر', 'qusina', 'مسئول عن اداره شئون الطلاب', 'moustafa.yehia160800@ci.menofia.edu.eg', 1226717838, 'الحاسبات والمعلومات', ' المنوفيه'),
-(2002, '2002', 1, 'IMG_20220324_135045.jpg', 'mostafa hossam', 'انثي', 'qusina', 'مسئول عن اداره شئون الطلاب', 'moustafa.yehia160800@ci.menofia.edu.eg', 1226717838, 'الحاسبات والمعلومات', ' المنوفيه'),
-(1112001, '1112001', 0, 'IMG_20220324_135045.jpg', 'zahra', 'ذكر', 'menofia', 'مسئول عن اداره شئون الطلاب', 'zahra852@gmail.com', 288595, 'الحاسبات والمعلومات', ' المنوفيه'),
-(2252002, '2002', 1, 'SAVE_20210512_150255.jpg', 'مصطفي يحيي', 'ذكر', 'ميت بره مركز قويسنا المنوفيه', 'مسئول السيستم', 'gad993813@gmail.com', 1226717838, 'الحاسبات والمعلومات', 'المنوفيه');
+(2002, '2002', 1, 'IMG_20220324_135045.jpg', 'mostafa hossam', 'ذكر', 'qusina', 'مسئول عن اداره شئون الطلاب', 'moustafa.yehia160800@ci.menofia.edu.eg', 1226717838, 'الحاسبات والمعلومات', ' المنوفيه'),
+(2252002, '2002', 1, 'SAVE_20210512_150255.jpg', 'مصطفي يحيي', 'انثي', 'ميت بره مركز قويسنا المنوفيه', 'مسئول السيستم', 'gad993813@gmail.com', 1226717838, 'الحاسبات والمعلومات', 'المنوفيه'),
+(2147483647, '30208161600398', 1, '', 'مصطفي حسام رزق', 'ذكر', 'Mansoura', 'مسئول عن اداره شئون الطلاب', 'ma9856603@gmail.com', 0, 'الحاسبات والمعلومات', ' المنوفيه');
 
 -- --------------------------------------------------------
 
@@ -72,7 +72,11 @@ CREATE TABLE `computer_science_dependence_subject` (
 --
 
 INSERT INTO `computer_science_dependence_subject` (`Dependence_Subject_ID`, `Dependence_Subject_Name`, `Dependence_Subject_Code`, `Dependence_Subject_Hours`, `Dependence_Subject_Level`, `Dependence_Subject_Semister`) VALUES
-(1, 'sw-1', 'cs30', 3, 3, 1);
+(1, 'لا يوجد', '0', 0, 0, 0),
+(2, 'os-1', 'cs789', 3, 2, 1),
+(4, 'math-1', 'Cs7897', 3, 1, 1),
+(5, 'math-1', 'Cs7897', 3, 1, 1),
+(7, 'sw-1', 'cs30', 3, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -95,7 +99,8 @@ CREATE TABLE `computer_science_subject` (
 --
 
 INSERT INTO `computer_science_subject` (`Subject_ID`, `Subject_Name`, `Subject_Code`, `Subject_Hours`, `Subject_semister`, `Subject_Levels`, `Dependence_Subject_ID`) VALUES
-(1, 'sw-24', 'cs50', 3, 2, 3, 1);
+(1, 'sw-24', 'cs50', 3, 2, 3, 7),
+(2, 'os-2', 'cs74', 3, 4, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -104,11 +109,12 @@ INSERT INTO `computer_science_subject` (`Subject_ID`, `Subject_Name`, `Subject_C
 --
 
 CREATE TABLE `departments` (
-  `Department_ID` varchar(30) NOT NULL,
+  `ID` int(11) NOT NULL,
+  `Department_Code` varchar(30) NOT NULL,
   `Department_Arabic_Name` varchar(100) DEFAULT NULL,
   `Department_English_Name` varchar(100) NOT NULL,
   `Department_Image` varchar(100) NOT NULL,
-  `Department_Date` varchar(100) NOT NULL,
+  `Department_Date` varchar(100) NOT NULL DEFAULT current_timestamp(),
   `Department_manger` varchar(100) NOT NULL,
   `Department_Number_Students` int(100) NOT NULL,
   `Department_Number_Doctors` int(100) NOT NULL
@@ -118,8 +124,8 @@ CREATE TABLE `departments` (
 -- Dumping data for table `departments`
 --
 
-INSERT INTO `departments` (`Department_ID`, `Department_Arabic_Name`, `Department_English_Name`, `Department_Image`, `Department_Date`, `Department_manger`, `Department_Number_Students`, `Department_Number_Doctors`) VALUES
-('1', 'علوم حاسب', '', 'Screenshot 2023-04-04 010857.png', '2023-04-26', 'د/ حمدي', 100, 80);
+INSERT INTO `departments` (`ID`, `Department_Code`, `Department_Arabic_Name`, `Department_English_Name`, `Department_Image`, `Department_Date`, `Department_manger`, `Department_Number_Students`, `Department_Number_Doctors`) VALUES
+(1, 'CS', 'علوم حاسب', 'computer_science', 'Screenshot 2023-04-04 010857.png', '2023-04-26', 'د/ حمدي', 100, 80);
 
 -- --------------------------------------------------------
 
@@ -236,7 +242,7 @@ ALTER TABLE `computer_science_subject`
 -- Indexes for table `departments`
 --
 ALTER TABLE `departments`
-  ADD PRIMARY KEY (`Department_ID`);
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `doctor`
@@ -266,13 +272,19 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `computer_science_dependence_subject`
 --
 ALTER TABLE `computer_science_dependence_subject`
-  MODIFY `Dependence_Subject_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Dependence_Subject_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `computer_science_subject`
 --
 ALTER TABLE `computer_science_subject`
-  MODIFY `Subject_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Subject_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `departments`
+--
+ALTER TABLE `departments`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `doctor`
