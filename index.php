@@ -10,15 +10,15 @@ if (isset($_POST["Login"])) {
   $Type_User = $_POST["type_user"];
 
 
-if (empty($_POST['username'])){
-  $err["id"] = "UserName IS Required";
-}
-if (empty($_POST['password'] )) {
-  $err["password"] = "Password IS Required";
-
-}if(empty($_POST['type_user'])) {
-  $err['type'] = "Type Of User IS Required";
-}
+  if (empty($_POST['username'])) {
+    $err["id"] = "UserName IS Required";
+  }
+  if (empty($_POST['password'])) {
+    $err["password"] = "Password IS Required";
+  }
+  if (empty($_POST['type_user'])) {
+    $err['type'] = "Type Of User IS Required";
+  }
 
   switch ($Type_User) {
     case "admin":
@@ -57,10 +57,14 @@ if (empty($_POST['password'] )) {
       }
       break;
   }
+  if ($count < 1) {
+    $err['incorrect'] = "Id OR Password Incorrect";
+  }
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -69,12 +73,13 @@ if (empty($_POST['password'] )) {
   <link rel="stylesheet" href="./CssComponent/login.css">
   <title> Login Form</title>
 </head>
+
 <body>
   <div class="container">
     <div class="form-box">
       <video class="title" loop autoplay height="100px" width="100px">
-            <source src="Images/logo.mp4">
-          </video>
+        <source src="Images/logo.mp4">
+      </video>
       <form action="" method="POST">
         <div class="input-group">
           <div class="input-filed" id="nameFiled">
@@ -108,34 +113,27 @@ if (empty($_POST['password'] )) {
           <input type="submit" value="Login" name="Login">
         </div>
         <div class="developer">
-        <a href="developer.php">Show  System Developer</a>
+          <a href="developer.php">Show System Developer</a>
         </div>
-        <?php 
-        if(isset($err['id'])){
-
-          echo "<span  class='message-error'>".$err['id'] ."</span>";
-
-        }elseif(isset($err['password'])){
-
-          echo "<span  class='message-error'>".$err['password'] ."</span>";
-
-        }elseif(isset($err['type'])){
-
-          echo "<span  class='message-error'> ".$err['type'] ."</span>";
-        } 
+        <?php
+        foreach ($err as $er) {
+          echo "<p  class='message-error'>" . $er . "</p>";
+        }
         ?>
         <script>
-          let error=document.querySelector(".message-error");
-          if(error){
-            setTimeout(()=>{
-          error.style.display="none";
-            },2000)
+          let error = document.querySelectorAll(".message-error");
+          if (error) {
+            error.forEach((e) => {
+              setTimeout(() => {
+                e.style.display = "none";
+              }, 2000);
+            })
           }
         </script>
 
       </form>
 
- 
+
     </div>
   </div>
 
@@ -144,4 +142,3 @@ if (empty($_POST['password'] )) {
 </body>
 
 </html>
-
