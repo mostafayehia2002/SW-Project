@@ -33,25 +33,25 @@ if ($con) {
 ?>
 <!-- Start nav-bar -->
 <div class="nav-bar1">
-   <div class="icon">
-      <i class="fa-solid fa-bars-staggered"></i>
-   </div>
+    <div class="icon">
+        <i class="fa-solid fa-bars-staggered"></i>
+    </div>
 
-   <div class="profile">
-      <div class="user">
-         <p class="username"><?php echo  $full_name ?></p>
-         <p class="job"><?php echo $job ?></p>
-      </div>
+    <div class="profile">
+        <div class="user">
+            <p class="username"><?php echo  $full_name ?></p>
+            <p class="job"><?php echo $job ?></p>
+        </div>
 
-      <div class="img">
-         <img src=<?php echo $img ?> alt="error" height="30px" width="30px">
-      </div>
+        <div class="img">
+            <img src=<?php echo $img ?> alt="error" height="30px" width="30px">
+        </div>
 
-      <ul class="profile-list">
-         <li> <a href=<?php echo "$profile" ?>><i class="fa-solid fa-user"></i>الصفحه الرئيسيه</li>
-         <li><a href="../logout.php"><i class="fa-solid fa-right-from-bracket"></i>تسجيل خروج</a></li>
-      </ul>
-   </div>
+        <ul class="profile-list">
+            <li> <a href=<?php echo "$profile" ?>><i class="fa-solid fa-user"></i>الصفحه الرئيسيه</li>
+            <li><a href="../logout.php"><i class="fa-solid fa-right-from-bracket"></i>تسجيل خروج</a></li>
+        </ul>
+    </div>
 
 
 </div>

@@ -64,112 +64,126 @@ if (isset($_POST['update_data'])) {
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تحديث بيانات دكتور</title>
-    <link rel="stylesheet" href="../CssComponent/all.min.css">
-    <link rel="stylesheet" href="../CssComponent/AddData.css">
-    <link rel="stylesheet" href="../CssComponent/Dashboard.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../CssComponent/all.min.css">
+        <link rel="stylesheet" href="../CssComponent/AddData.css">
+        <link rel="stylesheet" href="../CssComponent/Dashboard.css">
+        <title>تحديث بيانات دكتور</title>
+    </head>
 
-<body>
+    <body>
 
-    <!-- Start nav-bar -->
-    <?php include_once("../Components/NavBar.php"); ?>
-    <!-- end nav bar -->
-    <section class="section">
         <!-- Dashboard -->
         <?php include_once("../Components/Dashboard.php") ?>
         <!-- end Dashboard -->
-        <div class="container">
-            <form action="" method="POST" enctype="multipart/form-data">
-                <div class="oneuser">
-                    <h3 class="title">تحديث بيانات دكتور</h3>
-                    <div class="allinput">
-                        <div class="input-filed">
-                            <label for="name">الاسم كاملا</label>
-                            <input type="text" value="<?Php echo $old_data_doctor['Full_Name'] ?>" placeholder="يرجي اضافه الاسم كامل باللغه العربيه" id="name" name="full-name" required>
-                        </div>
-                        <div class="input-filed">
-                            <label for="id">الرقم القومي</label>
-                            <input type="number" value="<?Php echo $old_data_doctor['Doctor_ID'] ?>" id="id" name="id" required>
-                        </div>
-                        <div class="input-filed">
-                            <label for="phone">رقم المحمول</label>
-                            <input type="number" value="<?Php echo $old_data_doctor['Phone_Number'] ?>" id="phone" name="phone" placeholder="+20************">
-                        </div>
-                        <div class="input-filed">
-                            <label for="email">الايميل الاكاديمي</label>
-                            <input type="email" value="<?Php echo $old_data_doctor['Email_Address'] ?>" id="email" name="email">
-                        </div>
-                        <div class="input-filed">
-                            <label for="password">الرقم السري</label>
-                            <input type="password" value="<?Php echo $old_data_doctor['Password'] ?>" id="password" name="password">
-                        </div>
-                        <div class="input-filed">
-                            <label for="nationality">الجنسية</label>
-                            <input type="text" id="nationality" value="<?Php echo $old_data_doctor['Nationality'] ?>" name="nationality">
-                        </div>
-                        <div class="input-filed">
-                            <label for="religion">الديانة </label>
-                            <input type="text" value="<?Php echo $old_data_doctor['Religion'] ?>" id="religion" name="religion">
-                        </div>
-                        <div class="input-filed">
-                            <label for="address">العنوان</label>
-                            <input type="text" value="<?Php echo $old_data_doctor['Address'] ?>" id="address" name="address">
-                        </div>
-                        <div class="input-filed">
-                            <label for="date_birth"> تاريخ الميلاد</label>
-                            <input type="date" id="date_birth" name="date_birth" value="<?Php echo $old_data_doctor['Date_Birth'] ?>">
-                        </div>
-                        <div class="input-filed spcail">
-                            <label for="image"> اضافة صورة</label>
-                            <input type="file" accept="image/*" id="image" name="image">
-                        </div>
-                        <div class="input-filed">
-                            <label for="degree">الدرجه العلميه</label>
-                            <input type="text" value="<?Php echo $old_data_doctor['Degree'] ?>" id="degree" name="degree">
-                        </div>
-                        <div class="input-filed">
-                            <label for="faculty"> الكلية</label>
-                            <input type="text" id="faculty" value="<?Php echo $old_data_doctor['Faculty'] ?>" name="faculty">
-                        </div>
-                        <div class="input-filed">
-                            <label for="university"> الجامعة</label>
-                            <input type="text" id="university" value="<?Php echo $old_data_doctor['University'] ?>" name="university">
-                        </div>
-                        <div class="input-filed">
-                            <label for="department"> القسم</label>
-                            <input type="text" value="<?Php echo $old_data_doctor['Department'] ?>" id="department" name="department">
-                        </div>
-                        <div class="input-filed">
-                            <label for="gender">النوع</label>
-                            <div class="gender">
-                                <div class="male">
-                                    <input type="radio" name="gender" id="male" value="ذكر" <?Php echo
-                                                                                            $old_data_doctor['Gender'] == "ذكر" ? 'checked' : ''; ?>>
-                                    <label for="male">ذكر</label>
-                                </div>
-                                <div class="female">
-                                    <input type="radio" name="gender" id="female" value="انثي" <?Php echo
-                                                                                                $old_data_doctor['Gender'] == "انثي" ? 'checked' : ''; ?>>
-                                    <label for="female">انثي</label>
+        <section class="section">
+            <!-- Start nav-bar -->
+            <?php include_once("../Components/NavBar.php"); ?>
+            <!-- end nav bar -->
+            <div class="container">
+                <form action="" method="POST" enctype="multipart/form-data">
+                    <div class="oneuser">
+                        <h3 class="title">تحديث بيانات دكتور</h3>
+                        <div class="allinput">
+                            <div class="input-filed">
+                                <label for="name">الاسم كاملا</label>
+                                <input type="text" value="<?Php echo $old_data_doctor['Full_Name'] ?>"
+                                    placeholder="يرجي اضافه الاسم كامل باللغه العربيه" id="name" name="full-name"
+                                    required>
+                            </div>
+                            <div class="input-filed">
+                                <label for="id">الرقم القومي</label>
+                                <input type="number" value="<?Php echo $old_data_doctor['Doctor_ID'] ?>" id="id"
+                                    name="id" required>
+                            </div>
+                            <div class="input-filed">
+                                <label for="phone">رقم المحمول</label>
+                                <input type="number" value="<?Php echo $old_data_doctor['Phone_Number'] ?>" id="phone"
+                                    name="phone" placeholder="+20************">
+                            </div>
+                            <div class="input-filed">
+                                <label for="email">الايميل الاكاديمي</label>
+                                <input type="email" value="<?Php echo $old_data_doctor['Email_Address'] ?>" id="email"
+                                    name="email">
+                            </div>
+                            <div class="input-filed">
+                                <label for="password">الرقم السري</label>
+                                <input type="password" value="<?Php echo $old_data_doctor['Password'] ?>" id="password"
+                                    name="password">
+                            </div>
+                            <div class="input-filed">
+                                <label for="nationality">الجنسية</label>
+                                <input type="text" id="nationality"
+                                    value="<?Php echo $old_data_doctor['Nationality'] ?>" name="nationality">
+                            </div>
+                            <div class="input-filed">
+                                <label for="religion">الديانة </label>
+                                <input type="text" value="<?Php echo $old_data_doctor['Religion'] ?>" id="religion"
+                                    name="religion">
+                            </div>
+                            <div class="input-filed">
+                                <label for="address">العنوان</label>
+                                <input type="text" value="<?Php echo $old_data_doctor['Address'] ?>" id="address"
+                                    name="address">
+                            </div>
+                            <div class="input-filed">
+                                <label for="date_birth"> تاريخ الميلاد</label>
+                                <input type="date" id="date_birth" name="date_birth"
+                                    value="<?Php echo $old_data_doctor['Date_Birth'] ?>">
+                            </div>
+                            <div class="input-filed spcail">
+                                <label for="image"> اضافة صورة</label>
+                                <input type="file" accept="image/*" id="image" name="image">
+                            </div>
+                            <div class="input-filed">
+                                <label for="degree">الدرجه العلميه</label>
+                                <input type="text" value="<?Php echo $old_data_doctor['Degree'] ?>" id="degree"
+                                    name="degree">
+                            </div>
+                            <div class="input-filed">
+                                <label for="faculty"> الكلية</label>
+                                <input type="text" id="faculty" value="<?Php echo $old_data_doctor['Faculty'] ?>"
+                                    name="faculty">
+                            </div>
+                            <div class="input-filed">
+                                <label for="university"> الجامعة</label>
+                                <input type="text" id="university" value="<?Php echo $old_data_doctor['University'] ?>"
+                                    name="university">
+                            </div>
+                            <div class="input-filed">
+                                <label for="department"> القسم</label>
+                                <input type="text" value="<?Php echo $old_data_doctor['Department'] ?>" id="department"
+                                    name="department">
+                            </div>
+                            <div class="input-filed">
+                                <label for="gender">النوع</label>
+                                <div class="gender">
+                                    <div class="male">
+                                        <input type="radio" name="gender" id="male" value="ذكر" <?Php echo
+                                            $old_data_doctor['Gender']=="ذكر" ? 'checked' : '' ; ?>>
+                                        <label for="male">ذكر</label>
+                                    </div>
+                                    <div class="female">
+                                        <input type="radio" name="gender" id="female" value="انثي" <?Php echo
+                                            $old_data_doctor['Gender']=="انثي" ? 'checked' : '' ; ?>>
+                                        <label for="female">انثي</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="save">
-                    <input type="submit" value="تحديث" name="update_data">
-                </div>
-                <a href="./AddDoctor.php">العوده للصفحه السابقه</a>
-            </form>
-        </div>
-    </section>
-    <script src="../JsComponent/Action.js"></script>
-    <script src="JS/main.js"></script>
-</body>
+                    <div class="save">
+                        <input type="submit" value="تحديث" name="update_data">
+                    </div>
+                    <a href="./AddDoctor.php">العوده للصفحه السابقه</a>
+                </form>
+            </div>
+        </section>
+        <script src="../JsComponent/Action.js"></script>
+        <script src="../JsComponent/admin.js"></script>
+    </body>
 
 </html>

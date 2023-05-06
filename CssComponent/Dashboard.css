@@ -28,56 +28,42 @@ body {
   background-color: var(--ligth-background) !important;
 }
 
-.Dashboard {
-  width: 18%;
-}
-
 .nav-bar1 {
   height: 60px;
-  width: 82%;
+  width: 100%;
   background-color: white;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  left: 0px;
-  top: 0px;
   z-index: 1000;
   text-align: center;
+  position: sticky;
+  top: 0;
+  left: 0;
 }
 
-.nav-bar1 .profile {
-  height: 100%;
-  padding: 10px;
-  cursor: pointer;
-  color: var(--main-color);
-}
-
+.nav-bar1 .profile,
 .nav-bar1 .icon {
   height: 100%;
-  cursor: pointer;
-  width: 10%;
+  padding: 10px 15px;
 }
-
-.nav-bar1 .icon i {
-  line-height: 55px;
+.nav-bar1 .icon {
+  line-height: 40px;
   font-size: 25px;
+  cursor: pointer;
+}
+.nav-bar1 .icon i {
   cursor: pointer;
   color: var(--main-color);
 }
-
 .nav-bar1 .profile {
   display: inline-flex;
-  /* padding: 10px; */
-  margin-left: 35px;
-  position: relative;
-  cursor: pointer;
+  margin-left: 10px;
 }
-
 .nav-bar1 .profile .user {
   margin-left: 5px;
 }
 .nav-bar1 .profile .user p {
+  color: var(--main-color);
   margin: 0 !important;
   font-size: 15px;
 }
@@ -93,16 +79,19 @@ body {
 
 .profile .profile-list {
   height: 100px;
-  width: 160px;
+  width: 170px;
   background-color: white;
   position: absolute;
   top: 60px;
-  left: 8px;
+  left: 50px;
   list-style: none;
   text-align: right;
   padding: 10px;
   font-size: 14px;
   display: none;
+}
+.profile .profile-list.show {
+  display: block;
 }
 .profile .profile-list a {
   color: black;
@@ -116,25 +105,29 @@ body {
 /*end nav-bar1*/
 
 /* start side-bar */
-.side-bar1 {
+.section {
+  padding-right: 280px;
+}
+.section.active {
+  padding-right: 0px;
+}
+.side-bar {
   height: 100vh;
-  width: 18%;
+  width: 280px;
+  background-color: var(--linear);
   position: fixed;
   right: 0px;
   top: 0px;
   z-index: 1000;
-  color: white;
-  background-color: var(--linear);
-}
-
-.side-bar1 h1 {
-  padding: 17px 0;
   text-align: center;
-  border-bottom: 2px solid white;
-  font-size: 20px;
+  color: white;
 }
-.side-bar1 h1 i {
-  font-size: 25px;
+.side-bar.hidden {
+  right: -300px;
+}
+.side-bar h1 {
+  padding: 5px 0 6px;
+  border-bottom: 1px solid #fff;
 }
 
 /*end side-bar */

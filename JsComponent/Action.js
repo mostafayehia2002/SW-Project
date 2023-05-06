@@ -1,19 +1,12 @@
 console.log("ok");
 
-let list = document.querySelector(".icon i");
-let navBar = document.querySelector(".nav-bar1");
-let sideBar = document.querySelector(".Dashboard");
-list.onclick = () => {
+let list=document.querySelector(".icon i");
+let sideBar=document.querySelector(".side-bar");
+let section=document.querySelector(".section");
 
-    if (sideBar.classList.contains("hidden")) {
-        sideBar.classList.remove("hidden");
-        navBar.style.cssText = "width:82%";
-        
-    } else {
-        sideBar.classList.add("hidden");
-        navBar.style.cssText = "width:100%";
-    }
-
+list.onclick=()=>{
+    section.classList.toggle("active") ;
+    sideBar.classList.toggle("hidden") ;
 }
 
 
@@ -36,11 +29,5 @@ menu.forEach((m) => {
 let profile = document.querySelector(".profile");
 let profile_list = document.querySelector(".profile-list");
 profile.onclick = () => {
-    if (profile_list.style.display == "none") {
-
-        profile_list.style.display = "block";
-    } else {
-
-        profile_list.style.display = "none";
-    }
+    profile_list.classList.toggle('show');
 }
