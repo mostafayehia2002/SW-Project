@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2023 at 10:27 PM
+-- Generation Time: May 06, 2023 at 11:56 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -130,6 +130,39 @@ INSERT INTO `departments` (`ID`, `Department_Code`, `Department_Arabic_Name`, `D
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `developer`
+--
+
+CREATE TABLE `developer` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `track` varchar(100) NOT NULL,
+  `date_birth` date NOT NULL,
+  `image` varchar(100) NOT NULL,
+  `faculty` varchar(100) NOT NULL,
+  `department` varchar(100) NOT NULL,
+  `phone` int(30) NOT NULL,
+  `facebook` varchar(100) NOT NULL,
+  `linkedin` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `developer`
+--
+
+INSERT INTO `developer` (`id`, `name`, `track`, `date_birth`, `image`, `faculty`, `department`, `phone`, `facebook`, `linkedin`, `email`) VALUES
+(1, 'Mostafa Yehia', 'Full Stack Web Developer', '2002-05-22', 'teefa.jpg', 'Computer And Information El Menofia', 'Computer Science', 1226717838, 'https://www.facebook.com/mostafa.gad.9085?mibextid=ZbWKwL', 'https://www.linkedin.com/in/mostafa-yehia-84456a235', 'gad993813@gmail.com'),
+(2, 'Mostafa Zahra', 'Back-End Developer', '2001-11-01', 'zhara.jpg', 'Computer And Information El Menofia', 'Computer Science', 1069320554, 'https://www.facebook.com/profile.php?id=100009546074886&mibextid=ZbWKwL', 'https://www.linkedin.com/in/mostafa-zahra-52530b260', 'mostafa.zahra69320@gmail.com'),
+(3, 'Mostafa Maher', 'Front-End Developer', '2003-03-16', 'maher.jpg', 'Computer And Information El Menofia', 'Computer Science', 1015949752, 'https://www.facebook.com/profile.php?id=100056520471991&mibextid=ZbWKwL', 'https://www.linkedin.com/in/mostafa-maher-a71695240', 'mstfyabwsdyt@gmail.com'),
+(4, 'Mostafa El Nagger', 'Back-End(.net) Developer', '2002-03-31', 'nagger.jpg', 'Computer And Information El Menofia', 'Computer Science', 1554766333, 'https://www.facebook.com/mostafa.elnager.3?mibextid=ZbWKwL', 'https://www.linkedin.com/in/mostafa-elnaggar-7a69922', 'mostafanasser23456789@gmail.com\r\n'),
+(5, 'Eslam Galal', 'Front-End Developer\r\n', '2002-07-08', 'eslam.jpg', 'Computer And Information El Menofia', 'Computer Science', 1211901201, 'https://www.facebook.com/eslam.galal.1426?mibextid=ZbWKwL ', 'https://www.linkedin.com/in/eslam-galal-a59813258 LinkedIn\r\n', 'eslamgalal2024@gmail.com\r\n\r\n'),
+(6, 'Nehal El Samoly', 'flutter Developer', '2002-06-22', 'unknown.jpg', 'Computer And Information Technology', 'Computer Science', 1288143936, 'https://www.facebook.com/nehal.nabil.5477/', 'https://www.linkedin.com/in/nehal-elsamoly-5a6977202/', 'nehalelsamoly123@gmail.com\r\n'),
+(7, 'Radwa Khonany', 'Front-End Developer', '2002-07-27', 'unknown.jpg', 'Computer And Informantion El Menofia', 'Computer Science', 1118347919, 'https://www.facebook.com/profile.php?id=100009695685182&mibextid=ZbWKwL\r\n\r\n', 'https://www.linkedin.com/in/radwa-khonany-b9b80a254\r\n', 'radwakhonany@gmail.com');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `doctor`
 --
 
@@ -245,6 +278,12 @@ ALTER TABLE `departments`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `developer`
+--
+ALTER TABLE `developer`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `doctor`
 --
 ALTER TABLE `doctor`
@@ -285,6 +324,12 @@ ALTER TABLE `computer_science_subject`
 --
 ALTER TABLE `departments`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `developer`
+--
+ALTER TABLE `developer`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `doctor`
