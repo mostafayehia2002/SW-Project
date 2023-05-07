@@ -75,6 +75,27 @@ if (isset($_POST['add_depend_subject'])) {
         <link rel="stylesheet" href="../CssComponent/Table.css">
         <link rel="stylesheet" href="../CssComponent/Dashboard.css">
         <title> اعدادات القسم</title>
+
+        <style>
+            .department-navbar{
+              list-style:none;
+                height: 60px;
+                width:100%;
+              /* overflow-X:auto;  */
+             background-color: white;     
+            }
+            .department-navbar li{
+            display: inline-block;
+            padding:10px;
+          
+
+            }
+            .department-navbar a{
+                color:#229678;
+                font-weight: bold;
+                text-decoration: none;
+            }
+        </style>
     </head>
 
     <body>
@@ -85,16 +106,23 @@ if (isset($_POST['add_depend_subject'])) {
             <!-- Start nav-bar -->
             <?php include_once("../Components/NavBar.php"); ?>
             <!-- end nav bar -->
-            <div class="container">
-                <ul>
+            <ul  class="department-navbar">                  
                     <li>
-                        <a href="Department_Setting.php?department_id=<?= $id ?>&status=add_subject">اضافة ماده</a>
+                        <a href="Department_Setting.php?department_id=<?= $id ?>&status=add_subject"> اضافه مواد القسم</a>
                     </li>
                     <li>
-                        <a href="Department_Setting.php?department_id=<?= $id ?>&status=add_depend_subject">اضافة متطلب
-                            سابق</a>
+                        <a href="Department_Setting.php?department_id=<?= $id ?>&status=add_depend_subject">اضافة مواد المتطلب السابق للقسم
+                        </a>
                     </li>
+                  
+                 
+                   
+                  
                 </ul>
+            <div class="container">
+
+               
+
                 <?php
       if (isset($_GET['status']) && $_GET['status'] == "add_subject") {
       ?>
@@ -151,7 +179,8 @@ if (isset($_POST['add_depend_subject'])) {
                         </div>
                     </div>
                 </form>
-                <?php } elseif (isset($_GET['status']) && $_GET['status'] == "add_depend_subject") { ?>
+        <?php } elseif (isset($_GET['status']) && $_GET['status'] == "add_depend_subject") { ?>
+            
                 <form action="" method="POST" enctype="multipart/form-data">
                     <div class="athers">
                         <div class="input-filed">
@@ -188,8 +217,14 @@ if (isset($_POST['add_depend_subject'])) {
                             <input type="submit" value="اضافه" name="add_depend_subject">
                         </div>
                 </form>
-                <?php } ?>
+            <?php } ?>
             </div>
+
+
+
+
+
+
         </section>
         <script src="../JsComponent/Action.js"></script>
         <script src="../JsComponent/admin.js"></script>

@@ -77,9 +77,7 @@ if (isset($_POST["Login"])) {
 <body>
   <div class="container">
     <div class="form-box">
-      <video class="title" loop autoplay height="100px" width="100px">
-        <source src="Images/logo.mp4">
-      </video>
+         <img src="./Images/logo.jpg" alt=""  height="150px" width="150px">
       <form action="" method="POST">
         <div class="input-group">
           <div class="input-filed" id="nameFiled">

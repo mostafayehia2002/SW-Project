@@ -24,7 +24,7 @@ $developer = $developer->fetchAll(PDO::FETCH_ASSOC);
           <h3><?php echo $person['name'] ?></h3>
           <p> <?php echo $person['track'] ?></p>
           <p><?php echo (int) ($person['age'] / 365)  ?> Year</p>
-          <p><?php echo $person['faculty'] ?></p>
+          <p><?php echo $person['faculty']?></p>
           <p><?php echo $person['department'] ?></p>
           <div class="social">
             <a href="<?php echo $person['facebook'] ?>"><i class="fa-brands fa-facebook"></i></a>

@@ -50,26 +50,9 @@ background-color:rgba(0, 0, 0, 70%);
 }
 
 /* Start Logo */
-.form-box h1 {
-  font-size: 30px;
-  margin-bottom: 60px;
-  color: var(--main-color);
-  position: relative;
-}
-
-.form-box h1::after {
-  content: "";
-  width: 30px;
-  height: 4px;
-  border-radius: 3px;
-  background-color: var(--main-color);
-  position: absolute;
-  bottom: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-}
 
 /* End Logo */
+
 /* Start Input Username And Password */
 .form-box .input-filed {
   background-color: #eaeaea;
@@ -92,7 +75,7 @@ background-color:rgba(0, 0, 0, 70%);
 
 .form-box .input-filed i {
   margin-left: 15px;
-  color: #999;
+  color:var(--main-color);
 }
 
 /* End Input Username And Password */
@@ -176,9 +159,8 @@ padding:5px;
 text-align: center;
 
 }
-
 .developer:hover{
-  border-bottom: 5px solid var(--main-color);
+  border-bottom: 2px solid var(--main-color);
 }
 .developer a{
   padding:5px;
