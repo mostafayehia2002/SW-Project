@@ -2,9 +2,12 @@
 
 <!-- side-bar -->
 <div class="side-bar">
-
-    <h1><i class="fa-solid fa-building-columns"></i></h1>
-
+<!-- 
+    <h1><i class="fa-solid fa-building-columns"></i></h1> -->
+    <div class="Side-bar-logo">
+    <img src="../Images/logo.jpg" alt="" height="55px" width="80px">
+    </div>
+   
     <!--start admin  -->
     <?php if (isset($_SESSION['admin_id'])) { ?>
     <ul class="link">
@@ -47,16 +50,18 @@
     <?php } elseif (isset($_SESSION['doctor_id'])) { ?>
 
     <ul class="link">
-        <li><a href="Doctor_Info.php">البيانات الشخصيه</a></li>
+     <li><a href="Doctor_Info.php"><i class="fa-sharp fa-solid fa-circle-info"></i>البيانات الشخصيه</a></li>
     </ul>
 
-
+    <ul class="link">
+        <li><a href="Doctor_Info.php">الواد المتاحه</a></li>
+    </ul>
 
 
     <!-- start student -->
     <?php } elseif (isset($_SESSION['student_id'])) { ?>
     <ul class="link">
-        <li><a href="Student_Info.php">البيانات الشخصيه</a></li>
+        <li><a href="Student_Info.php"><i class="fa-sharp fa-solid fa-circle-info"></i>البيانات الشخصيه</a></li>
     </ul>
 
     <?php  } ?>

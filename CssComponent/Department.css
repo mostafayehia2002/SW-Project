@@ -4,6 +4,7 @@
   padding: 30px;
 }
 
+
 /*  اكتب تنسيق شغلك هنا ارجو عدم تعديل اي حاجه في الصفحه*/
 
 /* Start departments css */
@@ -66,6 +67,35 @@
   }
 }
 /* End departments css */
+
+/*department setting*/
+
+
+.department-navbar {
+  list-style: none;
+  height: 60px;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  flex-wrap: nowrap;
+ overflow-x: auto;
+
+}
+
+.department-navbar li {
+  padding: 10px;
+  white-space:nowrap;
+}
+
+.department-navbar a {
+  color: #229678;
+  font-weight: bold;
+  text-decoration: none;
+
+
+}
+
+/*end department setting**/
 
 /* ////////////////////////////////////////////////////////////////////////////////////////////////// */
 
