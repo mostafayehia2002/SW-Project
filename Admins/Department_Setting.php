@@ -56,6 +56,8 @@ if (isset($_POST['add_depend_subject'])) {
 
 
 
+
+
 //add subject to doctors
 if(isset($_POST['add_doctor_subject'])){
 
@@ -70,11 +72,6 @@ echo "</pre>";
 
 
 }
-
-
-
-
-
 
 
 ?>
@@ -278,7 +275,6 @@ echo "</pre>";
                  <option value="<?php  echo $d['ID']?>"><?php  echo $d['Full_Name']?></option>
                 <?php  }?>
                 
-               
               </datalist>
             </div>
           </div>
