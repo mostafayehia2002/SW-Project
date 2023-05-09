@@ -59,18 +59,15 @@ if (isset($_POST['add_depend_subject'])) {
 
 
 //add subject to doctors
-if(isset($_POST['add_doctor_subject'])){
+if (isset($_POST['add_doctor_subject'])) {
 
-$doctors_id=$_POST['subject'];
-$doctor_subject=$_POST['doctor'];
+    $doctors_id = $_POST['doctor'];
+    $doctor_subject = $_POST['subject'];
 
-$con->query("INSERT INTO `doctor_subjects`VALUES (NULL,'$doctors_id','$doctor_subject')");
-echo "<pre>";
-
-print_r($_POST);
-echo "</pre>";
-
-
+    $add_doctor_subject = $con->query("INSERT INTO `doctor_subjects` (`id`, `Doctor_Id`, `Subject_Name`) VALUES (NULL,'$doctors_id','$doctor_subject')");
+    if ($add_doctor_subject) {
+        echo "<div class='success'>  تم اضافه البيانات بنجاح</div>";
+    }
 }
 
 
@@ -107,18 +104,17 @@ echo "</pre>";
         <!-- end nav bar -->
         <ul class="department-navbar">
             <li>
-     <a href="Department_Setting.php?department_id=<?= $id ?>&status=add_subject"> اضافه مواد القسم</a>
+                <a href="Department_Setting.php?department_id=<?= $id ?>&status=add_subject"> اضافه مواد القسم</a>
             </li>
 
             <li>
-            <a href="Department_Setting.php?department_id=<?= $id ?>&status=add_depend_subject">اضافة مواد المتطلب السابق للقسم
+                <a href="Department_Setting.php?department_id=<?= $id ?>&status=add_depend_subject">اضافة مواد
+                    المتطلب السابق للقسم
                 </a>
             </li>
-       <li><a href="Department_Setting.php?department_id=<?= $id ?>&status=add_doctor_subject">
-    اعطاء صلاحيه المواد لي الدكتور
-    </a></li>
-
-       
+            <li><a href="Department_Setting.php?department_id=<?= $id ?>&status=add_doctor_subject">
+                    اعطاء صلاحيه المواد لي الدكتور
+                </a></li>
         </ul>
         <div class="container">
 
@@ -216,74 +212,76 @@ echo "</pre>";
                             <input type="submit" value="اضافه" name="add_depend_subject">
                         </div>
                 </form>
-            <?php }elseif (isset($_GET['status']) && $_GET['status'] == "add_doctor_subject") {  ?>
+            <?php } elseif (isset($_GET['status']) && $_GET['status'] == "add_doctor_subject") {  ?>
 
-                <form action=""  method="POST"  enctype="multipart/form-data">
-        <div class="athers">
-          <h3 class="title">رفع المواد كامله</h3>
-          <div class="input-filed">
-            <label for="alluser">رفع المواد كامله من ملف</label>
-            <input type="file" id="alluser" />
-          </div>
-        </div>
-        <div class="break"></div>
+                <form action="" method="POST" enctype="multipart/form-data">
+                    <div class="athers">
+                        <h3 class="title">رفع المواد كامله</h3>
+                        <div class="input-filed">
+                            <label for="alluser">رفع المواد كامله من ملف</label>
+                            <input type="file" id="alluser" />
+                        </div>
+                    </div>
+                    <div class="break"></div>
 
-        <div class="oneuser">
-          <h3 class="title">اضافه المواد لي الدكتور</h3>
+                    <div class="oneuser">
+                        <h3 class="title">اضافه المواد لي الدكتور</h3>
 
-          <div class="allinput">
-            <div class="input-filed">
-              <label for="list1">الماده</label>
-               <?php 
-               $subject=$con->query("SELECT * FROM `$table_subject` ");
-               $all_subjects=$subject->fetchAll(PDO::FETCH_ASSOC);
+                        <div class="allinput">
+                            <div class="input-filed">
+                                <label for="list1">الماده</label>
+                                <?php
+                                $subject = $con->query("SELECT * FROM `$table_subject` ");
+                                $all_subjects = $subject->fetchAll(PDO::FETCH_ASSOC);
 
-              $dependence_subject=$con->query("SELECT * FROM `$table_depandance_subject`");
-              $all_dependence_subjects=$dependence_subject->fetchAll(PDO::FETCH_ASSOC);
+                                $dependence_subject = $con->query("SELECT * FROM `$table_depandance_subject`");
+                                $all_dependence_subjects = $dependence_subject->fetchAll(PDO::FETCH_ASSOC);
 
-              ?> 
-              <input list="list1"  name="subject" required/>
-              <datalist id="list1">
-              <?php 
-              foreach($all_subjects as $s1){?>
+                                ?>
+                                <input list="list1" name="subject" required />
+                                <datalist id="list1">
+                                    <?php
+                                    foreach ($all_subjects as $s1) { ?>
 
-             <option value="<?php  echo $s1['Subject_Code']?>"><?php  echo $s1['Subject_Name']?></option>
-             
-
-                <?php }
-                foreach($all_dependence_subjects as $s2){  ?>
-
-               
-
-             <option value="<?php  echo $s2['Dependence_Subject_Code']?>"><?php  echo $s2['Dependence_Subject_Name']?></option>
-             
-                <?php }?>
-
-            </div>
+                                        <option value="<?php echo $s1['Subject_Code'] ?>"><?php echo $s1['Subject_Name'] ?>
+                                        </option>
 
 
-            <div class="input-filed">
-              <label for="list2">الدكتور</label>
-              <?php 
-              $doctor=$con->query("SELECT* FROM `doctor`");
-              $data_doctor=$doctor->fetchAll(PDO::FETCH_ASSOC);
-              ?>
-              <input list="list2"    name="doctor"  required/>
-              <datalist id="list2">
-                <?php 
-                 foreach($data_doctor as $d){?>
-                 <option value="<?php  echo $d['ID']?>"><?php  echo $d['Full_Name']?></option>
-                <?php  }?>
-                
-              </datalist>
-            </div>
-          </div>
-        </div>
-        <div class="save">
-          <input type="submit" value="اضافه" name="add_doctor_subject"/>
-        </div>
-      </form>
-                   
+                                    <?php }
+                                    foreach ($all_dependence_subjects as $s2) {  ?>
+
+
+
+                                        <option value="<?php echo $s2['Dependence_Subject_Code'] ?>">
+                                            <?php echo $s2['Dependence_Subject_Name'] ?></option>
+
+                                    <?php } ?>
+
+                            </div>
+
+
+                            <div class="input-filed">
+                                <label for="list2">الدكتور</label>
+                                <?php
+                                $doctor = $con->query("SELECT* FROM `doctor`");
+                                $data_doctor = $doctor->fetchAll(PDO::FETCH_ASSOC);
+                                ?>
+                                <input list="list2" name="doctor" required />
+                                <datalist id="list2">
+                                    <?php
+                                    foreach ($data_doctor as $d) { ?>
+                                        <option value="<?php echo $d['ID'] ?>"><?php echo $d['Full_Name'] ?></option>
+                                    <?php  } ?>
+
+                                </datalist>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="save">
+                        <input type="submit" value="اضافه" name="add_doctor_subject" />
+                    </div>
+                </form>
+
 
 
 
