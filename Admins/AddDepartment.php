@@ -58,11 +58,11 @@ if (isset($_POST['add'])) {
             $con->query("
                 CREATE TABLE `$table3` (
                     `id` int(11) NOT NULL AUTO_INCREMENT,
-                    `Doctor_Id` int(11) NOT NULL,
+                    `Doctor_Id` bigint(30) NOT NULL,
                     `Subject_Name` varchar(100) NOT NULL,
                     PRIMARY KEY (`id`),
                     KEY `Doctor_Id` (`Doctor_Id`),
-                    FOREIGN KEY (`Doctor_Id`) REFERENCES `doctor` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
+                    FOREIGN KEY (`Doctor_Id`) REFERENCES `doctor` (`Doctor_ID`) ON DELETE CASCADE ON UPDATE CASCADE
                 )
                 ");
             echo "<div class='success'>  تم انشاء القسم بنجاح</div>";
@@ -70,8 +70,8 @@ if (isset($_POST['add'])) {
     } catch (PDOException $e) {
         echo "<div class='faild'>";
         echo " يرجى ادخال البيانات بشكل صحيح <br>";
-        echo $e->getMessage();
         echo "</div>";
+        echo $e->getMessage();
     }
 }
 ?>
