@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 07, 2023 at 01:10 AM
+-- Generation Time: May 10, 2023 at 02:07 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -47,9 +47,9 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`Ad_ID`, `Password`, `status`, `Image`, `Full_Name`, `Gender`, `Address`, `Job`, `Email_Address`, `Phone_Number`, `Faculty`, `University`) VALUES
-(22, '22', 1, 'IMG_20220324_135045.jpg', 'اسلام', 'ذكر', 'qusina', 'مسئول عن اداره شئون الطلاب', 'moustafa.yehia160800@ci.menofia.edu.eg', 1226717838, 'الحاسبات والمعلومات', ' المنوفيه'),
 (2002, '2002', 1, 'IMG_20220324_135045.jpg', 'mostafa hossam', 'ذكر', 'qusina', 'مسئول عن اداره شئون الطلاب', 'moustafa.yehia160800@ci.menofia.edu.eg', 1226717838, 'الحاسبات والمعلومات', ' المنوفيه'),
 (2252002, '2002', 1, 'SAVE_20210512_150255.jpg', 'مصطفي يحيي', 'انثي', 'ميت بره مركز قويسنا المنوفيه', 'مسئول السيستم', 'gad993813@gmail.com', 1226717838, 'الحاسبات والمعلومات', 'المنوفيه'),
+(12345678, '12345678', 1, '', 'most', 'ذكر', '', 'مسئول عن اداره شئون الطلاب', 'gad993813@gmail.com', 1226717838, 'الحاسبات والمعلومات', ' المنوفيه'),
 (2147483647, '30208161600398', 1, '', 'مصطفي حسام رزق', 'ذكر', 'Mansoura', 'مسئول عن اداره شئون الطلاب', 'ma9856603@gmail.com', 0, 'الحاسبات والمعلومات', ' المنوفيه');
 
 -- --------------------------------------------------------
@@ -168,8 +168,7 @@ INSERT INTO `developer` (`id`, `name`, `track`, `date_birth`, `image`, `faculty`
 --
 
 CREATE TABLE `doctor` (
-  `ID` int(11) NOT NULL,
-  `Doctor_ID` char(14) NOT NULL,
+  `Doctor_ID` bigint(30) NOT NULL,
   `Password` varchar(100) NOT NULL,
   `Image` varchar(100) NOT NULL DEFAULT 'profile.jpg',
   `Full_Name` varchar(100) DEFAULT NULL,
@@ -191,11 +190,12 @@ CREATE TABLE `doctor` (
 -- Dumping data for table `doctor`
 --
 
-INSERT INTO `doctor` (`ID`, `Doctor_ID`, `Password`, `Image`, `Full_Name`, `Job`, `Gender`, `Nationality`, `Religion`, `Date_Birth`, `Address`, `Phone_Number`, `Degree`, `University`, `Faculty`, `Department`, `Email_Address`) VALUES
-(600, '14567894520236', '600', '', 'mostafa yehia gad', 'دكتور', 'انثي', 'مصري', 'مسلم', '2023-04-21', 'Quisna Menufia Egypt', '', '88', 'المنوفيه', 'الحاسبات والمعلومات', 'العام', 'gad993813@gmail.com'),
-(900, '12345678901478', '900', '1607262221104.jpg', 'mostafa yehia gad', 'دكتور', 'انثي', 'مصري', 'مسلم', '2023-04-07', 'Quisna Menufia Egypt', '126', 'ماستر', 'المنوفيه', 'الحاسبات والمعلومات', 'العام', 'moustafa.yehia160800@ci.menofia.edu.eg'),
-(123456, '9876543210000', '123456', 'profile.jpg', 'احمد', 'دكتور', 'ذكر', 'مصري', 'مسلم', '0000-00-00', 'القاهره', '01226717838', 'مدرس مساعد', 'المنوفيه', 'الحاسبات والمعلومات', 'علوم حاسب', 'gad993813@gmail.com'),
-(2147483647, '78945612314789', '47', 'profile.jpg', 'اسلام', 'دكتور', 'ذكر', 'مصري', 'مسلم', '2023-04-19', 'Quisna Menufia Egypt', '01226717838', 'يي', 'المنوفيه', 'الحاسبات والمعلومات', 'علوم', 'gad993813@gmail.com');
+INSERT INTO `doctor` (`Doctor_ID`, `Password`, `Image`, `Full_Name`, `Job`, `Gender`, `Nationality`, `Religion`, `Date_Birth`, `Address`, `Phone_Number`, `Degree`, `University`, `Faculty`, `Department`, `Email_Address`) VALUES
+(11, '11', 'profile.jpg', NULL, 'دكتور', NULL, 'مصري', 'مسلم', NULL, NULL, NULL, NULL, 'المنوفيه', 'الحاسبات والمعلومات', NULL, ''),
+(400, '400', '', 'mostafa yehia gad', 'دكتور', 'ذكر', 'مصري', 'مسلم', '0000-00-00', 'Quisna Menufia Egypt', '', '', 'المنوفيه', 'الحاسبات والمعلومات', 'العام', 'gad993813@gmail.com'),
+(1233, '1233', '', 'aaaaa', 'دكتور', 'ذكر', 'مصري', 'مسلم', '0000-00-00', '', '', '', 'المنوفيه', 'الحاسبات والمعلومات', 'العام', ''),
+(12345, '12345', 'profile.jpg', 'mostafa', 'دكتور', NULL, 'مصري', 'مسيحي', '2023-05-16', 'sdd', '01226717838', NULL, 'المنوفيه', 'الحاسبات والمعلومات', NULL, ''),
+(1111111111111111111, '123', 'profile.jpg', 'mostafa yehia gad', 'دكتور', 'ذكر', 'مصري', 'مسلم', '0000-00-00', 'qusina', '01226717838', 'يييي', 'المنوفيه', 'الحاسبات والمعلومات', 'ييي', 'moustafa.yehia160800@ci.menofia.edu.eg');
 
 -- --------------------------------------------------------
 
@@ -205,7 +205,7 @@ INSERT INTO `doctor` (`ID`, `Doctor_ID`, `Password`, `Image`, `Full_Name`, `Job`
 
 CREATE TABLE `doctor_subjects` (
   `id` int(11) NOT NULL,
-  `Doctor_Id` int(11) NOT NULL,
+  `Doctor_Id` bigint(30) NOT NULL,
   `Subject_Name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -246,8 +246,10 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`St_ID`, `Password`, `Image`, `Full_Name`, `Gender`, `Nationality`, `Religion`, `Address`, `Date_Birth`, `National_ID`, `Phone_Number`, `Academic_Email`, `School`, `Qualification`, `Total_Degree`, `Average`, `Date_Coordination`, `Number_Coordination`, `Faculty`, `University`, `Department`, `Joining_Date`, `Job`) VALUES
-(55, '124', '', 'خالد', 'ذكر', 'مصري', '', 'Quisna Menufia Egypt', '0000-00-00', '124', '01226717838', 'gad993813@gmail.com', '', '', 0, 0, '0000-00-00', '', 'الحاسبات والمعلومات', 'المنوفية', 'العام', '0000-00-00', 'طالب'),
-(1234567, '1234567', 'profile.jpg', 'علي', 'ذكر', 'مصري', 'مسلم', 'الجيزه', '2002-05-22', '12346882', '01226717838', 'gad993813@gmail.com', 'ثانوي', 'ثانوي عام', 365, 92, '2019-05-07', '5', 'الحاسبات والمعلومات', 'المنوفيه', 'عام', '2019-07-20', 'طالب');
+(55, '12', '', 'خالد', 'ذكر', 'مصري', '', 'Quisna Menufia Egypt', '0000-00-00', '124', '01226717838', 'gad993813@gmail.com', '', '', 0, 0, '0000-00-00', '', 'الحاسبات والمعلومات', 'المنوفية', 'العام', '0000-00-00', 'طالب'),
+(122, '123', '', 'sss', '', 'مصري', '', 'Quisna Menufia Egypt', '0000-00-00', '123', '', 'gad993813@gmail.com', '', '', 0, 0, '0000-00-00', '', 'الحاسبات والمعلومات', 'المنوفية', 'العام', '0000-00-00', 'طالب'),
+(1234567, '1234567', 'profile.jpg', 'علي', 'ذكر', 'مصري', 'مسلم', 'الجيزه', '2002-05-22', '12346882', '01226717838', 'gad993813@gmail.com', 'ثانوي', 'ثانوي عام', 365, 92, '2019-05-07', '5', 'الحاسبات والمعلومات', 'المنوفيه', 'عام', '2019-07-20', 'طالب'),
+(123456789, '123456789', '', 'most', 'ذكر', 'مصري', 'مسلم', 'Quisna Menufia Egypt', '0000-00-00', '123456789', '01226717838', 'gad993813@gmail.com', '', '', 0, 0, '0000-00-00', '', 'الحاسبات والمعلومات', 'المنوفية', 'العام', '2023-05-10', 'طالب');
 
 --
 -- Indexes for dumped tables
@@ -288,7 +290,7 @@ ALTER TABLE `developer`
 -- Indexes for table `doctor`
 --
 ALTER TABLE `doctor`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`Doctor_ID`);
 
 --
 -- Indexes for table `doctor_subjects`
@@ -333,12 +335,6 @@ ALTER TABLE `developer`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `doctor`
---
-ALTER TABLE `doctor`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2147483648;
-
---
 -- AUTO_INCREMENT for table `doctor_subjects`
 --
 ALTER TABLE `doctor_subjects`
@@ -358,7 +354,7 @@ ALTER TABLE `computer_science_subject`
 -- Constraints for table `doctor_subjects`
 --
 ALTER TABLE `doctor_subjects`
-  ADD CONSTRAINT `doctor_subjects_ibfk_1` FOREIGN KEY (`Doctor_Id`) REFERENCES `doctor` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `doctor_subjects_ibfk_1` FOREIGN KEY (`Doctor_Id`) REFERENCES `doctor` (`Doctor_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
