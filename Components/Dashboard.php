@@ -54,7 +54,7 @@
     </ul>
 
     <ul class="link">
-        <li><a href="Doctor_Info.php">الواد المتاحه</a></li>
+        <li><a href="subject.php">المواد المتاحه</a></li>
     </ul>
 
 

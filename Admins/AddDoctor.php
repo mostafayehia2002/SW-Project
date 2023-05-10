@@ -29,7 +29,7 @@ if (isset($_POST['submit'])) {
     //sql
 
     try {
-        $sql = $con->query("INSERT INTO `doctor` (`ID`,`Doctor_ID`, `Password`, `Image`, `Full_Name`, `Gender`, `Nationality`, `Religion`, `Date_Birth`, `Address`, `Phone_Number`, `Degree`, `University`, `Faculty`, `Department`, `Email_Address`) VALUES(NULL,'$id', '$id', '$image','$name','$gender','$nationality','$religion','$date_birth','$address','$phone','$degree','$university','$faculty','$department','$email')");
+        $sql = $con->query("INSERT INTO `doctor` (`Doctor_ID`, `Password`, `Image`, `Full_Name`, `Gender`, `Nationality`, `Religion`, `Date_Birth`, `Address`, `Phone_Number`, `Degree`, `University`, `Faculty`, `Department`, `Email_Address`) VALUES('$id', '$id', '$image','$name','$gender','$nationality','$religion','$date_birth','$address','$phone','$degree','$university','$faculty','$department','$email')");
 
         echo "<div class='success'>  تم اضافه البيانات بنجاح</div>";
     } catch (PDOException $e) {
@@ -80,11 +80,12 @@ if (isset($_GET['delete'])) {
 
     <body>
         <!-- Dashboard -->
-        <?php include_once("../Components/Dashboard.php") ?>
+        <?php  include_once("../Components/Dashboard.php") ?>
         <!-- end Dashboard -->
         <section class="section">
             <!-- Start nav-bar -->
-            <?php include_once("../Components/NavBar.php"); ?>
+            
+            <?php  include_once("../Components/NavBar.php"); ?>
             <!-- end nav bar -->
             <div class="container">
                 <form action="" method="POST" enctype="multipart/form-data">
@@ -120,10 +121,7 @@ if (isset($_GET['delete'])) {
                                 <label for="nationality">الجنسية</label>
                                 <input type="text" id="nationality" name="nationality" value="مصري">
                             </div>
-                            <div class="input-filed">
-                                <label for="religion">الديانة </label>
-                                <input type="text" id="religion" name="religion">
-                            </div>
+                          
                             <div class="input-filed">
                                 <label for="address">العنوان</label>
                                 <input type="text" id="address" name="address">
@@ -152,6 +150,8 @@ if (isset($_GET['delete'])) {
                                 <label for="department"> القسم</label>
                                 <input type="text" id="department" name="department" value="العام">
                             </div>
+
+
                             <div class="input-filed">
                                 <label for="gender">النوع</label>
                                 <div class="gender">
@@ -163,8 +163,26 @@ if (isset($_GET['delete'])) {
                                         <input type="radio" name="gender" id="female" value="انثي">
                                         <label for="female">انثي</label>
                                     </div>
+
                                 </div>
+
                             </div>
+                            <div class="input-filed">
+                                <label for="religion">الديانه</label>
+                                <div class="religion">
+                                    <div class="mos">
+                                        <input type="radio" name="religion" id="mos" checked value="مسلم">
+                                        <label for="mos">مسلم</label>
+                                    </div>
+                                    <div class="mec">
+                                        <input type="radio" name="religion" id="mec" value="مسيحي">
+                                        <label for="mec">مسيحي</label>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
                         </div>
                     </div>
                     <div class="save">

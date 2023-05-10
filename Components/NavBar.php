@@ -11,7 +11,7 @@ if ($con) {
    } elseif (isset($_SESSION['doctor_id'])) {
 
       $doctor_id = $_SESSION['doctor_id'];
-      $q = $con->query("SELECT * FROM `doctor` WHERE Dr_ID='$doctor_id'");
+      $q = $con->query("SELECT * FROM `doctor` WHERE Doctor_ID='$doctor_id'");
       $d = $q->fetch(PDO::FETCH_ASSOC);
       $imgPath = "../Doctors/images/";
       $profile = "../Doctors/Doctor_info.php";

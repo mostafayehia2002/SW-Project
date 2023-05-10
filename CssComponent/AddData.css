@@ -77,25 +77,32 @@
   flex-direction: column;
   gap: 8px;
 }
-.container .oneuser .input-filed .gender {
+.container .oneuser .input-filed .gender,
+.container .oneuser .input-filed .religion {
   display: flex;
   align-items: center;
   gap: 50px;
 }
 .container .oneuser .input-filed .gender .male,
-.container .oneuser .input-filed .gender .female {
+.container .oneuser .input-filed .gender .female ,
+.container .oneuser .input-filed .gender .mos,
+.container .oneuser .input-filed .gender .mec {
   display: flex;
   column-gap: 8px;
   align-items: center;
   justify-content: center;
 }
 .container .oneuser .input-filed .gender .male input,
-.container .oneuser .input-filed .gender .female input {
+.container .oneuser .input-filed .gender .female input,
+.container .oneuser .input-filed .gender .mos input,
+.container .oneuser .input-filed .gender .mec input {
   accent-color: var(--main-color);
   width: fit-content;
 }
 .container .oneuser .input-filed .gender .male input:checked label,
-.container .oneuser .input-filed .gender .female input:checked label {
+.container .oneuser .input-filed .gender .female input:checked label ,
+.container .oneuser .input-filed .gender .mos input:checked label,
+.container .oneuser .input-filed .gender .mec input:checked label{
   color: var(--main-color);
 }
 

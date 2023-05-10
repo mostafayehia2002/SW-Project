@@ -9,7 +9,7 @@ if (!isset($_SESSION["doctor_id"])) {
 include_once("../DataBase/database.php");
 if ($con) {
     $ID = $_SESSION['doctor_id'];
-    $sql = $con->query("SELECT * FROM `doctor` WHERE Dr_ID='$ID'");
+    $sql = $con->query("SELECT * FROM `doctor` WHERE Doctor_ID='$ID'");
     $data = $sql->fetch(PDO::FETCH_ASSOC);
 }
 
@@ -47,7 +47,7 @@ if ($con) {
                     <ul>
                         <li>
                             <b>الرقم القومى</b>
-                            <p id="Dr_ID"> <?php echo $data['Dr_ID'] ?> </p>
+                            <p id="Dr_ID"> <?php echo $data['Doctor_ID'] ?> </p>
                         </li>
                         <li>
                             <b>الاسم عربى</b>

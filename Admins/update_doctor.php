@@ -34,9 +34,9 @@ if (isset($_POST['update_data'])) {
 
     try {
         if (empty($new_imge)) {
-            $update_doctor = $con->query("UPDATE `doctor` SET `Doctor_ID`='$new_id',`Password`='$new_password',`Full_Name`='$new_full_name',`Address`='$new_address',`Email_Address`='$new_email',`Nationality`='$new_nationality',`Religion`='$new_religion',`Phone_Number`='$new_phone',`Gender`='$new_gender',`Degree`='$new_degree', `Faculty`='$new_faculty',`University`='$new_university',`Department`='$new_department', `Date_Birth`='$new_date_birth' WHERE `Dr_ID`=$doctor_id");
+            $update_doctor = $con->query("UPDATE `doctor` SET `Doctor_ID`='$new_id',`Password`='$new_password',`Full_Name`='$new_full_name',`Address`='$new_address',`Email_Address`='$new_email',`Nationality`='$new_nationality',`Religion`='$new_religion',`Phone_Number`='$new_phone',`Gender`='$new_gender',`Degree`='$new_degree', `Faculty`='$new_faculty',`University`='$new_university',`Department`='$new_department', `Date_Birth`='$new_date_birth' WHERE `Doctor_ID`=$doctor_id");
         } else {
-            $update_doctor = $con->query("UPDATE `doctor` SET `Doctor_ID`='$new_id',`Password`='$new_password',`Full_Name`='$new_full_name',`Address`='$new_address',`Email_Address`='$new_email',`Nationality`='$new_nationality',`Religion`='$new_religion',`Phone_Number`='$new_phone',`Gender`='$new_gender',`Degree`='$new_degree', `Faculty`='$new_faculty',`University`='$new_university',`Department`='$new_department', `Date_Birth`='$new_date_birth',`Image`='$new_imge' WHERE `Dr_ID`=$doctor_id");
+            $update_doctor = $con->query("UPDATE `doctor` SET `Doctor_ID`='$new_id',`Password`='$new_password',`Full_Name`='$new_full_name',`Address`='$new_address',`Email_Address`='$new_email',`Nationality`='$new_nationality',`Religion`='$new_religion',`Phone_Number`='$new_phone',`Gender`='$new_gender',`Degree`='$new_degree', `Faculty`='$new_faculty',`University`='$new_university',`Department`='$new_department', `Date_Birth`='$new_date_birth',`Image`='$new_imge' WHERE `Doctor_ID`=$doctor_id");
             $from = $_FILES['image']['tmp_name'];
             $to = "images/" . $_FILES['image']['name'];
             move_uploaded_file($from, $to);
@@ -77,11 +77,11 @@ if (isset($_POST['update_data'])) {
     <body>
 
         <!-- Dashboard -->
-        <?php include_once("../Components/Dashboard.php") ?>
+        <?php //include_once("../Components/Dashboard.php") ?>
         <!-- end Dashboard -->
         <section class="section">
             <!-- Start nav-bar -->
-            <?php include_once("../Components/NavBar.php"); ?>
+            <?php //include_once("../Components/NavBar.php"); ?>
             <!-- end nav bar -->
             <div class="container">
                 <form action="" method="POST" enctype="multipart/form-data">
@@ -118,11 +118,6 @@ if (isset($_POST['update_data'])) {
                                 <label for="nationality">الجنسية</label>
                                 <input type="text" id="nationality"
                                     value="<?Php echo $old_data_doctor['Nationality'] ?>" name="nationality">
-                            </div>
-                            <div class="input-filed">
-                                <label for="religion">الديانة </label>
-                                <input type="text" value="<?Php echo $old_data_doctor['Religion'] ?>" id="religion"
-                                    name="religion">
                             </div>
                             <div class="input-filed">
                                 <label for="address">العنوان</label>
@@ -166,12 +161,31 @@ if (isset($_POST['update_data'])) {
                                             $old_data_doctor['Gender']=="ذكر" ? 'checked' : '' ; ?>>
                                         <label for="male">ذكر</label>
                                     </div>
+
                                     <div class="female">
                                         <input type="radio" name="gender" id="female" value="انثي" <?Php echo
                                             $old_data_doctor['Gender']=="انثي" ? 'checked' : '' ; ?>>
                                         <label for="female">انثي</label>
                                     </div>
                                 </div>
+                            </div>
+
+                            <div class="input-filed">
+                                <label for="religion">الديانه</label>
+                                <div class="religion">
+                                    <div class="mos">
+                                <input type="radio" name="religion" id="mos" value="مسلم"
+                                <?Php echo  $old_data_doctor['Religion']=='مسلم'  ? 'checked': '' ;?>  >
+                                        <label for="mos">مسلم</label>
+                                    </div>
+                                    <div class="mec">
+                                        <input type="radio" name="religion" id="mec" value="مسيحي"
+                                        <?Php echo  $old_data_doctor['Religion']=='مسيحي'  ? 'checked': ''; ?> >
+                                        <label for="mec">مسيحي</label>
+                                    </div>
+
+                                </div>
+
                             </div>
                         </div>
                     </div>
