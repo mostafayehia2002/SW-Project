@@ -77,11 +77,11 @@ if (isset($_POST['update_data'])) {
     <body>
 
         <!-- Dashboard -->
-        <?php //include_once("../Components/Dashboard.php") ?>
+        <?php include_once("../Components/Dashboard.php") ?>
         <!-- end Dashboard -->
         <section class="section">
             <!-- Start nav-bar -->
-            <?php //include_once("../Components/NavBar.php"); ?>
+            <?php include_once("../Components/NavBar.php"); ?>
             <!-- end nav bar -->
             <div class="container">
                 <form action="" method="POST" enctype="multipart/form-data">

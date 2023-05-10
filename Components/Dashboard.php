@@ -1,11 +1,16 @@
+<?php 
+
+?>
+
 <!-- <div class="Dashboard"> -->
 
 <!-- side-bar -->
 <div class="side-bar">
-<!-- 
-    <h1><i class="fa-solid fa-building-columns"></i></h1> -->
+
+    <!-- <img src="../Images/logo.jpg" alt="" height="55px" width="80px"> -->
+    <!-- <h1><i class="fa-solid fa-building-columns"></i></h1> -->
     <div class="Side-bar-logo">
-    <img src="../Images/logo.jpg" alt="" height="55px" width="80px">
+        <i class="fa-solid fa-building-columns"></i>
     </div>
    
     <!--start admin  -->
@@ -47,6 +52,17 @@
 
 
     <!-- start doctor -->
+<?php 
+include_once("../DataBase/database.php");
+ $ID= $_SESSION["doctor_id"] ;
+$doctor= $con->query("SELECT * FROM `doctor`  WHERE `Doctor_ID`=$ID");
+$doctor_data=$doctor->fetch(PDO::FETCH_ASSOC);
+echo "<pre>";
+print_r($doctor_data);
+echo"</pre>";
+?>
+
+
     <?php } elseif (isset($_SESSION['doctor_id'])) { ?>
 
     <ul class="link">
@@ -54,7 +70,7 @@
     </ul>
 
     <ul class="link">
-        <li><a href="subject.php">المواد المتاحه</a></li>
+        <li><a href="subject.php?department=cs"><i class="fa-solid fa-book-open"></i>المواد المتاحه</a></li>
     </ul>
 
 

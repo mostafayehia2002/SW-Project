@@ -77,7 +77,10 @@ if (isset($_POST["Login"])) {
 <body>
   <div class="container">
     <div class="form-box">
-         <img src="./Images/logo.jpg" alt=""  height="150px" width="150px">
+      <div class="title">
+
+        <img src="./Images/logo.jpg" alt=""  height="150px" width="150px">
+      </div>
       <form action="" method="POST">
         <div class="input-group">
           <div class="input-filed" id="nameFiled">

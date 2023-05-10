@@ -33,7 +33,11 @@ background-color:rgba(0, 0, 0, 70%);
 
 }
 .title{
+  height: 150px;
+  width:150px;
+  margin: auto;
   border-radius:50%;
+  
 }
 .form-box {
   width: 90%;
@@ -44,7 +48,7 @@ background-color:rgba(0, 0, 0, 70%);
   z-index: 3000;
   transform: translate(-50%, -50%);
   background: #fff;
-  padding: 50px 60px 70px;
+  padding:20px 40px 60px;
   text-align: center;
   border-radius: 6px;
 }
@@ -70,7 +74,7 @@ background-color:rgba(0, 0, 0, 70%);
   background-color: transparent;
   border: 0;
   outline: 0;
-  padding: 18px 15px;
+  padding: 20px 15px;
 }
 
 .form-box .input-filed i {
@@ -132,6 +136,7 @@ background-color:rgba(0, 0, 0, 70%);
   cursor: pointer;
   box-shadow: 0px 4px 20px rgba(62, 9, 9, 0.145);
   transition: 0.3s;
+  margin: 20px 0px;
 }
 
 .form-box form .btn-filed button:hover {

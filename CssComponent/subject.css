@@ -2,16 +2,19 @@
 
 .boxs{
     display: grid;
-    grid-template-columns: repeat(auto-fit , minmax(280px , 1fr));
+    grid-template-columns: repeat(auto-fit , minmax(280px ,1fr));
     gap: 30px;
+    margin-top: 20px;
+    margin-left: 20px;
 }
 .boxs .box{
     background: #fff;
-    border-radius: 8px;
+    border-radius: 2px;
     padding: 15px 20px;
     box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
     transition: 0.4s linear;
     position: relative;
+    width:280px;
 }
 .box h2{
     color: #267660;

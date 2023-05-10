@@ -1,10 +1,15 @@
 <?php
 session_start();
 if (!isset($_SESSION["doctor_id"])) {
-    header("location:../index.php");
-    exit();
+  header("location:../index.php");
+  exit();
 }
 include_once("../DataBase/database.php");
+
+$department = $_GET['department'] . "_doctor_subjects";
+$subject = $con->query("SELECT * FROM `$department`");
+$data_subjects = $subject->fetchAll(PDO::FETCH_ASSOC);
+$count = $subject->rowCount();
 ?>
 
 
@@ -23,28 +28,39 @@ include_once("../DataBase/database.php");
 
 <body>
 
-     <!-- Dashboard -->
-     <?php include_once("../Components/Dashboard.php") ?>
-        <!-- end Dashboard -->
+  <!-- Dashboard -->
+  <?php include_once("../Components/Dashboard.php") 
+  ?>
+  <!-- end Dashboard -->
   <section class="section">
-      <!-- Start nav-bar -->
-      <?php include_once("../Components/NavBar.php"); ?>
-       <!-- end nav bar -->
+    <!-- Start nav-bar -->
+    <?php include_once("../Components/NavBar.php"); 
+    ?>
+    <!-- end nav bar -->
 
     <div class="container">
       <div class="boxs">
-
-
-        <div class="box">
-          <h2> اسم المقرر:</h2>
-          <h2> كود المقرر:</h2>
-          <h2> تاريخ بداية الفصل:</h2>
-          <div class="info">
-            <a href="#"> الاعدادت </a>
-            <i class="fas fa-long-arrow-alt-left"></i>
+        <?php if ($count >= 1) { 
+          
+        foreach( $data_subjects as $d ){
+          ?>
+          <div class="box">
+            <h2> 
+              اسم المقرر:
+              <span>
+                <?php  echo  $d['Subject_Name'] ?>
+              </span>               
+            </h2>
+            <div class="info">
+              <a href="subject_setting.php?<?php  echo  $d['Subject_Name'] ?>"> الاعدادت </a>
+              <i class="fas fa-long-arrow-alt-left"></i>
+            </div>
           </div>
-        </div>
+
+        <?php } } ?>
       </div>
+
+
     </div>
   </section>
 

@@ -122,10 +122,6 @@ if (isset($_GET['delete'])) {
                             <input type="text" id="nationality" name="nationality" value="مصري">
                         </div>
                         <div class="input-filed">
-                            <label for="religion">الديانة </label>
-                            <input type="text" id="religion" name="religion">
-                        </div>
-                        <div class="input-filed">
                             <label for="address">العنوان</label>
                             <input type="text" id="address" name="address">
                         </div>
@@ -199,6 +195,19 @@ if (isset($_GET['delete'])) {
                                 </div>
                             </div>
                         </div>
+                        <div class="input-filed">
+                                <label for="religion">الديانه</label>
+                                <div class="religion">
+                                    <div class="mos">
+                                        <input type="radio" name="religion" id="mos" checked value="مسلم">
+                                        <label for="mos">مسلم</label>
+                                    </div>
+                                    <div class="mec">
+                                        <input type="radio" name="religion" id="mec" value="مسيحي">
+                                        <label for="mec">مسيحي</label>
+                                  </div>
+                                </div>
+                            </div>
                     </div>
 
                 </div>

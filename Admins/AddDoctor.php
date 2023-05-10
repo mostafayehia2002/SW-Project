@@ -147,8 +147,28 @@ if (isset($_GET['delete'])) {
                                 <input type="text" id="university" value="المنوفيه" name="university">
                             </div>
                             <div class="input-filed">
+                                     
+                               <?php 
+                               $departments= $con->query("SELECT * FROM `departments`");
+                               $data_departments=$departments->fetchAll(PDO::FETCH_ASSOC);
+                               
+                               ?>       
                                 <label for="department"> القسم</label>
-                                <input type="text" id="department" name="department" value="العام">
+                                <input list="list1"  name="department">
+                                <datalist  id="list1" >
+                                    <?php 
+                              foreach( $data_departments as $d){
+                              ?>
+                                    <option value="<?php  echo $d['Department_English_Name']  ?>" > 
+                                    <?php echo $d['Department_Arabic_Name']  ?> </option>
+
+                                    <?php } ?>
+                                </datalist>
+                                
+
+
+
+
                             </div>
 
 
@@ -177,10 +197,8 @@ if (isset($_GET['delete'])) {
                                     <div class="mec">
                                         <input type="radio" name="religion" id="mec" value="مسيحي">
                                         <label for="mec">مسيحي</label>
-                                    </div>
-
+                                  </div>
                                 </div>
-
                             </div>
 
                         </div>

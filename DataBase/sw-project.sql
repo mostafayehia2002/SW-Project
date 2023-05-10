@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2023 at 02:39 AM
+-- Generation Time: May 10, 2023 at 11:39 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -55,10 +55,10 @@ INSERT INTO `admin` (`Ad_ID`, `Password`, `status`, `Image`, `Full_Name`, `Gende
 -- --------------------------------------------------------
 
 --
--- Table structure for table `computer_science_dependence_subject`
+-- Table structure for table `cs_dependence_subject`
 --
 
-CREATE TABLE `computer_science_dependence_subject` (
+CREATE TABLE `cs_dependence_subject` (
   `Dependence_Subject_ID` int(11) NOT NULL,
   `Dependence_Subject_Name` varchar(100) NOT NULL,
   `Dependence_Subject_Code` varchar(100) NOT NULL,
@@ -67,24 +67,32 @@ CREATE TABLE `computer_science_dependence_subject` (
   `Dependence_Subject_Semister` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `computer_science_dependence_subject`
+-- Table structure for table `cs_doctor_subjects`
 --
 
-INSERT INTO `computer_science_dependence_subject` (`Dependence_Subject_ID`, `Dependence_Subject_Name`, `Dependence_Subject_Code`, `Dependence_Subject_Hours`, `Dependence_Subject_Level`, `Dependence_Subject_Semister`) VALUES
-(1, 'لا يوجد', '0', 0, 0, 0),
-(2, 'os-1', 'cs789', 3, 2, 1),
-(4, 'math-1', 'Cs7897', 3, 1, 1),
-(5, 'math-1', 'Cs7897', 3, 1, 1),
-(7, 'sw-1', 'cs30', 3, 3, 1);
+CREATE TABLE `cs_doctor_subjects` (
+  `id` int(11) NOT NULL,
+  `Doctor_Id` bigint(30) NOT NULL,
+  `Subject_Name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cs_doctor_subjects`
+--
+
+INSERT INTO `cs_doctor_subjects` (`id`, `Doctor_Id`, `Subject_Name`) VALUES
+(1, 400, 'هندسه البرمجيات');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `computer_science_subject`
+-- Table structure for table `cs_subject`
 --
 
-CREATE TABLE `computer_science_subject` (
+CREATE TABLE `cs_subject` (
   `Subject_ID` int(11) NOT NULL,
   `Subject_Name` varchar(100) NOT NULL,
   `Subject_Code` varchar(100) NOT NULL,
@@ -93,14 +101,6 @@ CREATE TABLE `computer_science_subject` (
   `Subject_Levels` int(100) NOT NULL,
   `Dependence_Subject_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `computer_science_subject`
---
-
-INSERT INTO `computer_science_subject` (`Subject_ID`, `Subject_Name`, `Subject_Code`, `Subject_Hours`, `Subject_semister`, `Subject_Levels`, `Dependence_Subject_ID`) VALUES
-(1, 'sw-24', 'cs50', 3, 2, 3, 7),
-(2, 'os-2', 'cs74', 3, 4, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -125,7 +125,7 @@ CREATE TABLE `departments` (
 --
 
 INSERT INTO `departments` (`ID`, `Department_Code`, `Department_Arabic_Name`, `Department_English_Name`, `Department_Image`, `Department_Date`, `Department_manger`, `Department_Number_Students`, `Department_Number_Doctors`) VALUES
-(1, 'CS', 'علوم حاسب', 'computer_science', 'Screenshot 2023-04-04 010857.png', '2023-04-26', 'د/ حمدي', 100, 80);
+(7, 'cs30', 'علوم حاسب', 'cs', 'Screenshot 2023-04-04 010857.png', '2023-05-10 23:09:45', 'aa', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -192,22 +192,11 @@ CREATE TABLE `doctor` (
 
 INSERT INTO `doctor` (`Doctor_ID`, `Password`, `Image`, `Full_Name`, `Job`, `Gender`, `Nationality`, `Religion`, `Date_Birth`, `Address`, `Phone_Number`, `Degree`, `University`, `Faculty`, `Department`, `Email_Address`) VALUES
 (11, '11', 'profile.jpg', NULL, 'دكتور', NULL, 'مصري', 'مسلم', NULL, NULL, NULL, NULL, 'المنوفيه', 'الحاسبات والمعلومات', NULL, ''),
+(127, '127', '', 'mostafa yehia gad', 'دكتور', 'ذكر', 'مصري', 'مسلم', '0000-00-00', 'Quisna Menufia Egypt', '', '', 'المنوفيه', 'الحاسبات والمعلومات', 'computer_science', 'moustafa.yehia160800@ci.menofia.edu.eg'),
 (400, '400', '', 'mostafa yehia gad', 'دكتور', 'ذكر', 'مصري', 'مسلم', '0000-00-00', 'Quisna Menufia Egypt', '', '', 'المنوفيه', 'الحاسبات والمعلومات', 'العام', 'gad993813@gmail.com'),
 (1233, '1233', '', 'aaaaa', 'دكتور', 'ذكر', 'مصري', 'مسلم', '0000-00-00', '', '', '', 'المنوفيه', 'الحاسبات والمعلومات', 'العام', ''),
 (12345, '12345', 'profile.jpg', 'mostafa', 'دكتور', NULL, 'مصري', 'مسيحي', '2023-05-16', 'sdd', '01226717838', NULL, 'المنوفيه', 'الحاسبات والمعلومات', NULL, ''),
-(1111111111111111111, '123', 'profile.jpg', 'mostafa yehia gad', 'دكتور', 'ذكر', 'مصري', 'مسلم', '0000-00-00', 'qusina', '01226717838', 'يييي', 'المنوفيه', 'الحاسبات والمعلومات', 'ييي', 'moustafa.yehia160800@ci.menofia.edu.eg');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `doctor_subjects`
---
-
-CREATE TABLE `doctor_subjects` (
-  `id` int(11) NOT NULL,
-  `Doctor_Id` bigint(30) NOT NULL,
-  `Subject_Name` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+(11111111111111, '123', 'profile.jpg', 'mostafa yehia gad', 'دكتور', 'انثي', 'مصري', 'مسلم', '0000-00-00', 'qusina', '01226717838', 'يييي', 'المنوفيه', 'الحاسبات والمعلومات', 'ييي', 'moustafa.yehia160800@ci.menofia.edu.eg');
 
 -- --------------------------------------------------------
 
@@ -246,9 +235,9 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`St_ID`, `Password`, `Image`, `Full_Name`, `Gender`, `Nationality`, `Religion`, `Address`, `Date_Birth`, `National_ID`, `Phone_Number`, `Academic_Email`, `School`, `Qualification`, `Total_Degree`, `Average`, `Date_Coordination`, `Number_Coordination`, `Faculty`, `University`, `Department`, `Joining_Date`, `Job`) VALUES
-(55, '12', '', 'خالد', 'ذكر', 'مصري', '', 'Quisna Menufia Egypt', '0000-00-00', '124', '01226717838', 'gad993813@gmail.com', '', '', 0, 0, '0000-00-00', '', 'الحاسبات والمعلومات', 'المنوفية', 'العام', '0000-00-00', 'طالب'),
-(122, '123', '', 'sss', '', 'مصري', '', 'Quisna Menufia Egypt', '0000-00-00', '123', '', 'gad993813@gmail.com', '', '', 0, 0, '0000-00-00', '', 'الحاسبات والمعلومات', 'المنوفية', 'العام', '0000-00-00', 'طالب'),
+(124, '231', '', 'ddd', 'ذكر', 'مصري', 'مسلم', '1', '0000-00-00', '231', '', '', 'xxxxxxxxx', 'عاطل', 45, 0, '0000-00-00', '', 'الحاسبات والمعلومات', 'المنوفية', 'العام', '0000-00-00', 'طالب'),
 (1234567, '1234567', 'profile.jpg', 'علي', 'ذكر', 'مصري', 'مسلم', 'الجيزه', '2002-05-22', '12346882', '01226717838', 'gad993813@gmail.com', 'ثانوي', 'ثانوي عام', 365, 92, '2019-05-07', '5', 'الحاسبات والمعلومات', 'المنوفيه', 'عام', '2019-07-20', 'طالب'),
+(12345678, '21374', 'IMG_20221015_135340.jpg', 'ahmed', '', 'مصري', 'مسلم', 'zzzzz', '0000-00-00', '21374', '01226717838', 'moustafa.yehia160800@ci.menofia.edu.eg', '', '', 0, 123, '2023-06-01', '', 'الحاسبات والمعلومات', 'المنوفية', 'العام', '0000-00-00', 'طالب'),
 (123456789, '123456789', '', 'most', 'ذكر', 'مصري', 'مسلم', 'Quisna Menufia Egypt', '0000-00-00', '123456789', '01226717838', 'gad993813@gmail.com', '', '', 0, 0, '0000-00-00', '', 'الحاسبات والمعلومات', 'المنوفية', 'العام', '2023-05-10', 'طالب');
 
 --
@@ -262,15 +251,22 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`Ad_ID`);
 
 --
--- Indexes for table `computer_science_dependence_subject`
+-- Indexes for table `cs_dependence_subject`
 --
-ALTER TABLE `computer_science_dependence_subject`
+ALTER TABLE `cs_dependence_subject`
   ADD PRIMARY KEY (`Dependence_Subject_ID`);
 
 --
--- Indexes for table `computer_science_subject`
+-- Indexes for table `cs_doctor_subjects`
 --
-ALTER TABLE `computer_science_subject`
+ALTER TABLE `cs_doctor_subjects`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `Doctor_Id` (`Doctor_Id`);
+
+--
+-- Indexes for table `cs_subject`
+--
+ALTER TABLE `cs_subject`
   ADD PRIMARY KEY (`Subject_ID`),
   ADD KEY `Dependence_Subject_ID` (`Dependence_Subject_ID`);
 
@@ -293,13 +289,6 @@ ALTER TABLE `doctor`
   ADD PRIMARY KEY (`Doctor_ID`);
 
 --
--- Indexes for table `doctor_subjects`
---
-ALTER TABLE `doctor_subjects`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `Doctor_Id` (`Doctor_Id`);
-
---
 -- Indexes for table `student`
 --
 ALTER TABLE `student`
@@ -311,22 +300,28 @@ ALTER TABLE `student`
 --
 
 --
--- AUTO_INCREMENT for table `computer_science_dependence_subject`
+-- AUTO_INCREMENT for table `cs_dependence_subject`
 --
-ALTER TABLE `computer_science_dependence_subject`
-  MODIFY `Dependence_Subject_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+ALTER TABLE `cs_dependence_subject`
+  MODIFY `Dependence_Subject_ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `computer_science_subject`
+-- AUTO_INCREMENT for table `cs_doctor_subjects`
 --
-ALTER TABLE `computer_science_subject`
-  MODIFY `Subject_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+ALTER TABLE `cs_doctor_subjects`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `cs_subject`
+--
+ALTER TABLE `cs_subject`
+  MODIFY `Subject_ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `departments`
 --
 ALTER TABLE `departments`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `developer`
@@ -335,26 +330,20 @@ ALTER TABLE `developer`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `doctor_subjects`
---
-ALTER TABLE `doctor_subjects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `computer_science_subject`
+-- Constraints for table `cs_doctor_subjects`
 --
-ALTER TABLE `computer_science_subject`
-  ADD CONSTRAINT `computer_science_subject_ibfk_1` FOREIGN KEY (`Dependence_Subject_ID`) REFERENCES `computer_science_dependence_subject` (`Dependence_Subject_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `cs_doctor_subjects`
+  ADD CONSTRAINT `cs_doctor_subjects_ibfk_1` FOREIGN KEY (`Doctor_Id`) REFERENCES `doctor` (`Doctor_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `doctor_subjects`
+-- Constraints for table `cs_subject`
 --
-ALTER TABLE `doctor_subjects`
-  ADD CONSTRAINT `doctor_subjects_ibfk_1` FOREIGN KEY (`Doctor_Id`) REFERENCES `doctor` (`Doctor_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `cs_subject`
+  ADD CONSTRAINT `cs_subject_ibfk_1` FOREIGN KEY (`Dependence_Subject_ID`) REFERENCES `cs_dependence_subject` (`Dependence_Subject_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

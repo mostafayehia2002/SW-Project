@@ -270,7 +270,7 @@ if (isset($_POST['add_doctor_subject'])) {
                                 <datalist id="list2">
                                     <?php
                                     foreach ($data_doctor as $d) { ?>
-                                        <option value="<?php echo $d['ID'] ?>"><?php echo $d['Full_Name'] ?></option>
+                                        <option value="<?php echo $d['Doctor_ID'] ?>"><?php echo $d['Full_Name'] ?></option>
                                     <?php  } ?>
 
                                 </datalist>
