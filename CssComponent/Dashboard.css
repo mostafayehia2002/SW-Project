@@ -23,6 +23,9 @@
   text-decoration: none;
   direction: rtl !important;
 }
+a{
+  text-decoration: none;
+}
 ::-webkit-scrollbar {
   width: 5px;
   height: 5px;
