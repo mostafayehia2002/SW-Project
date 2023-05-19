@@ -26,33 +26,32 @@ if (isset($_POST['add'])) {
         }
 
         if ($sql) {
-            $table1 = $name2 . '_dependence_subject';
+           // $table1 = $name2 . '_dependence_subject';
             $table2 = $name2 . '_subject';
+
             $table3 = $name2 . '_doctor_subjects';
 
-            $dep = $con->query("
-            CREATE TABLE `$table1` (
-                `Dependence_Subject_ID` int(11) NOT NULL AUTO_INCREMENT,
-                `Dependence_Subject_Name` varchar(100) NOT NULL,
-                `Dependence_Subject_Code` varchar(100) NOT NULL,
-                `Dependence_Subject_Hours` int(11) NOT NULL,
-                `Dependence_Subject_Level` int(11) NOT NULL,
-                `Dependence_Subject_Semister` int(11) NOT NULL,
-                PRIMARY KEY (`Dependence_Subject_ID`)
-            )
-            ");
+            // $dep = $con->query("
+            // CREATE TABLE `$table1` (
+            //     `Dependence_Subject_ID` int(11) NOT NULL AUTO_INCREMENT,
+            //     `Dependence_Subject_Name` varchar(100) NOT NULL,
+            //     `Dependence_Subject_Code` varchar(100) NOT NULL,
+            //     `Dependence_Subject_Hours` int(11) NOT NULL,
+            //     `Dependence_Subject_Level` int(11) NOT NULL,
+            //     `Dependence_Subject_Semister` int(11) NOT NULL,
+            //     PRIMARY KEY (`Dependence_Subject_ID`)
+            // )
+            // ");
+
             $con->query("
                 CREATE TABLE `$table2` (
-                    `Subject_ID` int(11) NOT NULL AUTO_INCREMENT,
-                    `Subject_Name` varchar(100) NOT NULL,
+                    `ID` int(11) NOT NULL  AUTO_INCREMENT,
                     `Subject_Code` varchar(100) NOT NULL,
-                    `Subject_Hours` int(100) NOT NULL,
-                    `Subject_semister` int(100) NOT NULL,
-                    `Subject_Levels` int(100) NOT NULL,
-                    `Dependence_Subject_ID` int(11) NOT NULL,
-                    PRIMARY KEY (`Subject_ID`),
-                    KEY `Dependence_Subject_ID` (`Dependence_Subject_ID`),
-                    FOREIGN KEY (`Dependence_Subject_ID`) REFERENCES `$table1` (`Dependence_Subject_ID`) ON DELETE CASCADE ON UPDATE CASCADE
+                    `Subject_Name` varchar(100) NOT NULL,
+                    `Subject_Hours` tinyint(4) NOT NULL DEFAULT 3,
+                    `De_Subject_Code` varchar(100) NOT NULL,
+                    `De_Subject_Name` varchar(100) NOT NULL,
+                    `De_Subject_Hours` tinyint(4) NOT NULL DEFAULT 3
                 ) 
                 ");
             $con->query("

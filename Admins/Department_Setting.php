@@ -11,48 +11,56 @@ if (isset($_GET['department_id'])) {
     $department_table = $department_table->fetch(PDO::FETCH_ASSOC);
     $department_name = $department_table['Department_English_Name'];
     $table_subject = $department_name . "_subject";
-    $table_depandance_subject = $department_name . "_dependence_subject";
+    $department_doctor_subject= $department_name."_doctor_subjects";
+
+  
+ 
 } else {
     header("location: Department_Info.php");
     exit();
 }
 
+
+
+//add department subject
 if (isset($_POST['add_subject'])) {
-    $subject_name = $_POST['subject_name'];
     $subject_code = $_POST['subject_code'];
+    $subject_name = $_POST['subject_name'];
     $subject_hour = $_POST['subject_hours'];
-    $subject_semester = $_POST['subject_semester'];
-    $subject_level = $_POST['subject_level'];
-    $depandance_subject_id = $_POST['Depandance_Subject_ID'];
+    $de_subject_name = $_POST['de_subject_name'];
+  
+
+
     $subject_exist = $con->query("SELECT * FROM `$table_subject` WHERE `Subject_Name`='$subject_name' ");
     if ($subject_exist->rowCount() <= 0) {
-        $add_subject = $con->query("INSERT INTO `$table_subject` (`Subject_ID`, `Subject_Name`, `Subject_Code`, `Subject_Hours`, `Subject_semister`, `Subject_Levels`, `Dependence_Subject_ID`) VALUES (NULL, '$subject_name', '$subject_code', '$subject_hour', '$subject_semester', '$subject_level', '$depandance_subject_id')");
+
+        $add_subject = $con->query("INSERT INTO `$table_subject` ( `Subject_Code`, `Subject_Name`, `Subject_Hours`,`De_Subject_Name`) VALUES ('$subject_code','$subject_name','$subject_hour', '$de_subject_name');");
         if ($add_subject) {
             echo "<div class='success'>  تم اضافه الماده بنجاح</div>";
         }
     } else {
-        echo "<div class='faild'>هذه الماده موجوده مسبقا </div>";
+            echo "<div class='faild'>هذه الماده موجوده مسبقا </div>";
     }
+}
+//ubdate department subject
+
+
+
+
+//delete department subject
+
+if(isset($_GET['delete_subject'])){
+
+$delete_subject=$_GET['delete_subject'];
+
+ $delete=$con->query("DELETE FROM `$table_subject`  WHERE `ID`='$delete_subject'");
+if($delete){
+    header("location:Department_Setting.php?department_id=$id&status=add_subject");
+    exit;
+}
 }
 
 
-//Add Depend Subject
-if (isset($_POST['add_depend_subject'])) {
-    $subject_name = $_POST['subject_name'];
-    $subject_code = $_POST['subject_code'];
-    $subject_hour = $_POST['subject_hour'];
-    $subject_semester = $_POST['subject_semester'];
-    $subject_level = $_POST['subject_level'];
-    $subject_exist = $con->query("SELECT * FROM `$table_depandance_subject` WHERE `Dependence_Subject_Name`='$subject_name' ");
-    if ($subject_exist->rowCount() <= 0) {
-        $add_depend_subject = $con->query("INSERT INTO `$table_depandance_subject` (`Dependence_Subject_ID`, `Dependence_Subject_Name`, `Dependence_Subject_Code`, `Dependence_Subject_Hours`, `Dependence_Subject_Level`, `Dependence_Subject_Semister`) VALUES (NULL, '$subject_name', '$subject_code', '$subject_hour', '$subject_level', '$subject_semester')");
-        if ($add_depend_subject) {
-            echo "<div class='success'>  تم اضافه الماده بنجاح</div>";
-        }
-    } else {
-        echo "<div class='faild'>هذه الماده موجوده مسبقا </div>";
-    }
-}
 
 
 
@@ -64,11 +72,12 @@ if (isset($_POST['add_doctor_subject'])) {
     $doctors_id = $_POST['doctor'];
     $doctor_subject = $_POST['subject'];
 
-    $add_doctor_subject = $con->query("INSERT INTO `doctor_subjects` (`id`, `Doctor_Id`, `Subject_Name`) VALUES (NULL,'$doctors_id','$doctor_subject')");
+    $add_doctor_subject = $con->query("INSERT INTO `$department_doctor_subject` (`Doctor_Id`, `Subject_Name`) VALUES ('$doctors_id','$doctor_subject')");
     if ($add_doctor_subject) {
         echo "<div class='success'>  تم اضافه البيانات بنجاح</div>";
     }
 }
+
 
 
 ?>
@@ -79,6 +88,10 @@ if (isset($_POST['add_doctor_subject'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+           <!-- table -->
+     <link rel="stylesheet" href="../CssComponent/bootstrap.min.css">
+    <link rel="stylesheet" href="../CssComponent/datatables.min.css">
+    <!--  -->
     <link rel="stylesheet" href="../CssComponent/all.min.css">
     <link rel="stylesheet" href="../CssComponent/AddData.css">
     <link rel="stylesheet" href="../CssComponent/Table.css">
@@ -107,11 +120,6 @@ if (isset($_POST['add_doctor_subject'])) {
                 <a href="Department_Setting.php?department_id=<?= $id ?>&status=add_subject"> اضافه مواد القسم</a>
             </li>
 
-            <li>
-                <a href="Department_Setting.php?department_id=<?= $id ?>&status=add_depend_subject">اضافة مواد
-                    المتطلب السابق للقسم
-                </a>
-            </li>
             <li><a href="Department_Setting.php?department_id=<?= $id ?>&status=add_doctor_subject">
                     اعطاء صلاحيه المواد لي الدكتور
                 </a></li>
@@ -145,73 +153,94 @@ if (isset($_POST['add_doctor_subject'])) {
                                 <label for="Subject_Hours">
                                     عدد ساعات الماده
                                 </label>
-                                <input type="number" id="Subject_Hours" name="subject_hours" required />
+                                <input type="number" id="Subject_Hours" name="subject_hours" required  value="3"/>
                             </div>
+
+
                             <div class="input-filed">
-                                <label for="subject_semester"> الترم</label>
-                                <input type="number" id="subject_semester" name="subject_semester" required>
+                                <label for="De_Subject_Name"> اسم المتطلب السابق</label>
+                                <input type="text" id="De_Subject_Name" name="de_subject_name" required>
                             </div>
-                            <div class="input-filed">
-                                <label for="Subject_Levels">المستوي</label>
-                                <input type="number" id="Subject_Levels" name="subject_level" required />
-                            </div>
-                            <div class="input-filed">
-                                <label for="Depandance_Subject_ID">المتطلب السابق:</label>
-                                <select name="Depandance_Subject_ID" id="Depandance_Subject_ID">
-                                    <?php
-                                    $all_dependance = $con->query("SELECT * FROM `$table_depandance_subject`");
-                                    $all_dependance = $all_dependance->fetchAll(PDO::FETCH_ASSOC);
-                                    foreach ($all_dependance as $depend) {
-                                    ?>
-                                        <option value="<?= $depend['Dependence_Subject_ID'] ?>">
-                                            <?= $depend['Dependence_Subject_Name'] ?> </option>
-                                    <?php } ?>
-                                </select>
-                            </div>
+                         
+                        
+                          
+
+            
+
                         </div>
                         <div class="save">
                             <input type="submit" value="اضافه" name="add_subject">
                         </div>
                     </div>
                 </form>
-            <?php } elseif (isset($_GET['status']) && $_GET['status'] == "add_depend_subject") { ?>
+                <!-- show table data -->
+                     
+            <div class="row">
+                <h3 class="titleTabel">جدول لعرض بيانات مواد القسم </h3>
+            <div class="col-12">
+                <div class="data_table">
+                    <table id="example" class="table table-striped table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                            <th class="th_text">ID</th>
+                            <th class="th_text">كود الماده</th>
+                            <th class="th_text">الاسم الماده</th>
+                            <th class="th_text">عدد ساعات </th>
+                            <th class="th_text">اسم المتطلب السابق</th>
+                            <th class="th_text">التحكم</th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody class="table-content">
 
-                <form action="" method="POST" enctype="multipart/form-data">
-                    <div class="athers">
-                        <div class="input-filed">
-                            <label for="alluser">اضافه المتطلبات السابقه </label>
-                            <input type="file" id="alluser">
-                        </div>
-                    </div>
-                    <div class="break"></div>
-                    <div class="oneuser">
-                        <h3 class="title">اضافة متطلب سابق :</h3>
-                        <div class="allinput">
-                            <div class="input-filed">
-                                <label for="Subject_name">اسم الماده </label>
-                                <input type="text" id="Subject_name" name="subject_name" required>
-                            </div>
-                            <div class="input-filed">
-                                <label for="subject_code">كود الماده</label>
-                                <input type="text" id="subject_code" name="subject_code" required>
-                            </div>
-                            <div class="input-filed">
-                                <label for="subject_hour"> عدد ساعات الماده</label>
-                                <input type="number" id="subject_hour" name="subject_hour" required>
-                            </div>
-                            <div class="input-filed">
-                                <label for="subject_semester"> الترم</label>
-                                <input type="number" id="subject_semester" name="subject_semester" required>
-                            </div>
-                            <div class="input-filed">
-                                <label for="subject_level">المستوي </label>
-                                <input type="number" id="subject_level" name="subject_level" required>
-                            </div>
-                        </div>
-                        <div class="save">
-                            <input type="submit" value="اضافه" name="add_depend_subject">
-                        </div>
-                </form>
+                            <?php
+
+                        $all_doctor_subject = $con->query("SELECT * FROM `$table_subject`");
+
+                        $doctor_subject_data= $all_doctor_subject->fetchAll(PDO::FETCH_ASSOC);
+
+                        
+
+                        if (!empty($doctor_subject_data)) {
+                            foreach ($doctor_subject_data as  $dr) {
+                        ?>
+                            <tr>
+                                <td><?php echo $dr['ID'] ?></td>
+                                <td><?php echo $dr['Subject_Code'] ?></td>
+                                <td><?php echo $dr['Subject_Name'] ?></td>
+                                <td><?php echo $dr['Subject_Hours'] ?></td>
+                                <td><?php echo $dr['De_Subject_Name'] ?></td>
+                                  
+                                <td>
+                                <button><a  class="update" href=" "?update=<?php echo $dr['ID'] ?>
+                                        class="delete-btn"><i class="fa-solid fa-edit"></i> تعديل</a> </button>
+
+                                 <button ><a class="delete"
+                                 
+                                 href="Department_Setting.php? department_id=<?php echo $id ?>&status=add_subject&delete_subject=<?php echo $dr['ID'] ?>" class="delete-btn"
+                                        onclick="return confirm('Are you soure Delete this subject ?');"><i
+                                            class="fa-solid fa-trash"></i> حذف</a> </button>
+
+                                    
+                                            
+                                </td>
+                            </tr>
+                            <?php
+                            }
+                        } else {
+                            echo '<p class="empty">no doctor available</p>';
+                        }
+                        ?>                      
+                       
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+                   
+
+           
             <?php } elseif (isset($_GET['status']) && $_GET['status'] == "add_doctor_subject") {  ?>
 
                 <form action="" method="POST" enctype="multipart/form-data">
@@ -234,9 +263,7 @@ if (isset($_POST['add_doctor_subject'])) {
                                 $subject = $con->query("SELECT * FROM `$table_subject` ");
                                 $all_subjects = $subject->fetchAll(PDO::FETCH_ASSOC);
 
-                                $dependence_subject = $con->query("SELECT * FROM `$table_depandance_subject`");
-                                $all_dependence_subjects = $dependence_subject->fetchAll(PDO::FETCH_ASSOC);
-
+        
                                 ?>
                                 <input list="list1" name="subject" required />
                                 <datalist id="list1">
@@ -247,15 +274,7 @@ if (isset($_POST['add_doctor_subject'])) {
                                         </option>
 
 
-                                    <?php }
-                                    foreach ($all_dependence_subjects as $s2) {  ?>
-
-
-
-                                        <option value="<?php echo $s2['Dependence_Subject_Code'] ?>">
-                                            <?php echo $s2['Dependence_Subject_Name'] ?></option>
-
-                                    <?php } ?>
+                                 <?php }  ?>
 
                             </div>
 
@@ -282,6 +301,9 @@ if (isset($_POST['add_doctor_subject'])) {
                     </div>
                 </form>
 
+                <!-- show table of subject -->
+
+
 
 
 
@@ -295,6 +317,12 @@ if (isset($_POST['add_doctor_subject'])) {
 
 
     </section>
+    <script src="../JsComponent/bootstrap.bundle.min.js"></script>
+    <script src="../JsComponent/jquery-3.6.0.min.js"></script>
+    <script src="../JsComponent/datatables.min.js"></script>
+    <script src="../JsComponent/pdfmake.min.js"></script>
+    <script src="../JsComponent/vfs_fonts.js"></script>
+    <script src="../JsComponent/custom.js"></script>
     <script src="../JsComponent/Action.js"></script>
     <script src="../JsComponent/admin.js"></script>
 </body>

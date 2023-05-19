@@ -207,6 +207,8 @@ if (isset($_GET['delete'])) {
                         <input type="submit" value="حفظ" name="submit">
                     </div>
                 </form>
+
+                
             <div class="row">
                 <h3 class="titleTabel">جدول لعرض بيانات اعضاء هيئه التدريس</h3>
             <div class="col-12">
