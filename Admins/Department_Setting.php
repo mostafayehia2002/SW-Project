@@ -255,8 +255,9 @@ if (isset($_POST['add_doctor_subject'])) {
                                 <datalist id="list1">
                                     <?php
                                     foreach ($all_subjects as $s1) { ?>
-                                        <option value="<?php echo $s1['Subject_Code'] ?>">
-                                            <?php echo $s1['Subject_Name'] ?>
+                                        <option value="<?php echo $s1['Subject_Name'] ?>">
+                                        
+                                            <?php echo $s1['Subject_Code'] ?>
                                         </option>
                                     <?php }  ?>
                             </div>
@@ -292,8 +293,8 @@ if (isset($_POST['add_doctor_subject'])) {
                                 <thead class="table-dark">
                                     <tr>
                                         <th class="th_text">ID</th>
-                                        <th class="th_text">اسم الدكتور الماده</th>
                                         <th class="th_text">اسم الماده</th>
+                                        <th class="th_text">اسم الدكتور الماده</th>
                                         <th class="th_text">التحكم</th>
                                     </tr>
                                 </thead>
