@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 19, 2023 at 02:22 PM
+-- Generation Time: May 19, 2023 at 06:02 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -86,7 +86,6 @@ CREATE TABLE `departments` (
 --
 
 INSERT INTO `departments` (`ID`, `Department_Code`, `Department_Arabic_Name`, `Department_English_Name`, `Department_Image`, `Department_Date`, `Department_manger`, `Department_Number_Students`, `Department_Number_Doctors`) VALUES
-(7, 'cs30', 'علوم حاسب', 'cs', 'Screenshot 2023-04-04 010857.png', '2023-05-10 23:09:45', 'aa', 0, 0),
 (8, 'ge12', 'عام', 'genral', '.trashed-1669419744-IMG_20220929_175009.jpg', '2023-05-18 22:52:29', 'عربي', 0, 0);
 
 -- --------------------------------------------------------
@@ -153,9 +152,21 @@ CREATE TABLE `doctor` (
 --
 
 INSERT INTO `doctor` (`Doctor_ID`, `Password`, `Image`, `Full_Name`, `Job`, `Gender`, `Nationality`, `Religion`, `Date_Birth`, `Address`, `Phone_Number`, `Degree`, `University`, `Faculty`, `Department`, `Email_Address`) VALUES
-(400, '400', '', 'mostafa yehia gad', 'دكتور', 'ذكر', 'مصري', 'مسلم', '0000-00-00', 'Quisna Menufia Egypt', '', '', 'المنوفيه', 'الحاسبات والمعلومات', 'cs', 'gad993813@gmail.com'),
-(12345, '12345', 'profile.jpg', 'mostafa', 'دكتور', NULL, 'مصري', 'مسيحي', '2023-05-16', 'sdd', '01226717838', NULL, 'المنوفيه', 'الحاسبات والمعلومات', NULL, ''),
-(11111111111111, '123', 'profile.jpg', 'mostafa yehia gad', 'دكتور', 'ذكر', 'مصري', 'مسلم', '0000-00-00', 'qusina', '01226717838', 'يييي', 'المنوفيه', 'الحاسبات والمعلومات', 'ييي', 'moustafa.yehia160800@ci.menofia.edu.eg');
+(12345, '12345', '', 'عربي', 'دكتور', 'ذكر', 'مصري', 'مسلم', '1980-01-24', 'daffascs', '015419552951', 'ماستر', 'المنوفيه', 'الحاسبات والمعلومات', 'genral', 'gad993813@gmail.com'),
+(123456, '123456', '', 'اسامه', 'دكتور', 'ذكر', 'مصري', 'مسلم', '0000-00-00', 'qusina', '0159496592', 'ماستر', 'المنوفيه', 'الحاسبات والمعلومات', 'genral', 'moustafa.yehia160800@ci.menofia.edu.eg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `genral_course_registration`
+--
+
+CREATE TABLE `genral_course_registration` (
+  `ID` int(11) NOT NULL,
+  `Student_ID` int(11) NOT NULL,
+  `Subject_Name` varchar(100) NOT NULL,
+  `Registration` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -174,10 +185,7 @@ CREATE TABLE `genral_doctor_subjects` (
 --
 
 INSERT INTO `genral_doctor_subjects` (`id`, `Doctor_Id`, `Subject_Name`) VALUES
-(1, 400, 'introduction to computer science'),
-(2, 400, ' gn170'),
-(3, 400, ' gn170'),
-(4, 12345, ' ma111');
+(6, 12345, 'Computer Introduction');
 
 -- --------------------------------------------------------
 
@@ -210,6 +218,23 @@ INSERT INTO `genral_subject` (`ID`, `Subject_Code`, `Subject_Name`, `Subject_Hou
 (10, ' is111', ' Introduction to IS', 3, '0'),
 (11, ' st190', ' Statistics&Probabilities', 3, 'Mathematics-1'),
 (12, ' ma112', ' Mathematics-2', 3, 'Mathematics-1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `genral_subject_marks`
+--
+
+CREATE TABLE `genral_subject_marks` (
+  `ID` int(11) NOT NULL,
+  `Student_ID` int(11) NOT NULL,
+  `Subject_Name` varchar(100) NOT NULL,
+  `Subject_Marks` double NOT NULL,
+  `Subject_Midterm` double NOT NULL,
+  `Subject_Quiz` double NOT NULL,
+  `Subject_Attendance` double NOT NULL,
+  `Total_Marks` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -248,10 +273,8 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`St_ID`, `Password`, `Image`, `Full_Name`, `Gender`, `Nationality`, `Religion`, `Address`, `Date_Birth`, `National_ID`, `Phone_Number`, `Academic_Email`, `School`, `Qualification`, `Total_Degree`, `Average`, `Date_Coordination`, `Number_Coordination`, `Faculty`, `University`, `Department`, `Joining_Date`, `Job`) VALUES
-(124, '231', '', 'ddd', 'ذكر', 'مصري', 'مسلم', '1', '0000-00-00', '231', '', '', 'xxxxxxxxx', 'عاطل', 45, 0, '0000-00-00', '', 'الحاسبات والمعلومات', 'المنوفية', 'العام', '0000-00-00', 'طالب'),
-(1234567, '1234567', 'profile.jpg', 'علي', 'ذكر', 'مصري', 'مسلم', 'الجيزه', '2002-05-22', '12346882', '01226717838', 'gad993813@gmail.com', 'ثانوي', 'ثانوي عام', 365, 92, '2019-05-07', '5', 'الحاسبات والمعلومات', 'المنوفيه', 'عام', '2019-07-20', 'طالب'),
-(12345678, '21374', 'IMG_20221015_135340.jpg', 'ahmed', '', 'مصري', 'مسلم', 'zzzzz', '0000-00-00', '21374', '01226717838', 'moustafa.yehia160800@ci.menofia.edu.eg', '', '', 0, 123, '2023-06-01', '', 'الحاسبات والمعلومات', 'المنوفية', 'العام', '0000-00-00', 'طالب'),
-(123456789, '123456789', '', 'most', 'ذكر', 'مصري', 'مسلم', 'Quisna Menufia Egypt', '0000-00-00', '123456789', '01226717838', 'gad993813@gmail.com', '', '', 0, 0, '0000-00-00', '', 'الحاسبات والمعلومات', 'المنوفية', 'العام', '2023-05-10', 'طالب');
+(200703, '200703', 'profile.jpg', 'مصطفي ماهر', 'ذكر', 'مصري', 'مسلم', 'البحيره', '2003-03-16', '12345678910', '015159339551', 'gad993813@gmail.com', 'البحيره', 'ثانوي عام', 370, 91, '2020-05-12', '1234', 'الحاسبات والمعلومات', 'المنوفيه', 'عام', '2023-05-02', 'طالب'),
+(200713, '200713', 'profile.jpg', 'مصطفي يحيي', 'ذكر', 'مصري', 'مسلم', 'قويسنا', '2002-05-22', '123456789', '01226717838', 'gad993813@gmail.com', 'الثانويه المشتركه', 'ثانوي عام', 368, 90, '2020-05-10', '123', 'الحاسبات والمعلومات', 'المنوفيه', 'عام', '2020-05-04', 'طالب');
 
 --
 -- Indexes for dumped tables
@@ -288,6 +311,12 @@ ALTER TABLE `doctor`
   ADD PRIMARY KEY (`Doctor_ID`);
 
 --
+-- Indexes for table `genral_course_registration`
+--
+ALTER TABLE `genral_course_registration`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `genral_doctor_subjects`
 --
 ALTER TABLE `genral_doctor_subjects`
@@ -298,6 +327,12 @@ ALTER TABLE `genral_doctor_subjects`
 -- Indexes for table `genral_subject`
 --
 ALTER TABLE `genral_subject`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `genral_subject_marks`
+--
+ALTER TABLE `genral_subject_marks`
   ADD PRIMARY KEY (`ID`);
 
 --
@@ -321,7 +356,7 @@ ALTER TABLE `cs`
 -- AUTO_INCREMENT for table `departments`
 --
 ALTER TABLE `departments`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `developer`
@@ -330,16 +365,28 @@ ALTER TABLE `developer`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `genral_course_registration`
+--
+ALTER TABLE `genral_course_registration`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `genral_doctor_subjects`
 --
 ALTER TABLE `genral_doctor_subjects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `genral_subject`
 --
 ALTER TABLE `genral_subject`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `genral_subject_marks`
+--
+ALTER TABLE `genral_subject_marks`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
