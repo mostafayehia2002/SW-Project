@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 19, 2023 at 06:02 PM
+-- Generation Time: May 20, 2023 at 05:42 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -53,15 +53,46 @@ INSERT INTO `admin` (`Ad_ID`, `Password`, `status`, `Image`, `Full_Name`, `Gende
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cs`
+-- Table structure for table `course_registration`
 --
 
-CREATE TABLE `cs` (
+CREATE TABLE `course_registration` (
   `ID` int(11) NOT NULL,
-  `Subject_Code` varchar(100) NOT NULL,
+  `Student_ID` int(11) NOT NULL,
   `Subject_Name` varchar(100) NOT NULL,
-  `Subject_Hours` tinyint(4) NOT NULL DEFAULT 3
+  `Registration` tinyint(1) NOT NULL,
+  `Subject_Status` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `course_registration`
+--
+
+INSERT INTO `course_registration` (`ID`, `Student_ID`, `Subject_Name`, `Registration`, `Subject_Status`) VALUES
+(529, 200703, 'Computer Introduction', 0, 0),
+(530, 200703, ' Discrete Mathematics', 0, 0),
+(531, 200703, ' Mathematics-1', 0, 0),
+(532, 200703, ' Semiconductors', 0, 0),
+(533, 200703, ' Scientific&Technical Report Writing', 0, 0),
+(534, 200703, ' Professional Ethics', 0, 0),
+(535, 200703, ' Fundamentals of Management', 0, 0),
+(536, 200703, ' Fundamentals of  Programming', 0, 0),
+(537, 200703, ' Logic Design-1', 0, 0),
+(538, 200703, ' Introduction to IS', 0, 0),
+(539, 200703, ' Statistics&Probabilities', 0, 0),
+(540, 200703, ' Mathematics-2', 0, 0),
+(541, 200713, 'Computer Introduction', 0, 0),
+(542, 200713, ' Discrete Mathematics', 0, 0),
+(543, 200713, ' Mathematics-1', 0, 0),
+(544, 200713, ' Semiconductors', 0, 0),
+(545, 200713, ' Scientific&Technical Report Writing', 0, 0),
+(546, 200713, ' Professional Ethics', 0, 0),
+(547, 200713, ' Fundamentals of Management', 0, 0),
+(548, 200713, ' Fundamentals of  Programming', 0, 0),
+(549, 200713, ' Logic Design-1', 0, 0),
+(550, 200713, ' Introduction to IS', 0, 0),
+(551, 200713, ' Statistics&Probabilities', 0, 0),
+(552, 200713, ' Mathematics-2', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -158,34 +189,24 @@ INSERT INTO `doctor` (`Doctor_ID`, `Password`, `Image`, `Full_Name`, `Job`, `Gen
 -- --------------------------------------------------------
 
 --
--- Table structure for table `genral_course_registration`
+-- Table structure for table `doctor_subject`
 --
 
-CREATE TABLE `genral_course_registration` (
-  `ID` int(11) NOT NULL,
-  `Student_ID` int(11) NOT NULL,
-  `Subject_Name` varchar(100) NOT NULL,
-  `Registration` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `genral_doctor_subjects`
---
-
-CREATE TABLE `genral_doctor_subjects` (
+CREATE TABLE `doctor_subject` (
   `id` int(11) NOT NULL,
   `Doctor_Id` bigint(30) NOT NULL,
   `Subject_Name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `genral_doctor_subjects`
+-- Dumping data for table `doctor_subject`
 --
 
-INSERT INTO `genral_doctor_subjects` (`id`, `Doctor_Id`, `Subject_Name`) VALUES
-(6, 12345, 'Computer Introduction');
+INSERT INTO `doctor_subject` (`id`, `Doctor_Id`, `Subject_Name`) VALUES
+(6, 12345, 'Computer Introduction'),
+(7, 123456, ' Discrete Mathematics'),
+(9, 12345, ' Mathematics-1'),
+(10, 12345, ' Professional Ethics');
 
 -- --------------------------------------------------------
 
@@ -218,23 +239,6 @@ INSERT INTO `genral_subject` (`ID`, `Subject_Code`, `Subject_Name`, `Subject_Hou
 (10, ' is111', ' Introduction to IS', 3, '0'),
 (11, ' st190', ' Statistics&Probabilities', 3, 'Mathematics-1'),
 (12, ' ma112', ' Mathematics-2', 3, 'Mathematics-1');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `genral_subject_marks`
---
-
-CREATE TABLE `genral_subject_marks` (
-  `ID` int(11) NOT NULL,
-  `Student_ID` int(11) NOT NULL,
-  `Subject_Name` varchar(100) NOT NULL,
-  `Subject_Marks` double NOT NULL,
-  `Subject_Midterm` double NOT NULL,
-  `Subject_Quiz` double NOT NULL,
-  `Subject_Attendance` double NOT NULL,
-  `Total_Marks` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -276,6 +280,32 @@ INSERT INTO `student` (`St_ID`, `Password`, `Image`, `Full_Name`, `Gender`, `Nat
 (200703, '200703', 'profile.jpg', 'مصطفي ماهر', 'ذكر', 'مصري', 'مسلم', 'البحيره', '2003-03-16', '12345678910', '015159339551', 'gad993813@gmail.com', 'البحيره', 'ثانوي عام', 370, 91, '2020-05-12', '1234', 'الحاسبات والمعلومات', 'المنوفيه', 'عام', '2023-05-02', 'طالب'),
 (200713, '200713', 'profile.jpg', 'مصطفي يحيي', 'ذكر', 'مصري', 'مسلم', 'قويسنا', '2002-05-22', '123456789', '01226717838', 'gad993813@gmail.com', 'الثانويه المشتركه', 'ثانوي عام', 368, 90, '2020-05-10', '123', 'الحاسبات والمعلومات', 'المنوفيه', 'عام', '2020-05-04', 'طالب');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subject_marks`
+--
+
+CREATE TABLE `subject_marks` (
+  `ID` int(11) NOT NULL,
+  `Student_ID` int(11) NOT NULL,
+  `Subject_Name` varchar(100) NOT NULL,
+  `Subject_Marks` double DEFAULT NULL,
+  `Subject_Midterm` double DEFAULT NULL,
+  `Subject_Quiz` double DEFAULT NULL,
+  `Subject_Attendance` double DEFAULT NULL,
+  `Total_Marks` double DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `subject_marks`
+--
+
+INSERT INTO `subject_marks` (`ID`, `Student_ID`, `Subject_Name`, `Subject_Marks`, `Subject_Midterm`, `Subject_Quiz`, `Subject_Attendance`, `Total_Marks`) VALUES
+(1, 200703, ' Discrete Mathematics', 30, 12, 10, 5, 62),
+(2, 200713, 'Computer Introduction', 40, 20, 10, 5, 75),
+(4, 200703, 'Computer Introduction', NULL, NULL, NULL, NULL, NULL);
+
 --
 -- Indexes for dumped tables
 --
@@ -287,10 +317,11 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`Ad_ID`);
 
 --
--- Indexes for table `cs`
+-- Indexes for table `course_registration`
 --
-ALTER TABLE `cs`
-  ADD PRIMARY KEY (`ID`);
+ALTER TABLE `course_registration`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `Student_ID` (`Student_ID`);
 
 --
 -- Indexes for table `departments`
@@ -311,15 +342,9 @@ ALTER TABLE `doctor`
   ADD PRIMARY KEY (`Doctor_ID`);
 
 --
--- Indexes for table `genral_course_registration`
+-- Indexes for table `doctor_subject`
 --
-ALTER TABLE `genral_course_registration`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `genral_doctor_subjects`
---
-ALTER TABLE `genral_doctor_subjects`
+ALTER TABLE `doctor_subject`
   ADD PRIMARY KEY (`id`),
   ADD KEY `Doctor_Id` (`Doctor_Id`);
 
@@ -330,12 +355,6 @@ ALTER TABLE `genral_subject`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `genral_subject_marks`
---
-ALTER TABLE `genral_subject_marks`
-  ADD PRIMARY KEY (`ID`);
-
---
 -- Indexes for table `student`
 --
 ALTER TABLE `student`
@@ -343,14 +362,20 @@ ALTER TABLE `student`
   ADD UNIQUE KEY `National ID` (`National_ID`);
 
 --
+-- Indexes for table `subject_marks`
+--
+ALTER TABLE `subject_marks`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `cs`
+-- AUTO_INCREMENT for table `course_registration`
 --
-ALTER TABLE `cs`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `course_registration`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=553;
 
 --
 -- AUTO_INCREMENT for table `departments`
@@ -365,38 +390,38 @@ ALTER TABLE `developer`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `genral_course_registration`
+-- AUTO_INCREMENT for table `doctor_subject`
 --
-ALTER TABLE `genral_course_registration`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `genral_doctor_subjects`
---
-ALTER TABLE `genral_doctor_subjects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+ALTER TABLE `doctor_subject`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `genral_subject`
 --
 ALTER TABLE `genral_subject`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `genral_subject_marks`
+-- AUTO_INCREMENT for table `subject_marks`
 --
-ALTER TABLE `genral_subject_marks`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `subject_marks`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `genral_doctor_subjects`
+-- Constraints for table `course_registration`
 --
-ALTER TABLE `genral_doctor_subjects`
-  ADD CONSTRAINT `genral_doctor_subjects_ibfk_1` FOREIGN KEY (`Doctor_Id`) REFERENCES `doctor` (`Doctor_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `course_registration`
+  ADD CONSTRAINT `course_registration_ibfk_1` FOREIGN KEY (`Student_ID`) REFERENCES `student` (`St_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `doctor_subject`
+--
+ALTER TABLE `doctor_subject`
+  ADD CONSTRAINT `doctor_subject_ibfk_1` FOREIGN KEY (`Doctor_Id`) REFERENCES `doctor` (`Doctor_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

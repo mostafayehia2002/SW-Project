@@ -11,13 +11,13 @@ if (isset($_GET['department_id'])) {
     $department_table = $department_table->fetch(PDO::FETCH_ASSOC);
     $department_name = $department_table['Department_English_Name'];
     $table_subject = $department_name . "_subject";
-    $department_doctor_subject = $department_name . "_doctor_subjects";
 } else {
     header("location: Department_Info.php");
     exit();
 }
 
 
+include_once("registration_student.php");
 
 //add department subject
 if (isset($_POST['add_subject'])) {
@@ -25,9 +25,6 @@ if (isset($_POST['add_subject'])) {
     $subject_name = $_POST['subject_name'];
     $subject_hour = $_POST['subject_hours'];
     $de_subject_name = $_POST['de_subject_name'];
-
-
-
     $subject_exist = $con->query("SELECT * FROM `$table_subject` WHERE `Subject_Name`='$subject_name' ");
     if ($subject_exist->rowCount() <= 0) {
 
@@ -59,7 +56,7 @@ if (isset($_GET['delete_subject'])) {
 
 if (isset($_GET['delete_drsubject'])) {
     $delete_drsubject = $_GET['delete_drsubject'];
-    $delete = $con->query("DELETE FROM `$department_doctor_subject`  WHERE `id`='$delete_drsubject'");
+    $delete = $con->query("DELETE FROM `doctor_subject`  WHERE `id`='$delete_drsubject'");
     if ($delete) {
         header("location:Department_Setting.php?department_id=$id&status=add_doctor_subject");
         exit;
@@ -78,7 +75,7 @@ if (isset($_POST['add_doctor_subject'])) {
     $doctors_id = $_POST['doctor'];
     $doctor_subject = $_POST['subject'];
 
-    $add_doctor_subject = $con->query("INSERT INTO `$department_doctor_subject` (`Doctor_Id`, `Subject_Name`) VALUES ('$doctors_id','$doctor_subject')");
+    $add_doctor_subject = $con->query("INSERT INTO `doctor_subject` (`Doctor_Id`, `Subject_Name`) VALUES ('$doctors_id','$doctor_subject')");
     if ($add_doctor_subject) {
         echo "<div class='success'>  تم اضافه البيانات بنجاح</div>";
     }
@@ -300,7 +297,7 @@ if (isset($_POST['add_doctor_subject'])) {
                                 </thead>
                                 <tbody class="table-content">
                                     <?php
-                                    $doctor_subject = $con->query("SELECT id,Subject_Name,Full_Name FROM `$department_doctor_subject` ds INNER JOIN `doctor` dc on ds.Doctor_Id= dc.Doctor_ID");
+                                    $doctor_subject = $con->query("SELECT id,Subject_Name,Full_Name FROM `doctor_subject` ds INNER JOIN `doctor` dc on ds.Doctor_Id= dc.Doctor_ID");
                                     $doctor_subject = $doctor_subject->fetchAll(PDO::FETCH_ASSOC);
 
                                     if (!empty($doctor_subject)) {
@@ -337,12 +334,6 @@ if (isset($_POST['add_doctor_subject'])) {
             <?php } ?>
 
         </div>
-
-
-
-
-
-
     </section>
     <script src="../JsComponent/bootstrap.bundle.min.js"></script>
     <script src="../JsComponent/jquery-3.6.0.min.js"></script>

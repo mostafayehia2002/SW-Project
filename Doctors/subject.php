@@ -6,8 +6,9 @@ if (!isset($_SESSION["doctor_id"])) {
 }
 include_once("../DataBase/database.php");
 
-$department = $_GET['department'] . "_doctor_subjects";
-$subject = $con->query("SELECT * FROM `$department`");
+$table_name ="doctor_subject";
+$doctorr_id=$_GET['doctor_id'];
+$subject = $con->query("SELECT * FROM `$table_name` WHERE `Doctor_ID`='$doctorr_id'");
 $data_subjects = $subject->fetchAll(PDO::FETCH_ASSOC);
 $count = $subject->rowCount();
 ?>

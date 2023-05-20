@@ -8,12 +8,33 @@ if (!isset($_SESSION["doctor_id"])) {
 include_once("../DataBase/database.php");
 
 
+//table data
+
+$subject_name=$_GET['subject_name'];
+
+$subject_marks=$con->query("SELECT t1.Full_Name,
+t2.Student_ID,
+t2.Subject_Name,
+t2.Subject_Marks,
+t2.Subject_Midterm,
+t2.Subject_Quiz,
+t2.Subject_Attendance,
+t2.Total_Marks
+FROM
+`student` t1
+ INNER JOIN
+ `subject_marks` t2 
+ on t1.St_ID=t2.Student_ID
+ WHERE t2.Subject_Name='$subject_name'
+");
+$subject_marks=$subject_marks->fetchAll(PDO::FETCH_ASSOC);
+
 
 ?>
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 
 <head>
   <meta charset="UTF-8">
@@ -30,81 +51,7 @@ include_once("../DataBase/database.php");
     <link rel="stylesheet" href="../CssCOmponent/Dashboard.css">
   <title>Document</title>
 
-  <style>
-    .ptb-50 {
-    padding: 50px 0px;
-}
 
-.mtb-15 {
-    margin: 15px 0;
-}
-
-
-/* ==== Scoll  = Start ===== */
-.totop {
-    position: fixed;
-    bottom: 0px;
-    right: 10px;
-    height: 45px;
-    width: 45px;
-    cursor: pointer;
-    display: none;
-    background: rgba(0, 0, 0, 0.3);
-    color: #fff;
-    border-radius: 5px 5px 0 0;
-    line-height: 47px;
-    font-size: 20px;
-    text-align: center;
-}
-
-.totop:hover {
-    line-height: 40px;
-    color: #fff;
-    background: #194274;
-    text-shadow: 0 0 5px #000;
-}
-
-/* ==== Scoll  = End ===== */
-/* ==== Data table  = Start ===== */
-
-.data_table{
-   background: #fff;
-    padding: 15px;
-    box-shadow: 1px 3px 5px #aaa;
-    border-radius: 5px;
-}
-
-.data_table .btn{
-    padding: 5px 10px;
-    margin: 10px 3px 10px 0;
-}
-/* ==== Data table  = End  ===== */
-
-
-/* Start Delete And Update And add*/
-.table-content td button{
-    margin: 1px;
-    font-size: 14px;
-    font-weight: bold;
-    outline: none;
-    border: none;
-}
-.table-content td a{
-    color: #fff;
-    padding: 4px 8px;
-    border-radius: 3px;
-}
-.table-content td a.add{
-    background-color: #080;
-}
-.table-content td a.delete{
-    background-color: #f00;
-}
-.table-content td a.update{
-    background-color: #00f;
-}
-/* End Delete And Update And add*/
-  </style>
 </head>
 
 <body>
@@ -118,7 +65,7 @@ include_once("../DataBase/database.php");
     <!-- end nav bar -->
     <ul class="department-navbar">
             <li>
-                <a href="subject_Setting.php?"> الصفحه الرئيسيه</a>
+                <!-- <a href="subject_Setting.php?"> الصفحه الرئيسيه</a> -->
 
             </li>     
         </ul>
@@ -145,23 +92,25 @@ include_once("../DataBase/database.php");
                         </thead>
                         
                         <tbody class="table-content">
+                          <?php foreach($subject_marks as $data) {?>
                             <tr>
-                                <td>mostafa</td>
-                                <td>mostafa</td>
-                                <td>mostafa</td>
-                                <td>mostafa</td>
-                                <td>mostafa</td>
-                                <td>mostafa</td>
-                                <td>mostafa</td>
-                                <td>mostafa</td>
+                             <td><?php  echo $data['Student_ID'] ?></td>
+                             <td><?php  echo $data['Full_Name'] ?></td>
+                             <td><?php  echo $data['Subject_Name'] ?></td>
+                             <td><?php  echo $data['Subject_Marks'] ?></td>
+                             <td><?php  echo $data['Subject_Midterm'] ?></td>
+                             <td><?php  echo $data['Subject_Quiz'] ?></td>
+                             <td><?php  echo $data['Subject_Attendance'] ?></td>
+                             <td><?php  echo $data['Total_Marks'] ?></td>
+                               
                                 <td>
-                                    <button><a href="#" class="add">اضافة</a></button>
-                                    <button><a href="#" class="delete">حذف</a></button>
+                                  
                                     <button><a href="#" class="update">تعديل</a></button>
+                                 
                                 </td>
                             </tr>
                           
-                      
+                         <?php } ?>
                        
                         </tbody>
                     </table>

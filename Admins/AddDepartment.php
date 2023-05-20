@@ -27,9 +27,6 @@ if (isset($_POST['add'])) {
 
         if ($sql) {
             $table1 = $name2 .'_subject';
-            $table2 = $name2 .'_doctor_subjects';
-            $table3 = $name2 .'_course_registration';
-            $table4=$name2.'_subject_marks';
             $con->query("
                 CREATE TABLE `$table1` (
                     `ID` int(11) NOT NULL  AUTO_INCREMENT,
@@ -43,42 +40,7 @@ if (isset($_POST['add'])) {
                 ) 
                 ");
 
-            $con->query("
-                CREATE TABLE `$table2` (
-                    `id` int(11) NOT NULL AUTO_INCREMENT,
-                    `Doctor_Id` bigint(30) NOT NULL,
-                    `Subject_Name` varchar(100) NOT NULL,
-                    PRIMARY KEY (`id`),
-                    KEY `Doctor_Id` (`Doctor_Id`),
-                    FOREIGN KEY (`Doctor_Id`) REFERENCES `doctor` (`Doctor_ID`) ON DELETE CASCADE ON UPDATE CASCADE
-                )
-                ");
-
-            $con->query("
-            CREATE TABLE `$table3` (
-                `ID` int(11) NOT NULL AUTO_INCREMENT,
-                `Student_ID` int(11) NOT NULL,
-                `Subject_Name` varchar(100) NOT NULL,
-                `Registration` tinyint(1) NOT NULL,
-                PRIMARY KEY (`ID`)
-              )
-                ");
-
-             $con->query("CREATE TABLE `$table4` (
-                `ID` int(11) NOT NULL  AUTO_INCREMENT,
-                `Student_ID` int(11) NOT NULL,
-                `Subject_Name` varchar(100) NOT NULL,
-                `Subject_Marks` double NOT NULL,
-                `Subject_Midterm` double NOT NULL,
-                `Subject_Quiz` double NOT NULL,
-                `Subject_Attendance` double NOT NULL,
-                `Total_Marks` double NOT NULL,
-                PRIMARY KEY (`ID`)
-              )");
-
-
-
-
+     
 
             echo "<div class='success'>  تم انشاء القسم بنجاح</div>";
         }
