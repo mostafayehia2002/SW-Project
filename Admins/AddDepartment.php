@@ -73,6 +73,7 @@ if (isset($_POST['add'])) {
         <!-- Start nav-bar -->
         <?php include_once("../Components/NavBar.php"); ?>
         <!-- end nav bar -->
+        
         <div class="container">
             <form action="" method="POST" enctype="multipart/form-data">
                 <div class="oneuser">

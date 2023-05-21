@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2023 at 05:42 PM
+-- Generation Time: May 21, 2023 at 07:08 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -69,30 +69,41 @@ CREATE TABLE `course_registration` (
 --
 
 INSERT INTO `course_registration` (`ID`, `Student_ID`, `Subject_Name`, `Registration`, `Subject_Status`) VALUES
-(529, 200703, 'Computer Introduction', 0, 0),
-(530, 200703, ' Discrete Mathematics', 0, 0),
-(531, 200703, ' Mathematics-1', 0, 0),
-(532, 200703, ' Semiconductors', 0, 0),
-(533, 200703, ' Scientific&Technical Report Writing', 0, 0),
-(534, 200703, ' Professional Ethics', 0, 0),
-(535, 200703, ' Fundamentals of Management', 0, 0),
-(536, 200703, ' Fundamentals of  Programming', 0, 0),
-(537, 200703, ' Logic Design-1', 0, 0),
-(538, 200703, ' Introduction to IS', 0, 0),
-(539, 200703, ' Statistics&Probabilities', 0, 0),
-(540, 200703, ' Mathematics-2', 0, 0),
-(541, 200713, 'Computer Introduction', 0, 0),
-(542, 200713, ' Discrete Mathematics', 0, 0),
-(543, 200713, ' Mathematics-1', 0, 0),
-(544, 200713, ' Semiconductors', 0, 0),
-(545, 200713, ' Scientific&Technical Report Writing', 0, 0),
-(546, 200713, ' Professional Ethics', 0, 0),
-(547, 200713, ' Fundamentals of Management', 0, 0),
-(548, 200713, ' Fundamentals of  Programming', 0, 0),
-(549, 200713, ' Logic Design-1', 0, 0),
-(550, 200713, ' Introduction to IS', 0, 0),
-(551, 200713, ' Statistics&Probabilities', 0, 0),
-(552, 200713, ' Mathematics-2', 0, 0);
+(685, 200713, 'Computer Introduction', 0, 0),
+(686, 200713, ' Discrete Mathematics', 0, 0),
+(687, 200713, ' Mathematics-1', 0, 0),
+(688, 200713, ' Semiconductors', 0, 0),
+(689, 200713, ' Scientific&Technical Report Writing', 0, 0),
+(690, 200713, ' Professional Ethics', 0, 0),
+(691, 200713, ' Fundamentals of Management', 0, 0),
+(692, 200713, ' Fundamentals of  Programming', 0, 0),
+(693, 200713, ' Logic Design-1', 0, 0),
+(694, 200713, ' Introduction to IS', 0, 0),
+(695, 200713, ' Statistics&Probabilities', 0, 0),
+(696, 200713, ' Mathematics-2', 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `create_post`
+--
+
+CREATE TABLE `create_post` (
+  `id` int(11) NOT NULL,
+  `Doctor_ID` bigint(100) NOT NULL,
+  `Subject_Name` varchar(100) NOT NULL,
+  `Content` varchar(500) NOT NULL,
+  `Pdf` varchar(100) DEFAULT NULL,
+  `Img` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `create_post`
+--
+
+INSERT INTO `create_post` (`id`, `Doctor_ID`, `Subject_Name`, `Content`, `Pdf`, `Img`) VALUES
+(9, 12345, 'Computer Introduction', '\r\n                            ', 'image_11520086-09bd-4e02-8aa4-076dd1b1797f20221005_183059.jpg', '.trashed-1669419744-IMG_20220929_175009.jpg'),
+(10, 12345, 'Computer Introduction', '\r\n                            ', 'image_11520086-09bd-4e02-8aa4-076dd1b1797f20221005_183059.jpg', '.trashed-1669419744-IMG_20220929_175009.jpg');
 
 -- --------------------------------------------------------
 
@@ -243,6 +254,18 @@ INSERT INTO `genral_subject` (`ID`, `Subject_Code`, `Subject_Name`, `Subject_Hou
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `show_post`
+--
+
+CREATE TABLE `show_post` (
+  `id` int(11) NOT NULL,
+  `react` tinyint(1) NOT NULL,
+  `comment` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `student`
 --
 
@@ -277,8 +300,7 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`St_ID`, `Password`, `Image`, `Full_Name`, `Gender`, `Nationality`, `Religion`, `Address`, `Date_Birth`, `National_ID`, `Phone_Number`, `Academic_Email`, `School`, `Qualification`, `Total_Degree`, `Average`, `Date_Coordination`, `Number_Coordination`, `Faculty`, `University`, `Department`, `Joining_Date`, `Job`) VALUES
-(200703, '200703', 'profile.jpg', 'مصطفي ماهر', 'ذكر', 'مصري', 'مسلم', 'البحيره', '2003-03-16', '12345678910', '015159339551', 'gad993813@gmail.com', 'البحيره', 'ثانوي عام', 370, 91, '2020-05-12', '1234', 'الحاسبات والمعلومات', 'المنوفيه', 'عام', '2023-05-02', 'طالب'),
-(200713, '200713', 'profile.jpg', 'مصطفي يحيي', 'ذكر', 'مصري', 'مسلم', 'قويسنا', '2002-05-22', '123456789', '01226717838', 'gad993813@gmail.com', 'الثانويه المشتركه', 'ثانوي عام', 368, 90, '2020-05-10', '123', 'الحاسبات والمعلومات', 'المنوفيه', 'عام', '2020-05-04', 'طالب');
+(200713, '200713', 'profile.jpg', 'مصطفي يحيي', 'ذكر', 'مصري', 'مسلم', 'قويسنا', '2002-05-22', '123456789', '01226717838', 'gad993813@gmail.com', 'الثانويه المشتركه', 'ثانوي عام', 368, 90, '2020-05-10', '123', 'الحاسبات والمعلومات', 'المنوفيه', 'genral', '2020-05-04', 'طالب');
 
 -- --------------------------------------------------------
 
@@ -324,6 +346,13 @@ ALTER TABLE `course_registration`
   ADD KEY `Student_ID` (`Student_ID`);
 
 --
+-- Indexes for table `create_post`
+--
+ALTER TABLE `create_post`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `Doctor_ID` (`Doctor_ID`);
+
+--
 -- Indexes for table `departments`
 --
 ALTER TABLE `departments`
@@ -355,6 +384,12 @@ ALTER TABLE `genral_subject`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `show_post`
+--
+ALTER TABLE `show_post`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `student`
 --
 ALTER TABLE `student`
@@ -375,7 +410,13 @@ ALTER TABLE `subject_marks`
 -- AUTO_INCREMENT for table `course_registration`
 --
 ALTER TABLE `course_registration`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=553;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=697;
+
+--
+-- AUTO_INCREMENT for table `create_post`
+--
+ALTER TABLE `create_post`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `departments`
@@ -402,6 +443,12 @@ ALTER TABLE `genral_subject`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
+-- AUTO_INCREMENT for table `show_post`
+--
+ALTER TABLE `show_post`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `subject_marks`
 --
 ALTER TABLE `subject_marks`
@@ -418,10 +465,22 @@ ALTER TABLE `course_registration`
   ADD CONSTRAINT `course_registration_ibfk_1` FOREIGN KEY (`Student_ID`) REFERENCES `student` (`St_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Constraints for table `create_post`
+--
+ALTER TABLE `create_post`
+  ADD CONSTRAINT `create_post_ibfk_1` FOREIGN KEY (`Doctor_ID`) REFERENCES `doctor` (`Doctor_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `doctor_subject`
 --
 ALTER TABLE `doctor_subject`
   ADD CONSTRAINT `doctor_subject_ibfk_1` FOREIGN KEY (`Doctor_Id`) REFERENCES `doctor` (`Doctor_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `show_post`
+--
+ALTER TABLE `show_post`
+  ADD CONSTRAINT `show_post_ibfk_1` FOREIGN KEY (`id`) REFERENCES `create_post` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

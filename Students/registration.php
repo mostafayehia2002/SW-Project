@@ -7,12 +7,30 @@ if (!isset($_SESSION["student_id"])) {
 }
 
 include_once("../DataBase/database.php");
-if ($con) {
-    $ID = $_SESSION['student_id'];
-    $sql = $con->query("SELECT * FROM `student` WHERE St_ID='$ID'");
-    $data = $sql->fetch(PDO::FETCH_ASSOC);
+ $ID = $_SESSION['student_id'];
+    
+
+//course registration
+ $data=$con->query("SELECT * FROM `course_registration` WHERE Student_ID='$ID' and Registration=0 LIMIT 6");
+ $data=$data->fetchAll(PDO::FETCH_ASSOC);
+//
+
+
+
+if(isset($_POST['regist'])){
+  
+
+
+foreach($_POST as $sub){
+
+$con->query("UPDATE `course_registration` SET Registration=1 WHERE Student_ID='$ID' AND Subject_Name='$sub'");
+ 
+  
 }
 
+ 
+
+}
 
 ?>
 <html lang="en">
@@ -34,7 +52,7 @@ table{
   box-shadow: 0 2px 15px rgba(64,64,64,.2);
   border-radius: 12px 12px 0 0;
   overflow: hidden;
-  width: 80%;
+  width: 90%;
   background-color: #fafafa;
   margin:50px auto;
 }
@@ -58,9 +76,7 @@ tr{
   width: 100%;
  
 }
-/* tr:nth-child(even){
-  background-color: #eeeeee;
-} */
+
 td input{
   background-color: var(--main-color);
   padding: 7px 22px;
@@ -85,48 +101,44 @@ input[type="submit"]{
         <div class="container">
 
         <table>
-        <form action="" method="post">
+        <form action="" method="POST">
         <thead>
           <tr>
-            <th><label for="s1">الماده الاولي</label></th>
-            <th><label for="s2">الماده الثانيه</label></th>
-            <th><label for="s3">الماده الثالثه</label></th>
-            <th><label for="s4">الماده الرابعه</label></th>
-            <th><label for="s5"> الماده الخامسه</label></th>
-            <th><label for="s6"> الماده السادسه</label></th>
-
-
-
-
          
+            <?php 
+              $c=1;
+            foreach($data as $s){
+            ?>
+            <th><label for="s<?Php echo $c;?>">الماده <?Php echo $c++;?></label></th>
+           <?php 
+          }?>
           </tr>
+
         </thead>
         <tbody>
           <tr class="one">
-            <tr>
-              <td><label for="s1">اسم الماده</label></td>
-              <td><label for="s2">اسم الماده</label></td>
-              <td><label for="s3">اسم الماده</label></td>
-              <td><label for="s4">اسم الماده</label></td>
-              <td><label for="s5">اسم الماده</label></td>
-              <td><label for="s6">اسم الماده</label></td>
-           
-            </tr>
-          </tr>
-          <tr class="one">
-            <td> <input type="checkbox"  name=""  id="s1"></td>
-            <td> <input type="checkbox"  name="" id="s2"></td>
-            <td> <input type="checkbox"  name="" id="s3"></td>
-            <td> <input type="checkbox"  name="" id="s4"></td>
-            <td> <input type="checkbox"  name="" id="s5"></td>
-            <td> <input type="checkbox"  name="" id="s6"></td>
-          </tr>
+
+
+           <?php 
+             $count=1;
+            foreach($data as $d){
+         
+            ?>
+          <td>
+            <label for="s<?Php echo $count;?>" ><?php echo $d['Subject_Name']?> </label>
+            <br>
+
+           <input type="checkbox"  name="<?php echo $d['Subject_Name']?>"  id="s<?Php echo $count++;?>" value="<?php echo $d['Subject_Name']?>">
+          </td>  
+           <?php }?>
+
           
+          </tr> 
         </tbody>
         <tfoot>
           <tr>
             <td>
-              <input type="submit" value="تسجيل">
+              <input type="submit" value="تسجيل" name="regist">
             </td>       
           </tr>      
         </tfoot>

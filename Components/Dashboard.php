@@ -70,15 +70,19 @@ include_once("../DataBase/database.php");
             <li><a href="subject.php?doctor_id=<?= $doctor_data['Doctor_ID'] ?>"><i class="fa-solid fa-book-open"></i>المواد المتاحه</a></li>
         </ul>
 
-
+        <ul class="link">
+            <li><a href="create_post.php?doctor_id=<?= $doctor_data['Doctor_ID'] ?>">
+            <i class="fa-solid fa-paste"></i>انشاء منشور</a></li>
+        </ul>
+       
         <!-- start student -->
     <?php } elseif (isset($_SESSION['student_id'])) { ?>
         <ul class="link">
             <li><a href="Student_Info.php"><i class="fa-sharp fa-solid fa-circle-info"></i>البيانات الشخصيه</a></li>
 
-         <li><a href="registration.php"><i class="fa-sharp fa-solid fa-circle-info"></i>تسجيل المواد </a></li>
+         <li><a href="registration.php"><i class="fa-solid fa-pen-to-square"></i>تسجيل المواد </a></li>
         </ul>
-
+        
     <?php  } ?>
 
 </div>

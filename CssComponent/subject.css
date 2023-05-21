@@ -5,7 +5,7 @@
     grid-template-columns: repeat(auto-fit , minmax(280px ,280px));
     gap: 10px;
     margin-top: 20px;
-    margin-left: 30px;
+    margin-right: 20px;
 }
 .boxs .box{
     background: #fff;
@@ -14,7 +14,6 @@
     box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
     transition: 0.4s linear;
     position: relative;
-    height: 280px;
     width:280px;
 }
 .box h2{
