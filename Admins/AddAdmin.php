@@ -279,7 +279,7 @@ if (isset($_GET['delete'])) {
                                                             تعديل</a> </button>
 
 
-                                                
+
 
                                                     <button> <a class="delete" href="AddAdmin.php?delete=<?php echo $user['Ad_ID'] ?>" class="delete-btn" onclick="return confirm('Are you soure Delete this user ?');"><i class="fa-solid fa-trash"></i> حذف</a></button>
 
