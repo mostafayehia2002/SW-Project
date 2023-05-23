@@ -32,7 +32,7 @@ if (isset($_POST['update'])) {
     move_uploaded_file($pdf_from, $pdf_to);
     $pdf = $_FILES['pdf']['name'];
     //
-    $con->query("INSERT INTO `create_post` (`id`, `Doctor_ID`, `Subject_Name`, `Content`, `Pdf`, `Img`) VALUES (NULL, '$ID', '$subject', '$content','$pdf','$img')");
+    $con->query("UPDATE `create_post`  SET  `Doctor_ID`= '$ID', `Subject_Name`='$subject', `Content`='$content', `Pdf`='$pdf', `Img`='$img'");
 }
 
 
@@ -153,7 +153,7 @@ if (isset($_POST['update'])) {
                         </div>
 
                         <div class="save">
-                            <input type="submit" value="نشر" name="add">
+                            <input type="submit" value="تعديل" name="update">
                         </div>
                     </div>
 

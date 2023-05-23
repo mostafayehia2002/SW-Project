@@ -35,6 +35,27 @@ $subject_marks = $subject_marks->fetchAll(PDO::FETCH_ASSOC);
 //All Post privete Subject
 $allPosts = $con->query("SELECT * FROM `create_post` INNER JOIN `doctor` ON create_post.Doctor_ID=doctor.Doctor_ID  AND create_post.Subject_Name='$subject_name'");
 $allPosts = $allPosts->fetchAll(PDO::FETCH_ASSOC);
+
+
+//Delete Post
+if (isset($_GET['delete_post'])) {
+  $delete_post = $_GET['delete_post'];
+  $post = $con->query("SELECT * FROM `create_post` WHERE `id`=$delete_post");
+  $post = $post->fetch(PDO::FETCH_ASSOC);
+  $delete = $con->query("DELETE FROM `create_post` WHERE  `id`=$delete_post");
+  if ($delete) {
+    if (!empty($post['Pdf'])) {
+      $Pdf = $post['Pdf'];
+      unlink("Posts/$Pdf");
+    }
+    if (!empty($post['Img'])) {
+      $Img = $post['Img'];
+      unlink("Posts/$Img");
+    }
+    header("Location: subject_setting.php?subject_name=$subject_name");
+    exit();
+  }
+}
 ?>
 
 
@@ -225,9 +246,7 @@ $allPosts = $allPosts->fetchAll(PDO::FETCH_ASSOC);
                     <td><?php echo $data['Subject_Quiz'] ?></td>
                     <td><?php echo $data['Subject_Attendance'] ?></td>
                     <td><?php echo $data['Total_Marks'] ?></td>
-
                     <td>
-
                       <button><a href="Add_Marks.php?id=<?php echo $data['Student_ID'] ?>&subject=<?php echo $data['Subject_Name'] ?>" class="update">تعديل</a></button>
 
                     </td>
