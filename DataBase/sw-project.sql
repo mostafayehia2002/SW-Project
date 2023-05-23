@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 21, 2023 at 07:08 PM
+-- Generation Time: May 23, 2023 at 02:07 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -47,7 +47,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`Ad_ID`, `Password`, `status`, `Image`, `Full_Name`, `Gender`, `Address`, `Job`, `Email_Address`, `Phone_Number`, `Faculty`, `University`) VALUES
-(2002, '2002', 1, 'IMG_20220324_135045.jpg', 'mostafa hossam', 'انثي', 'qusina', 'مسئول عن اداره شئون الطلاب', 'moustafa.yehia160800@ci.menofia.edu.eg', 1226717838, 'الحاسبات والمعلومات', ' المنوفيه'),
+(2002, '2002', 1, 'IMG_20220324_135045.jpg', 'mostafa hossam', 'ذكر', 'qusina', 'مسئول عن اداره شئون الطلاب', 'moustafa.yehia160800@ci.menofia.edu.eg', 1226717838, 'الحاسبات والمعلومات', ' المنوفيه'),
 (2252002, '2002', 1, 'teefa.jpg', 'مصطفي يحيي', 'ذكر', 'ميت بره مركز قويسنا المنوفيه', 'مسئول السيستم', 'gad993813@gmail.com', 1226717838, 'الحاسبات والمعلومات', 'المنوفيه');
 
 -- --------------------------------------------------------
@@ -69,8 +69,8 @@ CREATE TABLE `course_registration` (
 --
 
 INSERT INTO `course_registration` (`ID`, `Student_ID`, `Subject_Name`, `Registration`, `Subject_Status`) VALUES
-(685, 200713, 'Computer Introduction', 0, 0),
-(686, 200713, ' Discrete Mathematics', 0, 0),
+(685, 200713, 'Computer Introduction', 1, 1),
+(686, 200713, ' Discrete Mathematics', 1, 0),
 (687, 200713, ' Mathematics-1', 0, 0),
 (688, 200713, ' Semiconductors', 0, 0),
 (689, 200713, ' Scientific&Technical Report Writing', 0, 0),
@@ -94,16 +94,19 @@ CREATE TABLE `create_post` (
   `Subject_Name` varchar(100) NOT NULL,
   `Content` varchar(500) NOT NULL,
   `Pdf` varchar(100) DEFAULT NULL,
-  `Img` varchar(100) DEFAULT NULL
+  `Img` varchar(100) DEFAULT NULL,
+  `Date` date DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `create_post`
 --
 
-INSERT INTO `create_post` (`id`, `Doctor_ID`, `Subject_Name`, `Content`, `Pdf`, `Img`) VALUES
-(9, 12345, 'Computer Introduction', '\r\n                            ', 'image_11520086-09bd-4e02-8aa4-076dd1b1797f20221005_183059.jpg', '.trashed-1669419744-IMG_20220929_175009.jpg'),
-(10, 12345, 'Computer Introduction', '\r\n                            ', 'image_11520086-09bd-4e02-8aa4-076dd1b1797f20221005_183059.jpg', '.trashed-1669419744-IMG_20220929_175009.jpg');
+INSERT INTO `create_post` (`id`, `Doctor_ID`, `Subject_Name`, `Content`, `Pdf`, `Img`, `Date`) VALUES
+(11, 12345, 'Computer Introduction', '\r\n                ssc            ', 'My CV.pdf', 'Screenshot 2023-05-09 .png', '2023-05-22'),
+(13, 123456, ' Discrete Mathematics', '\r\n                            sddddddddddd', '', '', '2023-05-22'),
+(14, 12345, 'Computer Introduction', '\r\n                        هلا والله', '', 'WhatsApp Image 2021-10-23 at 11.04.12 PM.jpeg', '2023-05-22'),
+(15, 123456, ' Discrete Mathematics', '\r\n                               Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur eos cupiditate consequatur quo minima voluptas, magni ipsa maiores labore magnam, ullam architecto laborum, amet autem cum ratione inventore dolor temporibus! ', '', 'WhatsApp Image 2021-10-23 at 11.04.12 PM.jpeg', '2023-05-23');
 
 -- --------------------------------------------------------
 
@@ -194,8 +197,8 @@ CREATE TABLE `doctor` (
 --
 
 INSERT INTO `doctor` (`Doctor_ID`, `Password`, `Image`, `Full_Name`, `Job`, `Gender`, `Nationality`, `Religion`, `Date_Birth`, `Address`, `Phone_Number`, `Degree`, `University`, `Faculty`, `Department`, `Email_Address`) VALUES
-(12345, '12345', '', 'عربي', 'دكتور', 'ذكر', 'مصري', 'مسلم', '1980-01-24', 'daffascs', '015419552951', 'ماستر', 'المنوفيه', 'الحاسبات والمعلومات', 'genral', 'gad993813@gmail.com'),
-(123456, '123456', '', 'اسامه', 'دكتور', 'ذكر', 'مصري', 'مسلم', '0000-00-00', 'qusina', '0159496592', 'ماستر', 'المنوفيه', 'الحاسبات والمعلومات', 'genral', 'moustafa.yehia160800@ci.menofia.edu.eg');
+(12345, '12345', 'profile.jpg', 'عربي', 'دكتور', 'ذكر', 'مصري', 'مسلم', '1980-01-24', 'daffascs', '015419552951', 'ماستر', 'المنوفيه', 'الحاسبات والمعلومات', 'genral', 'gad993813@gmail.com'),
+(123456, '123456', 'profile.jpg', 'اسامه', 'دكتور', 'ذكر', 'مصري', 'مسلم', '0000-00-00', 'qusina', '0159496592', 'ماستر', 'المنوفيه', 'الحاسبات والمعلومات', 'genral', 'moustafa.yehia160800@ci.menofia.edu.eg');
 
 -- --------------------------------------------------------
 
@@ -215,9 +218,7 @@ CREATE TABLE `doctor_subject` (
 
 INSERT INTO `doctor_subject` (`id`, `Doctor_Id`, `Subject_Name`) VALUES
 (6, 12345, 'Computer Introduction'),
-(7, 123456, ' Discrete Mathematics'),
-(9, 12345, ' Mathematics-1'),
-(10, 12345, ' Professional Ethics');
+(12, 123456, ' Discrete Mathematics');
 
 -- --------------------------------------------------------
 
@@ -250,18 +251,6 @@ INSERT INTO `genral_subject` (`ID`, `Subject_Code`, `Subject_Name`, `Subject_Hou
 (10, ' is111', ' Introduction to IS', 3, '0'),
 (11, ' st190', ' Statistics&Probabilities', 3, 'Mathematics-1'),
 (12, ' ma112', ' Mathematics-2', 3, 'Mathematics-1');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `show_post`
---
-
-CREATE TABLE `show_post` (
-  `id` int(11) NOT NULL,
-  `react` tinyint(1) NOT NULL,
-  `comment` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -325,7 +314,7 @@ CREATE TABLE `subject_marks` (
 
 INSERT INTO `subject_marks` (`ID`, `Student_ID`, `Subject_Name`, `Subject_Marks`, `Subject_Midterm`, `Subject_Quiz`, `Subject_Attendance`, `Total_Marks`) VALUES
 (1, 200703, ' Discrete Mathematics', 30, 12, 10, 5, 62),
-(2, 200713, 'Computer Introduction', 40, 20, 10, 5, 75),
+(2, 200713, 'Computer Introduction', 40, 2, 10, 5, 57),
 (4, 200703, 'Computer Introduction', NULL, NULL, NULL, NULL, NULL);
 
 --
@@ -384,12 +373,6 @@ ALTER TABLE `genral_subject`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `show_post`
---
-ALTER TABLE `show_post`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `student`
 --
 ALTER TABLE `student`
@@ -416,7 +399,7 @@ ALTER TABLE `course_registration`
 -- AUTO_INCREMENT for table `create_post`
 --
 ALTER TABLE `create_post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `departments`
@@ -434,19 +417,13 @@ ALTER TABLE `developer`
 -- AUTO_INCREMENT for table `doctor_subject`
 --
 ALTER TABLE `doctor_subject`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `genral_subject`
 --
 ALTER TABLE `genral_subject`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
---
--- AUTO_INCREMENT for table `show_post`
---
-ALTER TABLE `show_post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `subject_marks`
@@ -475,12 +452,6 @@ ALTER TABLE `create_post`
 --
 ALTER TABLE `doctor_subject`
   ADD CONSTRAINT `doctor_subject_ibfk_1` FOREIGN KEY (`Doctor_Id`) REFERENCES `doctor` (`Doctor_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `show_post`
---
-ALTER TABLE `show_post`
-  ADD CONSTRAINT `show_post_ibfk_1` FOREIGN KEY (`id`) REFERENCES `create_post` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

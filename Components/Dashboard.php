@@ -81,7 +81,12 @@ include_once("../DataBase/database.php");
             <li><a href="Student_Info.php"><i class="fa-sharp fa-solid fa-circle-info"></i>البيانات الشخصيه</a></li>
 
          <li><a href="registration.php"><i class="fa-solid fa-pen-to-square"></i>تسجيل المواد </a></li>
+         
+         <li><a href="show_posts.php"><i class="fa-solid fa-rss"></i> الاخبار</a></li>
         </ul>
+
+
+      
         
     <?php  } ?>
 

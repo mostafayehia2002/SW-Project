@@ -87,6 +87,7 @@ if (isset($_GET['delete'])) {
         <?php include_once "../Components/NavBar.php"; ?>
         <!-- end nav bar -->
         <div class="container">
+            
             <form action="" method="POST" enctype="multipart/form-data">
                 <div class="athers">
                     <h3 class="title">اضافة اكثر من طالب :</h3>

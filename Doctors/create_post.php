@@ -13,15 +13,26 @@ if(isset($_POST['add'])){
 
     $subject=$_POST['subject_name'];
     $content=$_POST['content'];
-    $img= $_FILES['img']['name'];
+    $img_to="./Posts/".$_FILES['img']['name'];
+    $img_from= $_FILES['img']['tmp_name'];
+    move_uploaded_file($img_from,$img_to);
+    $img=$_FILES['img']['name'];
+
+    //
+    $pdf_to="./Posts/".$_FILES['pdf']['name'];
+    $pdf_from=$_FILES['pdf']['tmp_name'];
+    move_uploaded_file($pdf_from,$pdf_to);
     $pdf=$_FILES['pdf']['name'];
+    //
     $con->query("INSERT INTO `create_post` (`id`, `Doctor_ID`, `Subject_Name`, `Content`, `Pdf`, `Img`) VALUES (NULL, '$ID', '$subject', '$content','$pdf','$img')");
+
+
+    
 }
 
 
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="ar">
@@ -81,7 +92,6 @@ if(isset($_POST['add'])){
     gap: 8px;
 }
 
-
 </style>
 </head>
 
@@ -103,7 +113,7 @@ if(isset($_POST['add'])){
 
                     <h3 class="title">انشاء منشور:</h3>
                     <div class="allinput">
-               
+          
                     
                     <div class="input-filed">
                             <label for="subject_name">   يجب تحديد المادة</label>
@@ -113,7 +123,6 @@ if(isset($_POST['add'])){
                          $doctor_subject= $doctor_subject->fetchAll(PDO::FETCH_ASSOC);
                         foreach( $doctor_subject as $d){
                            ?>
-
                     <option value="<?php echo $d['Subject_Name'] ?>"><?php echo $d['Subject_Name'] ?></option>
 
                              
@@ -134,7 +143,6 @@ if(isset($_POST['add'])){
                         <div class="input-filed">
                             <label for="content"> اكتب تعليق</label>
                             <textarea name="content" id="content">
-
                             </textarea>
                            
                         </div>

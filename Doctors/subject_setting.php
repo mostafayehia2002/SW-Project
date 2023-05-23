@@ -105,7 +105,7 @@ $subject_marks=$subject_marks->fetchAll(PDO::FETCH_ASSOC);
                                
                                 <td>
                                   
-                                    <button><a href="#" class="update">تعديل</a></button>
+          <button><a href="Add_Marks.php?id=<?php  echo $data['Student_ID'] ?>&subject=<?php  echo $data['Subject_Name'] ?>" class="update">تعديل</a></button>
                                  
                                 </td>
                             </tr>
