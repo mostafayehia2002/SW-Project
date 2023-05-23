@@ -82,10 +82,12 @@ include_once("../DataBase/database.php");
 
          <li><a href="registration.php"><i class="fa-solid fa-pen-to-square"></i>تسجيل المواد </a></li>
          
+         <li><a href="subject_registration.php"><i class="fa-solid fa-rss"></i> المواد المسجله</a></li>
+        
          <li><a href="show_posts.php"><i class="fa-solid fa-rss"></i> الاخبار</a></li>
+        
+
         </ul>
-
-
       
         
     <?php  } ?>
