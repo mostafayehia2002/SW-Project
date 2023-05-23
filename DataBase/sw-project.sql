@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 23, 2023 at 02:07 PM
+-- Generation Time: May 23, 2023 at 07:49 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -71,10 +71,10 @@ CREATE TABLE `course_registration` (
 INSERT INTO `course_registration` (`ID`, `Student_ID`, `Subject_Name`, `Registration`, `Subject_Status`) VALUES
 (685, 200713, 'Computer Introduction', 1, 1),
 (686, 200713, ' Discrete Mathematics', 1, 0),
-(687, 200713, ' Mathematics-1', 0, 0),
-(688, 200713, ' Semiconductors', 0, 0),
-(689, 200713, ' Scientific&Technical Report Writing', 0, 0),
-(690, 200713, ' Professional Ethics', 0, 0),
+(687, 200713, ' Mathematics-1', 1, 0),
+(688, 200713, ' Semiconductors', 1, 0),
+(689, 200713, ' Scientific&Technical Report Writing', 1, 0),
+(690, 200713, ' Professional Ethics', 1, 0),
 (691, 200713, ' Fundamentals of Management', 0, 0),
 (692, 200713, ' Fundamentals of  Programming', 0, 0),
 (693, 200713, ' Logic Design-1', 0, 0),
@@ -294,6 +294,19 @@ INSERT INTO `student` (`St_ID`, `Password`, `Image`, `Full_Name`, `Gender`, `Nat
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `student_register`
+--
+
+CREATE TABLE `student_register` (
+  `ID` int(11) NOT NULL,
+  `St_ID` int(11) NOT NULL,
+  `register` tinyint(1) NOT NULL,
+  `Total_Subject` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `subject_marks`
 --
 
@@ -380,6 +393,13 @@ ALTER TABLE `student`
   ADD UNIQUE KEY `National ID` (`National_ID`);
 
 --
+-- Indexes for table `student_register`
+--
+ALTER TABLE `student_register`
+  ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `Student_ID` (`St_ID`);
+
+--
 -- Indexes for table `subject_marks`
 --
 ALTER TABLE `subject_marks`
@@ -426,6 +446,12 @@ ALTER TABLE `genral_subject`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
+-- AUTO_INCREMENT for table `student_register`
+--
+ALTER TABLE `student_register`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
 -- AUTO_INCREMENT for table `subject_marks`
 --
 ALTER TABLE `subject_marks`
@@ -452,6 +478,12 @@ ALTER TABLE `create_post`
 --
 ALTER TABLE `doctor_subject`
   ADD CONSTRAINT `doctor_subject_ibfk_1` FOREIGN KEY (`Doctor_Id`) REFERENCES `doctor` (`Doctor_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `student_register`
+--
+ALTER TABLE `student_register`
+  ADD CONSTRAINT `student_register_ibfk_1` FOREIGN KEY (`St_ID`) REFERENCES `student` (`St_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

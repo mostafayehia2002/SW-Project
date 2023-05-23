@@ -14,40 +14,6 @@ include_once("../DataBase/database.php");
  $data=$con->query("SELECT * FROM `course_registration` WHERE Student_ID='$ID' and Registration=0 LIMIT 6 ");
  $data=$data->fetchAll(PDO::FETCH_ASSOC);
 
-
- //check register of user in table student register
- $student_register=$con->query("SELECT  * FROM `student_register` WHERE St_ID='$ID' ");
- $count=$student_register->rowCount();
- $register_data= $student_register->fetch(PDO::FETCH_ASSOC);
-//
-  if($count==1  && $register_data['register']=='1'){
-      header("Location:update_registeration.php");
-      exit();
-    }
-
-
-if(isset($_POST['regist'])){
-  
-  foreach($_POST as $sub){
-    
-    $con->query("UPDATE `course_registration` SET Registration=1 WHERE Student_ID='$ID' AND Subject_Name='$sub'");
-    
-    
-  }
-
-  
-    if($count==0){
-       $con->query("INSERT INTO `student_register` (`St_ID`,`register`) VALUES ('$ID','1')");
-      header("Location:update_registeration.php");
-      exit;
-
-    }
-
-  }
- 
-
-
-
 ?>
 <html lang="en">
 
@@ -132,9 +98,8 @@ input[type="submit"]{
 
         </thead>
         <tbody>
+
           <tr class="one">
-
-
            <?php 
              $count=1;
             foreach($data as $d){
