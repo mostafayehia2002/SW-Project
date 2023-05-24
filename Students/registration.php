@@ -8,24 +8,19 @@ if (!isset($_SESSION["student_id"])) {
 
 include_once("../DataBase/database.php");
  $ID = $_SESSION['student_id'];
-    
-
-//course registration
- $data=$con->query("SELECT * FROM `course_registration` WHERE Student_ID='$ID' and Registration=0 LIMIT 6 ");
- $data=$data->fetchAll(PDO::FETCH_ASSOC);
-
-
+  
+ 
  //check register of user in table student register
- $student_register=$con->query("SELECT  * FROM `student_register` WHERE St_ID='$ID' ");
+  $student_register=$con->query("SELECT  * FROM `student_register` WHERE St_ID='$ID' ");
  $count=$student_register->rowCount();
  $register_data= $student_register->fetch(PDO::FETCH_ASSOC);
-//
+ //
   if($count==1  && $register_data['register']=='1'){
-      header("Location:update_registeration.php");
-      exit();
+    //  header("Location:update_registeration.php");
+     // exit();
     }
 
-
+/************************************************************************************/
 if(isset($_POST['regist'])){
   
   foreach($_POST as $sub){
@@ -35,20 +30,92 @@ if(isset($_POST['regist'])){
     
   }
 
-  
-    if($count==0){
+ if($count==0){
        $con->query("INSERT INTO `student_register` (`St_ID`,`register`) VALUES ('$ID','1')");
-      header("Location:update_registeration.php");
-      exit;
+    //  header("Location:update_registeration.php");
+    //  exit;
 
     }
 
   }
  
 
+//course registration
+$data=$con->query("SELECT * FROM `course_registration` WHERE Student_ID='$ID' and Registration=0 LIMIT 6 ");
+$data=$data->fetchAll(PDO::FETCH_ASSOC);
+/********************************************************************************/
+?>
 
+<?php 
+
+$subject_success=$con->query("SELECT * FROM course_registration WHERE Student_ID='$ID' AND Registration=1 AND Subject_Status=1 ");
+
+$subject_success=$subject_success->fetchAll(PDO::FETCH_ASSOC);
+
+// echo "<pre>";
+// print_r($subject_success);
+// echo"</pre>";
+
+
+$subject_next=$con->query("SELECT * FROM course_registration WHERE Student_ID=$ID AND (Registration=1 OR Registration=0) AND Subject_Status=0 LIMIT 6");
+$subject_next=$subject_next->fetchAll(PDO::FETCH_ASSOC);
+
+//  echo "<pre>";
+//  print_r($subject_next);
+//  echo"</pre>";
+
+
+ $subject_dependance=$con->query("SELECT * FROM `genral_subject`");
+ $row= $subject_dependance->rowCount();
+ $subject_dependance=$subject_dependance->fetchAll(PDO::FETCH_ASSOC);
+
+
+//  echo $row;
+//  echo $subject_dependance[0]['Subject_Name'];
+//  echo $subject_next[0]['Subject_Name'];
+
+
+$arr1=[];
+$arr2=[];
+$array_subject=[];
+foreach($subject_next as $next){
+
+  foreach($subject_dependance as $dp){
+  
+    if(trim($dp['Subject_Name'])===trim($next['Subject_Name'])){
+
+    
+         if($dp['De_Subject_Name']==0){
+
+             array_push($arr1, $next['Subject_Name']);
+            
+           }
+
+         foreach($subject_success as $success){
+         if(trim($dp['De_Subject_Name'])===trim($success['Subject_Name'])){
+           
+           array_push($arr2,$next['Subject_Name']);
+          
+
+      }
+      
+   }
+
+  }
+  }
+
+}
+
+ $array_subject=array_merge($arr1,$arr2);
+// echo "<pre>";
+// print_r($array_subject);
+// echo"</pre>";
 
 ?>
+
+
+
+
 <html lang="en">
 
 <head>
@@ -123,7 +190,7 @@ input[type="submit"]{
          
             <?php 
               $c=1;
-            foreach($data as $s){
+            foreach($array_subject as $s){
             ?>
             <th><label for="s<?Php echo $c;?>">الماده <?Php echo $c++;?></label></th>
            <?php 
@@ -137,14 +204,14 @@ input[type="submit"]{
 
            <?php 
              $count=1;
-            foreach($data as $d){
+            foreach($array_subject as $d){
          
             ?>
           <td>
-            <label for="s<?Php echo $count;?>" ><?php echo $d['Subject_Name']?> </label>
+            <label for="s<?Php echo $count;?>" ><?php echo $d?> </label>
             <br>
 
-           <input type="checkbox"  name="<?php echo $d['Subject_Name']?>"  id="s<?Php echo $count++;?>" value="<?php echo $d['Subject_Name']?>">
+           <input type="checkbox"  name="<?php echo $d?>"  id="s<?Php echo $count++;?>" value="<?php echo $d?>">
           </td>  
            <?php }?>
 
@@ -169,3 +236,5 @@ input[type="submit"]{
 </body>
 
 </html>
+
+

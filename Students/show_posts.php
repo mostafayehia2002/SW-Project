@@ -45,6 +45,7 @@ $posts=$posts->fetchAll(PDO::FETCH_ASSOC);
       <div class="posts">
 
       <?php foreach($posts as $p){ ?>
+
         <div class="post">
           <div class="head">
             <div class="profile">
@@ -61,6 +62,7 @@ $posts=$posts->fetchAll(PDO::FETCH_ASSOC);
           <p><?php echo $p['Content'] ?></p>
 
           <?php if(!empty($p['Img'])){?>
+            
             <div class="image">
               <img src="../Doctors/Posts/<?php echo $p['Img'] ?>" alt="">  
             </div> 

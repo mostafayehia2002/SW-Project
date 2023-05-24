@@ -23,6 +23,10 @@ include_once("../DataBase/database.php");
 
 
 ?>
+
+
+
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -123,3 +127,8 @@ tr:nth-child(even){
 </body>
 
 </html>
+
+
+
+
+

@@ -251,6 +251,7 @@ if (isset($_POST['add_doctor_subject'])) {
                                 <input list="list1" name="subject" required />
                                 <datalist id="list1">
                                     <?php
+                                    
                                     foreach ($all_subjects as $s1) { ?>
                                         <option value="<?php echo $s1['Subject_Name'] ?>">
                                         

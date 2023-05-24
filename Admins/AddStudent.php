@@ -169,9 +169,12 @@ if (isset($_GET['delete'])) {
                             <label for="university"> الجامعة</label>
                             <input type="text" id="university" name="university" value="المنوفية">
                         </div>
-                        <div class="input-filed">
+                        <div class="input-filed"> 
                             <label for="department"> القسم</label>
-                            <input type="text" id="department" name="department" value="العام">
+
+                            <input type="text" id="department" name="department" value="genral">
+
+                            
                         </div>
                         <div class="input-filed">
                             <label for="joining_date">تاريخ الالتحاق</label>
