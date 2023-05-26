@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 23, 2023 at 07:49 PM
+-- Generation Time: May 26, 2023 at 07:41 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -48,7 +48,7 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`Ad_ID`, `Password`, `status`, `Image`, `Full_Name`, `Gender`, `Address`, `Job`, `Email_Address`, `Phone_Number`, `Faculty`, `University`) VALUES
 (2002, '2002', 1, 'IMG_20220324_135045.jpg', 'mostafa hossam', 'ذكر', 'qusina', 'مسئول عن اداره شئون الطلاب', 'moustafa.yehia160800@ci.menofia.edu.eg', 1226717838, 'الحاسبات والمعلومات', ' المنوفيه'),
-(2252002, '2002', 1, 'teefa.jpg', 'مصطفي يحيي', 'ذكر', 'ميت بره مركز قويسنا المنوفيه', 'مسئول السيستم', 'gad993813@gmail.com', 1226717838, 'الحاسبات والمعلومات', 'المنوفيه');
+(2252002, '2002', 1, 'teefa.jpg', 'مصطفي يحيي محمد جاد', 'ذكر', 'Quisna Menufia Egypt', 'مسئول السيستم', 'gad993813@gmail.com', 1226717838, 'الحاسبات والمعلومات', 'المنوفيه');
 
 -- --------------------------------------------------------
 
@@ -63,24 +63,6 @@ CREATE TABLE `course_registration` (
   `Registration` tinyint(1) NOT NULL,
   `Subject_Status` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `course_registration`
---
-
-INSERT INTO `course_registration` (`ID`, `Student_ID`, `Subject_Name`, `Registration`, `Subject_Status`) VALUES
-(685, 200713, 'Computer Introduction', 1, 1),
-(686, 200713, ' Discrete Mathematics', 1, 0),
-(687, 200713, ' Mathematics-1', 1, 0),
-(688, 200713, ' Semiconductors', 1, 0),
-(689, 200713, ' Scientific&Technical Report Writing', 1, 0),
-(690, 200713, ' Professional Ethics', 1, 0),
-(691, 200713, ' Fundamentals of Management', 0, 0),
-(692, 200713, ' Fundamentals of  Programming', 0, 0),
-(693, 200713, ' Logic Design-1', 0, 0),
-(694, 200713, ' Introduction to IS', 0, 0),
-(695, 200713, ' Statistics&Probabilities', 0, 0),
-(696, 200713, ' Mathematics-2', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -97,16 +79,6 @@ CREATE TABLE `create_post` (
   `Img` varchar(100) DEFAULT NULL,
   `Date` date DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `create_post`
---
-
-INSERT INTO `create_post` (`id`, `Doctor_ID`, `Subject_Name`, `Content`, `Pdf`, `Img`, `Date`) VALUES
-(11, 12345, 'Computer Introduction', '\r\n                ssc            ', 'My CV.pdf', 'Screenshot 2023-05-09 .png', '2023-05-22'),
-(13, 123456, ' Discrete Mathematics', '\r\n                            sddddddddddd', '', '', '2023-05-22'),
-(14, 12345, 'Computer Introduction', '\r\n                        هلا والله', '', 'WhatsApp Image 2021-10-23 at 11.04.12 PM.jpeg', '2023-05-22'),
-(15, 123456, ' Discrete Mathematics', '\r\n                               Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur eos cupiditate consequatur quo minima voluptas, magni ipsa maiores labore magnam, ullam architecto laborum, amet autem cum ratione inventore dolor temporibus! ', '', 'WhatsApp Image 2021-10-23 at 11.04.12 PM.jpeg', '2023-05-23');
 
 -- --------------------------------------------------------
 
@@ -212,14 +184,6 @@ CREATE TABLE `doctor_subject` (
   `Subject_Name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `doctor_subject`
---
-
-INSERT INTO `doctor_subject` (`id`, `Doctor_Id`, `Subject_Name`) VALUES
-(6, 12345, 'Computer Introduction'),
-(12, 123456, ' Discrete Mathematics');
-
 -- --------------------------------------------------------
 
 --
@@ -284,13 +248,6 @@ CREATE TABLE `student` (
   `Job` varchar(100) NOT NULL DEFAULT 'طالب'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `student`
---
-
-INSERT INTO `student` (`St_ID`, `Password`, `Image`, `Full_Name`, `Gender`, `Nationality`, `Religion`, `Address`, `Date_Birth`, `National_ID`, `Phone_Number`, `Academic_Email`, `School`, `Qualification`, `Total_Degree`, `Average`, `Date_Coordination`, `Number_Coordination`, `Faculty`, `University`, `Department`, `Joining_Date`, `Job`) VALUES
-(200713, '200713', 'profile.jpg', 'مصطفي يحيي', 'ذكر', 'مصري', 'مسلم', 'قويسنا', '2002-05-22', '123456789', '01226717838', 'gad993813@gmail.com', 'الثانويه المشتركه', 'ثانوي عام', 368, 90, '2020-05-10', '123', 'الحاسبات والمعلومات', 'المنوفيه', 'genral', '2020-05-04', 'طالب');
-
 -- --------------------------------------------------------
 
 --
@@ -318,17 +275,8 @@ CREATE TABLE `subject_marks` (
   `Subject_Midterm` double DEFAULT NULL,
   `Subject_Quiz` double DEFAULT NULL,
   `Subject_Attendance` double DEFAULT NULL,
-  `Total_Marks` double DEFAULT NULL
+  `Total_Marks` double DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `subject_marks`
---
-
-INSERT INTO `subject_marks` (`ID`, `Student_ID`, `Subject_Name`, `Subject_Marks`, `Subject_Midterm`, `Subject_Quiz`, `Subject_Attendance`, `Total_Marks`) VALUES
-(1, 200703, ' Discrete Mathematics', 30, 12, 10, 5, 62),
-(2, 200713, 'Computer Introduction', 40, 2, 10, 5, 57),
-(4, 200703, 'Computer Introduction', NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -413,19 +361,19 @@ ALTER TABLE `subject_marks`
 -- AUTO_INCREMENT for table `course_registration`
 --
 ALTER TABLE `course_registration`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=697;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=745;
 
 --
 -- AUTO_INCREMENT for table `create_post`
 --
 ALTER TABLE `create_post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `departments`
 --
 ALTER TABLE `departments`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `developer`
@@ -437,7 +385,7 @@ ALTER TABLE `developer`
 -- AUTO_INCREMENT for table `doctor_subject`
 --
 ALTER TABLE `doctor_subject`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `genral_subject`
@@ -449,13 +397,13 @@ ALTER TABLE `genral_subject`
 -- AUTO_INCREMENT for table `student_register`
 --
 ALTER TABLE `student_register`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `subject_marks`
 --
 ALTER TABLE `subject_marks`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables

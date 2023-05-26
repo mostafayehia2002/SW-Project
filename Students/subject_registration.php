@@ -15,6 +15,8 @@ include_once("../DataBase/database.php");
  AND Registration=1");     
  $data1=$data1->fetchAll(PDO::FETCH_ASSOC);
 
+
+
  $data2=$con->query("SELECT * FROM `subject_marks` WHERE Student_ID='$ID'");     
  $data2=$data2->fetchAll(PDO::FETCH_ASSOC);
 
@@ -94,14 +96,14 @@ tr:nth-child(even){
         </thead>
 
         <tbody>
-            <?php   foreach($data1 as $d1){?>
+            <?php  foreach($data1 as $d1){?>
         <tr>
             <td><?php echo $d1['Subject_Name'] ?> </td>          
             <?php foreach($data2 as $d2){
              if($d1['Subject_Name']==$d2['Subject_Name']) { ?>
 
             <td><?php echo $d2['Total_Marks'] ?> </td>
-            <td>A</td>
+            <td>null</td>
             <?php } } ?>
            
         </tr>

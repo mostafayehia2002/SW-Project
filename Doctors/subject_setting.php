@@ -6,11 +6,11 @@ if (!isset($_SESSION["doctor_id"])) {
   exit();
 }
 include_once("../DataBase/database.php");
-
-
 //table data
-
 $subject_name = $_GET['subject_name'];
+
+//
+
 
 $subject_marks = $con->query("SELECT t1.Full_Name,
 t2.Student_ID,
@@ -25,9 +25,14 @@ FROM
  INNER JOIN
  `subject_marks` t2 
  on t1.St_ID=t2.Student_ID
- WHERE t2.Subject_Name='$subject_name'
+  AND t2.Subject_Name='$subject_name'
 ");
 $subject_marks = $subject_marks->fetchAll(PDO::FETCH_ASSOC);
+
+
+
+
+
 
 
 
@@ -208,14 +213,7 @@ if (isset($_GET['delete_post'])) {
     <!-- Start nav-bar -->
     <?php include_once("../Components/NavBar.php"); ?>
     <!-- end nav bar -->
-    <ul class="department-navbar">
-      <li>
-        <!-- <a href="subject_Setting.php?"> الصفحه الرئيسيه</a> -->
-
-      </li>
-    </ul>
-
-
+   
     <div class="container">
       <div class="row">
         <div class="col-12">

@@ -3,7 +3,6 @@ session_start();
 include_once("DataBase/database.php");
 
 $err = [];
-
 if (isset($_POST["Login"])) {
   $ID = $_POST["username"];
   $Password = $_POST["password"];

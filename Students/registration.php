@@ -16,8 +16,8 @@ include_once("../DataBase/database.php");
  $register_data= $student_register->fetch(PDO::FETCH_ASSOC);
  //
   if($count==1  && $register_data['register']=='1'){
-    //  header("Location:update_registeration.php");
-     // exit();
+     header("Location:register_success.php");
+      exit();
     }
 
 /************************************************************************************/
@@ -32,8 +32,8 @@ if(isset($_POST['regist'])){
 
  if($count==0){
        $con->query("INSERT INTO `student_register` (`St_ID`,`register`) VALUES ('$ID','1')");
-    //  header("Location:update_registeration.php");
-    //  exit;
+      header("Location:register_success.php");
+      exit;
 
     }
 
@@ -43,12 +43,19 @@ if(isset($_POST['regist'])){
 //course registration
 $data=$con->query("SELECT * FROM `course_registration` WHERE Student_ID='$ID' and Registration=0 LIMIT 6 ");
 $data=$data->fetchAll(PDO::FETCH_ASSOC);
+
+
+
+
 /********************************************************************************/
 ?>
 
+
+
+
 <?php 
 
-$subject_success=$con->query("SELECT * FROM course_registration WHERE Student_ID='$ID' AND Registration=1 AND Subject_Status=1 ");
+$subject_success=$con->query("SELECT * FROM `course_registration` WHERE Student_ID='$ID' AND Registration=1 AND Subject_Status=1 ");
 
 $subject_success=$subject_success->fetchAll(PDO::FETCH_ASSOC);
 
@@ -57,14 +64,14 @@ $subject_success=$subject_success->fetchAll(PDO::FETCH_ASSOC);
 // echo"</pre>";
 
 
-$subject_next=$con->query("SELECT * FROM course_registration WHERE Student_ID=$ID AND (Registration=1 OR Registration=0) AND Subject_Status=0 LIMIT 6");
+$subject_next=$con->query("SELECT * FROM `course_registration` WHERE Student_ID=$ID AND (Registration=1 OR Registration=0) AND Subject_Status=0 LIMIT 6");
 $subject_next=$subject_next->fetchAll(PDO::FETCH_ASSOC);
 
 //  echo "<pre>";
 //  print_r($subject_next);
 //  echo"</pre>";
 
-
+//dont forget to change department name 
  $subject_dependance=$con->query("SELECT * FROM `genral_subject`");
  $row= $subject_dependance->rowCount();
  $subject_dependance=$subject_dependance->fetchAll(PDO::FETCH_ASSOC);
@@ -127,9 +134,9 @@ foreach($subject_next as $next){
     <link rel="stylesheet" href="../CssComponent/Dashboard.css">
     <title>Information</title>
 
-    <style>
+<style>
         
-table{ 
+  table{ 
   border-collapse: collapse;
   border-spacing: 0;
   box-shadow: 0 2px 15px rgba(64,64,64,.2);
@@ -138,39 +145,40 @@ table{
   width: 90%;
   background-color: #fafafa;
   margin:50px auto;
-}
-th{
+  }
+  th{
   background-color: #229678;
   color: #fafafa;
   font-weight: 200;
   text-transform: uppercase;
-}
-td,
-th{
+  }
+  td,
+   th{
   padding: 15px 20px;
   text-align: center;
  
-}
+   }
 
-tr.one{
+   tr.one{
   border-bottom: 2px solid #1B9C85;
-}
-tr{
+   }
+   tr{
   width: 100%;
  
-}
+  }
 
-td input{
+   td input{
   background-color: var(--main-color);
   padding: 7px 22px;
   border-radius: 3px;
   accent-color:var(--main-color);
-}
+  }
 
-input[type="submit"]{
+   input[type="submit"]{
   color:white;
-}
-    </style>
+   }
+</style>
+
 </head>
 
 <body>
@@ -238,3 +246,15 @@ input[type="submit"]{
 </html>
 
 
+<?php 
+//add student subject to doctor
+$Course_Registration=$con->query("SELECT * FROM `course_registration` WHERE Student_ID='$ID' AND Registration=1 ");
+$Course_Registration=$Course_Registration->fetchAll(PDO::FETCH_ASSOC);
+
+
+foreach($Course_Registration as $C){
+$subjects=$C['Subject_Name'];
+  $con->query("INSERT INTO `subject_marks` (Student_ID,Subject_Name) VALUES ('$ID','$subjects')");
+}
+
+?>

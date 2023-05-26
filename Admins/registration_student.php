@@ -16,7 +16,7 @@ $subject_department=$subject_department->fetchAll(PDO::FETCH_ASSOC);
 
 
 //course registration table
-$course_registration=$con->query("SELECT DISTINCT  Student_ID FROM `course_registration`");
+$course_registration=$con->query("SELECT DISTINCT  `Student_ID` FROM `course_registration`");
 $course_registration=$course_registration->fetchAll(PDO::FETCH_ASSOC);
 //
 
@@ -38,11 +38,16 @@ $course_registration=$course_registration->fetchAll(PDO::FETCH_ASSOC);
 
      $subject_name=$sub['Subject_Name'];
      
-         $con->query("INSERT INTO `course_registration` (`Student_ID`,`Subject_Name`)VALUES('$student_id','$subject_name')"); 
+     $con->query("INSERT INTO `course_registration` (`Student_ID`,`Subject_Name`)VALUES('$student_id','$subject_name')"); 
      
     }
     }
 
 }
+
+//add student to doctor 
+
+
+
 
 ?>

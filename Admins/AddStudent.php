@@ -170,11 +170,20 @@ if (isset($_GET['delete'])) {
                             <input type="text" id="university" name="university" value="المنوفية">
                         </div>
                         <div class="input-filed"> 
-                            <label for="department"> القسم</label>
+                        <label for="department"> القسم</label>
+                        <select name="department" id="department">
+                        <?php 
+                        $departments=$con->query("SELECT * FROM `departments`");
+                        $departments=$departments->fetchAll(PDO::FETCH_ASSOC);
+                        foreach( $departments as $dp){
 
-                            <input type="text" id="department" name="department" value="genral">
-
+                            ?>                         
                             
+                            <option  value="<?=$dp['Department_English_Name']?>">
+                            <?=$dp['Department_English_Name'] ?></option>
+                           <?php } ?>
+                          
+                           </select>
                         </div>
                         <div class="input-filed">
                             <label for="joining_date">تاريخ الالتحاق</label>
@@ -184,7 +193,7 @@ if (isset($_GET['delete'])) {
                             <label for="gender">النوع</label>
                             <div class="gender">
                                 <div class="male">
-                                    <input type="radio" name="gender" id="male" value="ذكر">
+                                    <input type="radio" name="gender" id="male" value="ذكر" checked>
                                     <label for="male">ذكر</label>
                                 </div>
                                 <div class="female">
